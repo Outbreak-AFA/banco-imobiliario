@@ -1,8 +1,6 @@
 #define MAX 6
 #define MIN 1
 
-int casas;
-
 int girarDado() {
     int random1, random2;
     random1 = rand() % (MAX + MIN);
