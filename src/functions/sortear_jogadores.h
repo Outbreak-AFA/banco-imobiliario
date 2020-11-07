@@ -21,7 +21,7 @@ int sortearJogadores(int *player_count) {
     */
 
     if (player_count < 2 || player_count > 4) {
-        cout << "Quantidade de jogadores deve ser no mínimo 2 e no máximo 4!" << endl;
+        cout << "Quantidade de jogadores deve ser no mínimo 2 e no maximo 4!" << endl;
         return 0;
     } else {
 

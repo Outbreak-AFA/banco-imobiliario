@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <iostream>
 
+using namespace std;
+
 /* PROPRIEDADES
 
 Para comprar alguma propriedade, que seja um terreno, praça, bairro ou empresa, 
@@ -21,3 +23,17 @@ typedef struct {
     bool tem_dono; // verificar se a propriedade tem dono
     double valor_aluguel; // valor do aluguel da propriedade
 } PROPRIEDADE;
+
+PROPRIEDADE criar_propriedade(int tipo_propriedade, bool tem_dono, double valor_aluguel) {
+    PROPRIEDADE p;
+    p.tipo_propriedade = tipo_propriedade;
+    p.tem_dono = tem_dono;
+    p.valor_aluguel = valor_aluguel;
+    return p;
+}
+
+void comprar_propriedade(PROPRIEDADE *p) {
+    if (p->tem_dono) {
+        cout << "Essa propriedade ja tem um dono. Voce nao pode comprar ela!" << endl;
+    }
+}
