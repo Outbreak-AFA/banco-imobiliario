@@ -34,7 +34,7 @@ int sortearJogadores(int player_count) {
             cout << "Jogador " << i << " tirou " << mostrarValorDados() << endl;
             inserirNoFinal(l, mostrarValorDados());
             system("pause");
-        Quick(l, 0, 4);
+        Quick(l, 0, player_count);
             
         }
     }
