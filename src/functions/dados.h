@@ -7,8 +7,6 @@ int girarDado() {
     return random;
 }
 
-int andou;
-
 using namespace std;
 int mostrarDados() {
     // permite visualizar os dados jogados
@@ -48,10 +46,5 @@ int mostrarDados() {
     }
 
     int casas = (d1+d2);
-    andou = casas;
     return casas;
-}
-
-int mostrarValorDados() {
-    return andou;
 }

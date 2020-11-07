@@ -12,8 +12,8 @@ Depois irei fazer as alterações associando com o struct do jogador.
 using namespace std;
 FILA *f;
 
-int sortearJogadores(int *player_count) {
-    int *resultados[player_count];
+int sortearJogadores(int player_count) {
+    int resultados[player_count];
     /*
     Essa função recebe a quantidade de jogadores como argumento.
     Por meio de um loop for, serão feitas a jogada de dados de cada jogador.
@@ -30,9 +30,9 @@ int sortearJogadores(int *player_count) {
         for (int i=0; i<player_count; i++) {
             cout << "Jogador " << i+1 << " vai lançar os dados!" << endl;
             Sleep(1000); // esperar 1 segundo
-            cout << mostrarDados() << endl;
-            cout << "Jogador " << i+1 << " tirou " << mostrarValorDados() << endl;
-            resultados[i] = mostrarValorDados();
+            int valor_dados = mostrarDados();
+            cout << "Jogador " << i+1 << " tirou " << valor_dados << endl;
+            resultados[i] = valor_dados;
             if (i > 0) simple_sort(resultados, player_count); // ordena de forma decrescente
             enfileira(f, resultados[i]); // guarda na fila
             system("pause");
