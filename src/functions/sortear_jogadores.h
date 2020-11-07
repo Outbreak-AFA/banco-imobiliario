@@ -30,7 +30,6 @@ int sortearJogadores(int player_count) {
             cout << "Jogador " << i << " tirou " << mostrarValorDados() << endl;
             enfileira(f, mostrarValorDados());
             system("pause");
-        Quick(f, 0, player_count);
             
         }
     }
