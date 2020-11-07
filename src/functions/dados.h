@@ -7,23 +7,7 @@ int girarDado() {
     return random;
 }
 
-struct Dado {
-    int valor;
-
-    Dado(int valor) {
-        this->valor = valor;
-    }
-
-    void setValor(int valor) {
-        this->valor = valor;
-    }
-
-    int getValor() {
-        return valor;
-    }
-};
-
-int var;
+int andou;
 
 using namespace std;
 int mostrarDados() {
@@ -64,12 +48,10 @@ int mostrarDados() {
     }
 
     int casas = (d1+d2);
-    Dado d(casas);
-    
-    var = d.getValor();
-    return d.getValor();
+    andou = casas;
+    return casas;
 }
 
 int mostrarValorDados() {
-    return var;
+    return andou;
 }
