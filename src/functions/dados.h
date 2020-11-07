@@ -4,10 +4,12 @@
 int girarDado() {
     int random;
     random = rand() % (MAX + MIN);
-    return random;
-}
 
-int andou;
+    if (random != 0)
+        return random;
+    else
+        return girarDado();
+}
 
 using namespace std;
 int mostrarDados() {
@@ -33,25 +35,11 @@ int mostrarDados() {
                 cout << ' ' << dados[i][j] << ' ';
             }
             else {
-                if (d1 == 0) {
-                    d1++;
-                } else if (d2 == 0) {
-                    d2++;
-                } else if (d1 == 0 && d2 == 0) {
-                    d1++;
-                    d2++;
-                }
                 dados[i][j] == 'a' ? cout << ' ' << d1 << ' ' : cout << ' ' << d2 << ' ';
             }
         }
         cout << endl;
     }
 
-    int casas = (d1+d2);
-    andou = casas;
-    return casas;
-}
-
-int mostrarValorDados() {
-    return andou;
+    return (d1 + d2);
 }
