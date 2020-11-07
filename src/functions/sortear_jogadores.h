@@ -13,7 +13,6 @@ using namespace std;
 FILA *f;
 
 int sortearJogadores(int player_count) {
-    int resultados[player_count];
     /*
     Essa função recebe a quantidade de jogadores como argumento.
     Por meio de um loop for, serão feitas a jogada de dados de cada jogador.
@@ -32,9 +31,11 @@ int sortearJogadores(int player_count) {
             Sleep(1000); // esperar 1 segundo
             int valor_dados = mostrarDados();
             cout << "Jogador " << i+1 << " tirou " << valor_dados << endl;
-            resultados[i] = valor_dados;
-            if (i > 0) simple_sort(resultados, player_count); // ordena de forma decrescente
-            enfileira(f, resultados[i]); // guarda na fila
+            enfileira(f, valor_dados); // guarda na fila
+            /*
+            usar função de desenfileirar (fila de prioridade) / condição: o maior sai primeiro...
+            ...da fila.
+            */
             system("pause");
         }
     }

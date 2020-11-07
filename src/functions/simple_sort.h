@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include "./src/estruturas/filaencadeada.h"
+
 
 void simple_sort(int vetor[], int player_count) {
     vetor[player_count];
