@@ -8,6 +8,7 @@
 
 int main () {
     srand(time(NULL));
+    //sortearJogadores(numeroJogadores);
     system("pause");
     return 0;
 }
