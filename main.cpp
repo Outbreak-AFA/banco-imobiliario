@@ -8,5 +8,6 @@ int main () {
     srand(time(NULL));
     mostrarDados();
     system("pause");
+
     return 0;
 }
