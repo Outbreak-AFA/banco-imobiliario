@@ -2,7 +2,7 @@
 #include <iostream>
 #include <windows.h>
 #include "quicksort.h"
-#include "lista.h"
+#include "filaencadeada.h"
 
 /*
 Isso é só um esboço para eu ter ideia de como será a lógica do sorteio. Não é nada oficial.
@@ -10,16 +10,12 @@ Depois irei fazer as alterações associando com o struct do jogador.
 */
 
 using namespace std;
-LISTA *l;
+FILA *f;
 int sortearJogadores(int player_count) {
     /*
     Essa função recebe a quantidade de jogadores como argumento.
     Por meio de um loop for, serão feitas a jogada de dados de cada jogador.
-    Cada valor tirado por jogador, será armazenado em uma lista.
-    Ao final, quando todos os jogadores tiverem jogado os dados, a lista será ordenada...
-    ...de forma decrescente. Fazendo com que o maior valor fique no topo.
-    O jogador que tiver tirado, no momento em que jogou, o valor que está no topo (que é o maior)...
-    ...será o primeiro a começar.
+    Cada valor tirado por jogador, será armazenado em uma pilha.
     */
 
     if (player_count < 2 || player_count > 4) {
@@ -32,9 +28,9 @@ int sortearJogadores(int player_count) {
             system("pause");
             cout << mostrarDados() << endl;
             cout << "Jogador " << i << " tirou " << mostrarValorDados() << endl;
-            inserirNoFinal(l, mostrarValorDados());
+            enfileira(f, mostrarValorDados());
             system("pause");
-        Quick(l, 0, player_count);
+        Quick(f, 0, player_count);
             
         }
     }
