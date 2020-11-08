@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <iostream>
+#include <string.h>
 
 using namespace std;
 
@@ -20,20 +21,47 @@ porque sempre que caírem na sua propriedade você receberá aluguel.
 
 typedef struct {
     int tipo_propriedade; // int ? char ? (definir depois) // atribuir valores numéricos ?
-    bool tem_dono; // verificar se a propriedade tem dono
+    string nome_avenida;
+    int casas, hoteis;
+    bool tem_dono = false; // verificar se a propriedade tem dono
+    string nome_dono;
     double valor_aluguel; // valor do aluguel da propriedade
 } PROPRIEDADE;
 
-PROPRIEDADE criar_propriedade(int tipo_propriedade, bool tem_dono, double valor_aluguel) {
+PROPRIEDADE criar_propriedade(int tipo_propriedade, string nome_avenida, bool tem_dono, 
+string nome_dono, double valor_aluguel, int casas, int hoteis) {
     PROPRIEDADE p;
     p.tipo_propriedade = tipo_propriedade;
+    p.nome_avenida = nome_avenida;
+    p.nome_dono = nome_dono;
     p.tem_dono = tem_dono;
     p.valor_aluguel = valor_aluguel;
+    p.casas = casas;
+    p.hoteis = hoteis;
     return p;
+}
+
+void mostrar_propriedade(PROPRIEDADE *p) {
+
+   // card teste de propriedade
+   cout << endl;
+   cout << "Tipo de propriedade: " << p->tipo_propriedade << endl;
+   cout << p->nome_avenida << endl; 
+   cout << "R$ " << p->valor_aluguel << ".00" << endl;
+   if (p->tem_dono) {
+       cout << "Proprietario: " << p->nome_dono << endl;
+   }
+   cout << "Casas: " << p->casas << " Hoteis: " << p->hoteis << endl;
+
 }
 
 void comprar_propriedade(PROPRIEDADE *p) {
     if (p->tem_dono) {
         cout << "Essa propriedade ja tem um dono. Voce nao pode comprar ela!" << endl;
+    } else {
+        p->tem_dono = true;
+        // atualizar depois utilizando a struct do jogador
+        cout << "Jogador ... comprou a propriedade " << p->tipo_propriedade << " na " << p->nome_avenida << endl;
+        cout << "por um valor de R$ " << p->valor_aluguel << ".00" << endl;
     }
 }
