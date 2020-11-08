@@ -61,7 +61,7 @@ void comprar_propriedade(PROPRIEDADE *p) {
     } else {
         p->tem_dono = true;
         // atualizar depois utilizando a struct do jogador
-        cout << "Jogador ... comprou a propriedade " << p->tipo_propriedade << " na " << p->nome_avenida << endl;
-        cout << "por um valor de R$ " << p->valor_aluguel << ".00" << endl;
+        cout << "Jogador ... comprou a propriedade " << endl;
+        mostrar_propriedade(p);
     }
 }
