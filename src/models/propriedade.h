@@ -23,7 +23,7 @@ typedef struct {
     int tipo_propriedade; // int ? char ? (definir depois) // atribuir valores numéricos ?
     string nome_avenida;
     int casas, hoteis;
-    bool tem_dono = false; // verificar se a propriedade tem dono
+    bool tem_dono; // verificar se a propriedade tem dono
     string nome_dono;
     double valor_aluguel; // valor do aluguel da propriedade
 } PROPRIEDADE;
