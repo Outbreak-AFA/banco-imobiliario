@@ -44,25 +44,21 @@ int enfileira(FILA *f, int num){
     return 1;
 }
 
-/*
 int desenfileira(FILA *f, int num){
     if(fila_vazia(f)) return 0;
     NO *aux = f->ini;
-    strcpy(p->nome, aux->dados.nome);
-    p->idade = aux->dados.idade;
-    p->sexo = aux->dados.sexo;
-    p->gravida = aux->dados.gravida;
-    // Desloca o inicio fazendo-o apontar para o próximo nó
-    f->ini = aux->prox;
-    free(aux); // Libera o nó desempilhado
+    if (aux > f->ini->prox) {
+        //f->ini = aux->prox;
+        free(aux);
+    }
     return 1;
 }
-*/
 
-void imprimeJogador(int jogadores, FILA*f) {
+// mesclar com a struct do jogador ???
+void imprimeJogador(int player_count, FILA*f) {
     NO *aux = f->ini;
     cout << endl;
-    for (int i=0; i<jogadores; i++) {
-        cout << "===== Jogadores " << i+1 << " =====" << endl;
+    for (int i=0; i<player_count; i++) {
+        cout << "===== Jogador " << i+1 << " =====" << endl;
     }
 }
