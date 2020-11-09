@@ -42,9 +42,10 @@ char *nome_comprador, double valor_aluguel, int casas, int hoteis) {
     return p;
 }
 
+// Função que mostra o card de uma propriedade
 void mostrar_propriedade(PROPRIEDADE *p) {
 
-   // card teste de propriedade
+   // card genérico de propriedade
    cout << endl;
    cout << "==========================================================" << endl;
    cout << "| Tipo de propriedade: " << p->tipo_propriedade << endl;
