@@ -85,6 +85,7 @@ void receber_aluguel(PLAYER *pl_caiu, PLAYER *pl_dono, PROPRIEDADE *p) {
     }
 }
 
+/*
 int main() {
     PROPRIEDADE p, *ptr_p;
     ptr_p = &p;
@@ -100,3 +101,4 @@ int main() {
 
     return 0;
 }
+*/
