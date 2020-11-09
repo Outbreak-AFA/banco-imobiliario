@@ -4,6 +4,7 @@
 #include "./src/models/players.h"
 #include <list>
 #include <vector>
+#include "sorts.h"
 
 /*
 Isso é só um esboço para eu ter ideia de como será a lógica do sorteio. Não é nada oficial.
@@ -17,32 +18,29 @@ Essa função recebe a quantidade de jogadores como argumento.
 Por meio de um loop for, serão feitas a jogada de dados de cada jogador.
 Cada valor tirado por jogador, será armazenado em uma list<>.
 */
-int sortearJogadores(int *player_count) {
+int sortearJogadores(vector<PLAYER> players, int player_count) {
 
-    if (*player_count < 2 || *player_count > 4) {
+    if (player_count < 2 || player_count > 4) {
         cout << "Quantidade de jogadores deve ser no mínimo 2 e no maximo 4!" << endl;
         return 0;
     } else {
 
-        //PLAYER p;
+        PLAYER p;
         list<int> resultado;
 
-        for (int i=0; i < *player_count; i++) {
-            cout << "Jogador " << i+1 << " vai lançar os dados!" << endl;
+        for (int i=0; i < player_count; i++) {
+            p.id = i+1;
+            cout << "Jogador " << p.id << " vai lançar os dados!" << endl;
             Sleep(1000); // esperar 1 segundo
             int valor_dados = mostrarDados();
-            cout << "Jogador " << i+1 << " tirou " << valor_dados << endl;
+            cout << "Jogador " << p.id << " tirou " << valor_dados << endl;
             resultado.push_back(valor_dados);
-            //players.at(i).resultado_dados = valor_dados;
-            //resultado.push_back(players.at(i).resultado_dados);
-            // player->resultado = valor_dados
-            // resultado.push_back(player->resultado);
+            p.resultado_dados = valor_dados;
+            p = criar_player(p.id, p.nome, p.resultado_dados, p.carteira);
+            players.push_back(p);
             system("pause");
         }
-        if (!resultado.empty()) {
-            resultado.sort(); // ordena a lista em ordem crescente
-            resultado.reverse(); // inverte a lista, deixando-a em ordem decrescente
-        }
+        quickSortSorteioInicial(players, 0, player_count);
 
     }
 
