@@ -48,7 +48,7 @@ int main () {
     p.carteira = 341.31;
     addRanking(players, &p);
     strcpy(p.nome, "Sakura");
-    p.carteira = 1.31;
+    p.carteira = 112314.31;
     addRanking(players, &p);
     
     mostraRanking(players);
