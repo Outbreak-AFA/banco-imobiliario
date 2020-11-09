@@ -46,7 +46,7 @@ void quickSort(vector<PLAYER> &vetor, int inicio, int fim)
 void quickSortSorteioInicial(vector<PLAYER> &vetor, int inicio, int fim)
 {
     int i, j, meio;
-    double pivo;
+    int pivo;
     PLAYER aux;
     i = inicio;
     j = fim;
@@ -55,9 +55,9 @@ void quickSortSorteioInicial(vector<PLAYER> &vetor, int inicio, int fim)
 
     do
     {
-        while (vetor.at(i).carteira < pivo)
+        while (vetor.at(i).resultado_dados < pivo)
             i = i + 1;
-        while (vetor.at(j).carteira > pivo)
+        while (vetor.at(j).resultado_dados > pivo)
             j = j - 1;
 
         if (i <= j)
@@ -71,7 +71,7 @@ void quickSortSorteioInicial(vector<PLAYER> &vetor, int inicio, int fim)
     } while (j > i);
 
     if (inicio < j)
-        quickSort(vetor, inicio, j);
+        quickSortSorteioInicial(vetor, inicio, j);
     if (i < fim)
-        quickSort(vetor, i, fim);
+        quickSortSorteioInicial(vetor, i, fim);
 }

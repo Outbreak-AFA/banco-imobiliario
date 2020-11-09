@@ -18,9 +18,9 @@ Essa função recebe a quantidade de jogadores como argumento.
 Por meio de um loop for, serão feitas a jogada de dados de cada jogador.
 Cada valor tirado por jogador, será armazenado em uma list<>.
 */
-int sortearJogadores(vector<PLAYER> players, int player_count) {
+int sortearJogadores(vector<PLAYER> &players, int *player_count) {
 
-    if (player_count < 2 || player_count > 4) {
+    if (*player_count < 2 || *player_count > 4) {
         cout << "Quantidade de jogadores deve ser no mínimo 2 e no maximo 4!" << endl;
         return 0;
     } else {
@@ -28,7 +28,7 @@ int sortearJogadores(vector<PLAYER> players, int player_count) {
         PLAYER p;
         list<int> resultado;
 
-        for (int i=0; i < player_count; i++) {
+        for (int i=0; i < *player_count; i++) {
             p.id = i+1;
             cout << "Jogador " << p.id << " vai lançar os dados!" << endl;
             Sleep(1000); // esperar 1 segundo
@@ -40,7 +40,7 @@ int sortearJogadores(vector<PLAYER> players, int player_count) {
             players.push_back(p);
             system("pause");
         }
-        quickSortSorteioInicial(players, 0, player_count);
+        quickSortSorteioInicial(players, 0, *player_count);
 
     }
 
@@ -53,7 +53,7 @@ int main() {
     PLAYER p, *ptr_p;
     ptr_p = &p;
     vector<PLAYER> players;
-    sortearJogadores(ptr_quantidade);
+    sortearJogadores(players, ptr_quantidade);
     return 0;
 }
 */
