@@ -16,6 +16,7 @@ void getRanking(std::vector<PLAYER> &players)
     if (pArq == NULL)
     {
         printf("Erro ao acessar ranking.bin\n");
+        resetRanking();
         exit(1);
     }
 
@@ -73,7 +74,8 @@ void addRanking(vector<PLAYER> &players, PLAYER *new_player)
     fclose(pArq);
 }
 
-void mostraRanking(vector<PLAYER> players) {
+// TODO: Melhorar formatação
+void mostraRanking(vector<PLAYER> &players) {
     for (int i = 0; i < players.size(); i++)
         printf("NOME: %s | CARTEIRA: %.2f\n", players.at(i).nome, players.at(i).carteira);
 }
