@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string.h>
+#include "players.h"
 
 using namespace std;
 
@@ -21,19 +22,19 @@ porque sempre que caírem na sua propriedade você receberá aluguel.
 
 typedef struct {
     int tipo_propriedade; // int ? char ? (definir depois) // atribuir valores numéricos ?
-    string nome_avenida;
+    char nome_avenida[30];
     int casas, hoteis;
     bool tem_dono; // verificar se a propriedade tem dono
-    string nome_dono;
+    char nome_comprador[10];
     double valor_aluguel; // valor do aluguel da propriedade
 } PROPRIEDADE;
 
-PROPRIEDADE criar_propriedade(int tipo_propriedade, string nome_avenida, bool tem_dono, 
-string nome_dono, double valor_aluguel, int casas, int hoteis) {
+PROPRIEDADE criar_propriedade(int tipo_propriedade, char *nome_avenida, bool tem_dono, 
+char *nome_comprador, double valor_aluguel, int casas, int hoteis) {
     PROPRIEDADE p;
     p.tipo_propriedade = tipo_propriedade;
-    p.nome_avenida = nome_avenida;
-    p.nome_dono = nome_dono;
+    strcpy(p.nome_avenida, nome_avenida);
+    strcpy(p.nome_comprador, nome_comprador);
     p.tem_dono = tem_dono;
     p.valor_aluguel = valor_aluguel;
     p.casas = casas;
@@ -45,23 +46,45 @@ void mostrar_propriedade(PROPRIEDADE *p) {
 
    // card teste de propriedade
    cout << endl;
-   cout << "Tipo de propriedade: " << p->tipo_propriedade << endl;
-   cout << p->nome_avenida << endl; 
-   cout << "R$ " << p->valor_aluguel << ".00" << endl;
-   if (p->tem_dono) {
-       cout << "Proprietario: " << p->nome_dono << endl;
-   }
-   cout << "Casas: " << p->casas << " Hoteis: " << p->hoteis << endl;
+   cout << "==========================================================" << endl;
+   cout << "| Tipo de propriedade: " << p->tipo_propriedade << endl;
+   cout << "| " << p->nome_avenida << endl; 
+   cout << "| " << "R$ " << p->valor_aluguel << endl;
+   if (p->tem_dono == true) {
+       cout << "| " << "Proprietario: " << p->nome_comprador << endl;
+   } 
+   cout << "| " << "Casas: " << p->casas << " Hoteis: " << p->hoteis << endl;
+   cout << "==========================================================" << endl;
 
 }
 
-void comprar_propriedade(PROPRIEDADE *p) {
+void comprar_propriedade(PLAYER *pl, PROPRIEDADE *p) {
     if (p->tem_dono) {
         cout << "Essa propriedade ja tem um dono. Voce nao pode comprar ela!" << endl;
     } else {
         p->tem_dono = true;
-        // atualizar depois utilizando a struct do jogador
-        cout << "Jogador ... comprou a propriedade " << endl;
+        pl->carteira -= p->valor_aluguel;
+        cout << "\nJogador " << pl->nome << " comprou a propriedade " << endl;
+        cout << "Saldo " << pl->nome << ": R$ " << pl->carteira << endl;
+        strcpy(p->nome_comprador, pl->nome);
         mostrar_propriedade(p);
     }
 }
+
+/*
+int main() {
+    PROPRIEDADE p, *ptr_p;
+    ptr_p = &p;
+    PLAYER pl, *ptr_pl;
+    ptr_pl = &pl;
+
+    strcpy(ptr_pl->nome, "Felipe");
+    strcpy(ptr_p->nome_avenida, "Av. Orlando Gomes");
+    ptr_pl->carteira = 3000;
+
+    p = criar_propriedade(1, ptr_p->nome_avenida, false, ptr_pl->nome, 2000, 0, 0);
+    comprar_propriedade(ptr_pl, ptr_p);
+
+    return 0;
+}
+*/

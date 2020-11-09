@@ -4,5 +4,6 @@
 typedef struct player
 {
     char nome[30];
+    int resultado_dados;
     double carteira;
 } PLAYER;

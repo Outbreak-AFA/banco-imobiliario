@@ -6,6 +6,7 @@
 #include <vector>
 #include <string.h>
 #include "./src/models/players.h"
+#include "./src/models/propriedade.h"
 #include "./src/functions/dados.h"
 #include "./src/functions/ranking.h"
 
@@ -52,6 +53,7 @@ int main () {
     addRanking(players, &p);
     
     mostraRanking(players);
+
     system("pause");
     return 0;
 }
