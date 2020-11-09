@@ -13,6 +13,8 @@
 
 int main () {
     srand(time(NULL));
+
+/*
     PLAYER p;
     std::vector<PLAYER> players;
     resetRanking();
@@ -55,5 +57,6 @@ int main () {
     mostraRanking(players);
 
     system("pause");
+*/
     return 0;
 }
