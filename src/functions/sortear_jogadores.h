@@ -26,7 +26,7 @@ int sortearJogadores(vector<PLAYER> &players, int *player_count) {
     } else {
 
         PLAYER p;
-        list<int> resultado;
+        //list<int> resultado;
 
         for (int i=0; i < *player_count; i++) {
             p.id = i+1;
@@ -34,7 +34,7 @@ int sortearJogadores(vector<PLAYER> &players, int *player_count) {
             Sleep(1000); // esperar 1 segundo
             int valor_dados = mostrarDados();
             cout << "Jogador " << p.id << " tirou " << valor_dados << endl;
-            resultado.push_back(valor_dados);
+            //resultado.push_back(valor_dados);
             p.resultado_dados = valor_dados;
             p = criar_player(p.id, p.nome, p.resultado_dados, p.carteira);
             players.push_back(p);
