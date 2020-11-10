@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string.h>
-#include <conio.h>
+#include <windows.h>
 #include "./src/styles/colors.h"
 #include <stdio.h>
 
@@ -31,7 +31,7 @@ SORTE_REVES criar_card_sr(char *tipo_sr, char *mensagem_sr) {
 }
 
 void mostrar_card_sorte_reves() {
-
+    system("clear");
     char card_sr[5][9] = {
         {219, 219, 219, 219, 219, 219, 219, 219, 219},
         {219, 219, 'S', 'O', 'R', 'T', 'E', 219, 219},
