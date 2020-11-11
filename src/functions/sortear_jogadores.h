@@ -33,7 +33,7 @@ int sortearJogadores(vector<PLAYER> &players) {
             players.at(i).resultado_dados = valor_dados;
             system("pause");
 
-            if (i>0 && (players.at(i).resultado_dados == players.at(i-1).resultado_dados)) {
+            if (i==1 && (players.at(i).resultado_dados == players.at(i-1).resultado_dados)) {
                 cout << "\nResultados repetidos. Sorteando novamente..." << endl;
                 sortearJogadores(players);
             }
