@@ -1,6 +1,8 @@
 #define MAX 6
 #define MIN 1
 
+using namespace std;
+
 int girarDado() {
     int random;
     random = rand() % (MAX + MIN);
@@ -11,7 +13,7 @@ int girarDado() {
         return girarDado();
 }
 
-using namespace std;
+
 int mostrarDados() {
     // permite visualizar os dados jogados
 

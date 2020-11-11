@@ -7,6 +7,7 @@ typedef struct player
     char nome[30];
     int resultado_dados;
     double carteira;
+    bool habeas; //sorte ou reves
 } PLAYER;
 
 PLAYER criar_player(int id, char *nome, int resultado_dados, double carteira) {

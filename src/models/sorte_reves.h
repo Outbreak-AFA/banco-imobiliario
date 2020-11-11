@@ -3,6 +3,8 @@
 #include <windows.h>
 #include "./src/styles/colors.h"
 #include <stdio.h>
+#include <vector>
+
 
 using namespace std;
 /*
@@ -18,15 +20,15 @@ uma dupla nos dados ou pagar fiança.
 */
 
 typedef struct {
-    char tipo_sr[15]; // tipo sorte ou tipo revés
-    char mensagem_sr[100];
+    int tipo; // tipo sorte ou tipo revés 1-> Ganha $, 2 -> Perde $, 3 -> Habeas Corpus
+    char mensagem[100];
     
 } SORTE_REVES;
 
-SORTE_REVES criar_card_sr(char *tipo_sr, char *mensagem_sr) {
+SORTE_REVES criar_card_sr(char *tipo, char *mensagem) {
     SORTE_REVES sr;
-    strcpy(sr.tipo_sr, tipo_sr);
-    strcpy(sr.mensagem_sr, mensagem_sr);
+    strcpy(sr.tipo, tipo);
+    strcpy(sr.mensagem, mensagem);
     return sr;
 }
 
@@ -47,6 +49,29 @@ void mostrar_card_sorte_reves() {
         }
     }
 
+}
+
+int randint(int max) {
+    int r = rand() % max;
+    return r;
+}
+
+int embaralhaCartas(vector<SORTE_REVES> &cartas) {
+    vector<SORTE_REVES> embaralhado;
+    int pos;
+
+    while (!cartas.empty()) {
+        pos = randint(cartas.size());
+        embaralhado.push_back(cartas.at(pos));
+        cartas.erase(cartas.begin() + pos);
+    }
+    while (!embaralhado.empty()) {
+        pos = randint(embaralhado.size());
+        cartas.push_back(embaralhado.at(pos));
+        embaralhado.erase(embaralhado.begin() + pos);
+    }
+    
+    return 1; // Success
 }
 
 /*

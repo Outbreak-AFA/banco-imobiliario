@@ -1,8 +1,9 @@
-#include "dados.h"
 #include <iostream>
+#include <stdlib.h>
 #include <windows.h>
-#include "./src/models/players.h"
 #include <vector>
+#include "dados.h"
+#include "./../models/players.h"
 #include "sorts.h"
 
 /*
@@ -16,7 +17,7 @@ Essa função recebe a quantidade de jogadores como argumento.
 Por meio de um loop for, serão feitas a jogada de dados de cada jogador.
 Cada valor tirado por jogador, será armazenado em uma list<>.
 */
-int sortearJogadores(int player_count) {
+int sortearJogadores(vector<PLAYER> &players) {
 
     PLAYER p, *ptr_p;
     ptr_p = &p;

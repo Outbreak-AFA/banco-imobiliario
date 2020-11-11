@@ -15,9 +15,9 @@ void getRanking(std::vector<PLAYER> &players)
     pArq = fopen("ranking.bin", "r+b");
     if (pArq == NULL)
     {
-        printf("Erro ao acessar ranking.bin\n");
+        printf("Erro ao acessar ranking.bin\nResetando...\n");
         resetRanking();
-        exit(1);
+        getRanking(players);
     }
 
     fread(&total, sizeof(total), 1, pArq);
