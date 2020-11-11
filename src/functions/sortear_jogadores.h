@@ -41,10 +41,6 @@ int sortearJogadores(vector<PLAYER> &players) {
                 cout << "\nResultados repetidos. Sorteando novamente..." << endl;
                 sortearJogadores(players);
             }
-            if (i>2 && (players.at(i).resultado_dados == players.at(i-1).resultado_dados || (players.at(i).resultado_dados == players.at(i-2).resultado_dados))) {
-                cout << "\nResultados repetidos. Sorteando novamente..." << endl;
-                sortearJogadores(players);
-            }
         }
 
         ordenarResultados(players);
