@@ -21,12 +21,10 @@ int sortearJogadores(vector<PLAYER> &players) {
 
     vector<PLAYER> aux_vet;
 
-    if (players.size() < 2 || players.size() > 4) {
-        cout << "Quantidade de jogadores deve ser no mínimo 2 e no maximo 4!" << endl;
-        return 0;
-    } else {
+    int vet_len = players.size();
 
-        for (int i=0; i < players.size(); i++) {
+    if (vet_len > 2 && vet_len < 4) {    
+        for (int i=0; i < vet_len; i++) {
             cout << "Jogador(a) " << players.at(i).nome << " vai lancar os dados!" << endl;
             Sleep(1000); // esperar 1 segundo
 
@@ -34,6 +32,19 @@ int sortearJogadores(vector<PLAYER> &players) {
             cout << "Jogador(a) " << players.at(i).nome << " tirou " << valor_dados << "! :D" << endl;
             players.at(i).resultado_dados = valor_dados;
             system("pause");
+
+            if (i>0 && (players.at(i).resultado_dados == players.at(i-1).resultado_dados)) {
+                cout << "\nResultados repetidos. Sorteando novamente..." << endl;
+                sortearJogadores(players);
+            }
+            if (i>1 && (players.at(i).resultado_dados == players.at(i-1).resultado_dados || (players.at(i).resultado_dados == players.at(i-2).resultado_dados))) {
+                cout << "\nResultados repetidos. Sorteando novamente..." << endl;
+                sortearJogadores(players);
+            }
+            if (i>2 && (players.at(i).resultado_dados == players.at(i-1).resultado_dados || (players.at(i).resultado_dados == players.at(i-2).resultado_dados))) {
+                cout << "\nResultados repetidos. Sorteando novamente..." << endl;
+                sortearJogadores(players);
+            }
         }
 
         ordenarResultados(players);
@@ -43,8 +54,11 @@ int sortearJogadores(vector<PLAYER> &players) {
             players.push_back(aux_vet.at(i));
         }
         printVet(players);
-    }
 
+    } else {
+        cout << "Quantidade de jogadores deve ser no minimo 2 e no maximo 4!" << endl;
+        return 0;
+    }
 }
 
 /*

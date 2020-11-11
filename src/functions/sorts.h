@@ -81,7 +81,7 @@ void printVet(vector<PLAYER> &v){
 	int i;
     int len = v.size();
 	for(i = 0; i<len; i++) {
-		cout << " " << v.at(i).nome;		
+		cout << v.at(i).nome << " ";
 	}
 	cout << endl;
 }
