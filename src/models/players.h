@@ -5,16 +5,16 @@
 typedef struct player
 {
     int id;
-    string nome;
+    char nome[20];
     int resultado_dados;
     double carteira;
     bool habeas; //sorte ou reves
 } PLAYER;
 
-PLAYER criar_player(int id, string nome, double carteira) {
+PLAYER criar_player(int id, char *nome, double carteira) {
     PLAYER p;
     p.id = id;
-    p.nome = nome;
+    strcpy(p.nome, nome);
     p.carteira = carteira;
     return p;
 }

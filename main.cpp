@@ -4,28 +4,42 @@
 #include <stdio.h>
 #include <windows.h>
 #include <vector>
-#include <string.h>
-#include "./src/models/players.h"
-#include "./src/models/propriedade.h"
-#include "./src/styles/colors.h"
-//#include "./src/functions/dados.h"
+#include <string>
+ #include "./src/models/players.h"
+#include "./src/functions/dados.h"
+#include "./src/functions/sorts.h"
+#include "./src/functions/sortear_jogadores.h"
+// #include "./src/models/propriedade.h"
+// #include "./src/styles/colors.h"
 //#include "./src/functions/ranking.h"
 
+using namespace std;
 
 int main () {
     srand(time(NULL));
 
-    PROPRIEDADE p, *ptr_p;
-    ptr_p = &p;
-    PLAYER pl, *ptr_pl, pl2, *ptr_pl2;
-    ptr_pl = &pl;
-    ptr_pl2 = &pl2;
+    PLAYER p, p2, p3;
+    vector<PLAYER> vet;
+    p = criar_player(1, "Antonio", 2000);
+    p2 = criar_player(2, "Felipe", 4000);
+    p3 = criar_player(3, "Amanda", 6000);
+    vet.push_back(p);
+    vet.push_back(p2);
+    vet.push_back(p3);
 
-    pl = criar_player(1, "Felipe", 2, 3000);
-    pl2 = criar_player(1, "Amanda", 1, 7000);
+    sortearJogadores(vet);
 
-    p = criar_propriedade(1, "Avenida Teste", true, ptr_pl2->nome, 2000, 0, 0);
-    receber_aluguel(ptr_pl, ptr_pl2, ptr_p);
+    // PROPRIEDADE p, *ptr_p;
+    // ptr_p = &p;
+    // PLAYER pl, *ptr_pl, pl2, *ptr_pl2;
+    // ptr_pl = &pl;
+    // ptr_pl2 = &pl2;
+
+    // pl = criar_player(1, "Felipe", 2, 3000);
+    // pl2 = criar_player(1, "Amanda", 1, 7000);
+
+    // p = criar_propriedade(1, "Avenida Teste", true, ptr_pl2->nome, 2000, 0, 0);
+    // receber_aluguel(ptr_pl, ptr_pl2, ptr_p);
 
 /*
     PLAYER p;
