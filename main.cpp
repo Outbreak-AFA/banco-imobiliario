@@ -18,14 +18,16 @@ using namespace std;
 int main () {
     srand(time(NULL));
 
-    PLAYER p, p2, p3;
+    PLAYER p, p2, p3, p4;
     vector<PLAYER> vet;
     p = criar_player(1, "Antonio", 2000);
     p2 = criar_player(2, "Felipe", 4000);
     p3 = criar_player(3, "Amanda", 6000);
+    p4 = criar_player(4, "Lapa", 8000);
     vet.push_back(p);
     vet.push_back(p2);
     vet.push_back(p3);
+    vet.push_back(p4);
 
     sortearJogadores(vet);
 
