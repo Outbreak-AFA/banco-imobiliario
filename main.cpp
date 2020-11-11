@@ -7,12 +7,25 @@
 #include <string.h>
 #include "./src/models/players.h"
 #include "./src/models/propriedade.h"
-#include "./src/functions/dados.h"
-#include "./src/functions/ranking.h"
+#include "./src/styles/colors.h"
+//#include "./src/functions/dados.h"
+//#include "./src/functions/ranking.h"
 
 
 int main () {
     srand(time(NULL));
+
+    PROPRIEDADE p, *ptr_p;
+    ptr_p = &p;
+    PLAYER pl, *ptr_pl, pl2, *ptr_pl2;
+    ptr_pl = &pl;
+    ptr_pl2 = &pl2;
+
+    pl = criar_player(1, "Felipe", 2, 3000);
+    pl2 = criar_player(1, "Amanda", 1, 7000);
+
+    p = criar_propriedade(1, "Avenida Teste", true, ptr_pl2->nome, 2000, 0, 0);
+    receber_aluguel(ptr_pl, ptr_pl2, ptr_p);
 
 /*
     PLAYER p;

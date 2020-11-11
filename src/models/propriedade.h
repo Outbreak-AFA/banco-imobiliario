@@ -1,7 +1,7 @@
-#include <stdlib.h>
-#include <iostream>
-#include <string.h>
-#include "players.h"
+//#include <stdlib.h>
+//#include <iostream>
+//#include <string.h>
+//#include "players.h"
 
 using namespace std;
 
@@ -76,7 +76,7 @@ void comprar_propriedade(PLAYER *pl, PROPRIEDADE *p) {
 void receber_aluguel(PLAYER *pl_caiu, PLAYER *pl_dono, PROPRIEDADE *p) {
     mostrar_propriedade(p);
     if (p->tem_dono && (strcmp(p->nome_comprador, pl_dono->nome) == 0)) {
-        cout << "Player " << pl_caiu->nome << " caiu na propriedade do player " << pl_dono->nome << endl;
+        cout << "Player " << pl_caiu->nome << " caiu na propriedade do(a) player " << pl_dono->nome << endl;
         pl_caiu->carteira -= p->valor_aluguel;
         pl_dono->carteira += p->valor_aluguel;
         cout << endl;
