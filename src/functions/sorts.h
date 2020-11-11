@@ -76,6 +76,8 @@ void quickSortSorteioInicial(vector<PLAYER> *vetor, int inicio, int fim)
         quickSortSorteioInicial(vetor, i, fim);
 }
 
+//////////////////////////////////////////////////////////////////////
+
 void printVet(vector<PLAYER> &v){
 
 	int i;

@@ -49,7 +49,7 @@ int sortearJogadores(vector<PLAYER> &players) {
         for (int i=aux_vet.size()-1; i>=0; i--) {
             players.push_back(aux_vet.at(i));
         }
-        printVet(players);
+        //printVet(players);
 
     } else {
         cout << "Quantidade de jogadores deve ser no minimo 2 e no maximo 4!" << endl;

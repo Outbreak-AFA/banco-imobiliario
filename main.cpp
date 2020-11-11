@@ -29,6 +29,9 @@ int main () {
 
     sortearJogadores(vet);
 
+    cout << endl << "Ordem: ";
+    printVet(vet);
+
     // PROPRIEDADE p, *ptr_p;
     // ptr_p = &p;
     // PLAYER pl, *ptr_pl, pl2, *ptr_pl2;
