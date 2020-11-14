@@ -8,6 +8,7 @@ typedef struct player
     char nome[20];
     int resultado_dados;
     long double carteira;
+    char *posicao;
     bool habeas; //sorte ou reves
     bool falencia;
 } PLAYER;

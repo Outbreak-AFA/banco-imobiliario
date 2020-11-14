@@ -1,7 +1,9 @@
-//#include <stdlib.h>
-//#include <iostream>
-//#include <string.h>
-//#include "players.h"
+#include <stdlib.h>
+#include <iostream>
+#include <string.h>
+#include <vector>
+#include "players.h"
+#include <windows.h>
 
 using namespace std;
 
@@ -20,8 +22,9 @@ using namespace std;
 
 
 typedef struct {
-    int tipo; // int ? char ? (definir depois) // atribuir valores numéricos ?
+    int tipo;
     char nome_avenida[30];
+    char *posicao;
     int casas, hoteis;
     bool tem_dono; // verificar se a propriedade tem dono
     char nome_comprador[10];
@@ -69,35 +72,66 @@ void comprar_propriedade(PLAYER *pl, PROPRIEDADE *p) {
         strcpy(p->nome_comprador, pl->nome);
         consultar_propriedade(p);
     }
+} // refatorar
+
+void comprarPropriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
+    
 }
 
 // Função que é ativada quando um player cai em uma propriedade que já tem dono(a)
-void receber_aluguel(PLAYER *pl_caiu, PLAYER *pl_dono, PROPRIEDADE *p) {
+// void receber_aluguel(PLAYER *pl_caiu, PLAYER *pl_dono, PROPRIEDADE *p) {
+//     consultar_propriedade(p);
+//     if (p->tem_dono && (strcmp(p->nome_comprador, pl_dono->nome) == 0)) {
+//             cout << "Player " << pl_caiu->nome << " caiu na propriedade do(a) player " << pl_dono->nome << endl;
+//             pl_caiu->carteira -= p->valor_aluguel;
+//             cout << endl;
+//             cout << pl_caiu->nome << " pagou R$ " << p->valor_aluguel << " a " << pl_dono->nome << endl;
+//             cout << "\nSaldo " << pl_caiu->nome << ": R$ " << pl_caiu->carteira << endl;
+//             cout << "Saldo " << pl_dono->nome << ": R$ " << pl_dono->carteira << endl;
+//     }
+// }
+
+// Refazer o método acima só que adaptando ao vetor de players
+// O método acima não atualiza o resultado quando chamado num vetor com ...at(x)....
+void aluguel_propriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
+    int pl_len = players->size();
     consultar_propriedade(p);
-    if (p->tem_dono && (strcmp(p->nome_comprador, pl_dono->nome) == 0)) {
-        cout << "Player " << pl_caiu->nome << " caiu na propriedade do(a) player " << pl_dono->nome << endl;
-        pl_caiu->carteira -= p->valor_aluguel;
-        pl_dono->carteira += p->valor_aluguel;
-        cout << endl;
-        cout << pl_caiu->nome << " pagou R$ " << p->valor_aluguel << " a " << pl_dono->nome << endl;
-        cout << "\nSaldo " << pl_caiu->nome << ": R$ " << pl_caiu->carteira << endl;
-        cout << "Saldo " << pl_dono->nome << ": R$ " << pl_dono->carteira << endl;
+    for (int i=0; i<pl_len; i++) {
+        if (p->tem_dono && (strcmp(players->at(i).nome, p->nome_comprador) == 0)) {
+            cout << "Essa e a propriedade dx player " << players->at(i).nome << endl;
+            players->at(i).carteira += p->valor_aluguel;
+            Sleep(1000);
+        }
+    }
+    for (int j=0; j<players->size(); j++) { // TESTE comparando ID com tipo (fazer depois com posição)
+        if (players->at(j).id == p->tipo) {
+            players->at(j).carteira -= p->valor_aluguel;
+        }
+        /*
+        Refatorar depois para -> quando a posição do player for igual à posição da propriedade e,
+        caso essa propriedade tenha um dono, esse player que parou na propriedade irá pagar o valor
+        do aluguel. Esse valor já vai estar sendo adicionado à carteira do dono.
+        */
+    }
+    for (int k=0; k<players->size(); k++) {
+        cout << "Saldo de " << players->at(k).nome << ": " << players->at(k).carteira << endl;
     }
 }
 
+int main() {
+    PROPRIEDADE p;
+    PLAYER pl, pl2;
+    vector <PLAYER> players;
+    
+    pl = criar_player(1, "Felipe", 30000);
+    pl2 = criar_player(2, "Amanda", 70000);
+    players.push_back(pl);
+    players.push_back(pl2);
 
-// int main() {
-//     PROPRIEDADE p, *ptr_p;
-//     ptr_p = &p;
-//     PLAYER pl, *ptr_pl, pl2, *ptr_pl2;
-//     ptr_pl = &pl;
-//     ptr_pl2 = &pl2;
+    p = criar_propriedade(1, "Avenida Teste", false, "", 20000, 0, 0);
+    comprar_propriedade(&pl2, &p);
+    aluguel_propriedade(&players, &p);
 
-//     pl = criar_player(1, "Felipe", 2, 3000);
-//     pl2 = criar_player(1, "Amanda", 1, 7000);
 
-//     p = criar_propriedade(1, "Avenida Teste", true, ptr_pl2->nome, 2000, 0, 0);
-//     receber_aluguel(ptr_pl, ptr_pl2, ptr_p);
-
-//     return 0;
-// }
+    return 0;
+}
