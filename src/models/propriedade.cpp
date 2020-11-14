@@ -61,7 +61,7 @@ void consultar_propriedade(PROPRIEDADE *p) {
 
 }
 
-void comprar_propriedade(PLAYER *pl, PROPRIEDADE *p) {
+void comprar_propriedade(vector<PLAYER> *players, PLAYER *pl, PROPRIEDADE *p) {
     if (p->tem_dono) {
         cout << "Essa propriedade ja tem dono(a). Voce nao pode comprar ela!" << endl;
     } else {
@@ -72,11 +72,16 @@ void comprar_propriedade(PLAYER *pl, PROPRIEDADE *p) {
         strcpy(p->nome_comprador, pl->nome);
         consultar_propriedade(p);
     }
+    for (int i=0; i<players->size(); i++) {
+        if (strcmp(players->at(i).nome, pl->nome) == 0) {
+            players->at(i).carteira = pl->carteira;
+        }
+    }
 } // refatorar
 
-void comprarPropriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
+// void comprarPropriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
     
-}
+// }
 
 // Função que é ativada quando um player cai em uma propriedade que já tem dono(a)
 // void receber_aluguel(PLAYER *pl_caiu, PLAYER *pl_dono, PROPRIEDADE *p) {
@@ -93,7 +98,7 @@ void comprarPropriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
 
 // Refazer o método acima só que adaptando ao vetor de players
 // O método acima não atualiza o resultado quando chamado num vetor com ...at(x)....
-void aluguel_propriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
+void pagar_aluguel_propriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
     int pl_len = players->size();
     consultar_propriedade(p);
     for (int i=0; i<pl_len; i++) {
@@ -106,6 +111,7 @@ void aluguel_propriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
     for (int j=0; j<players->size(); j++) { // TESTE comparando ID com tipo (fazer depois com posição)
         if (players->at(j).id == p->tipo) {
             players->at(j).carteira -= p->valor_aluguel;
+            cout << endl << "Player " << players->at(j).nome << " pagou R$ " << p->valor_aluguel << " por ter passado na propriedade.\n";
         }
         /*
         Refatorar depois para -> quando a posição do player for igual à posição da propriedade e,
@@ -129,9 +135,8 @@ int main() {
     players.push_back(pl2);
 
     p = criar_propriedade(1, "Avenida Teste", false, "", 20000, 0, 0);
-    comprar_propriedade(&pl2, &p);
-    aluguel_propriedade(&players, &p);
-
+    comprar_propriedade(&players, &pl2, &p);
+    pagar_aluguel_propriedade(&players, &p);
 
     return 0;
 }
