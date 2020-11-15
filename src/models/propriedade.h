@@ -102,11 +102,11 @@ void comprar_propriedade(vector<PLAYER> *players, PLAYER *pl, PROPRIEDADE *p) {
 // O método acima não atualiza o resultado quando chamado num vetor com ...at(x)....
 void pagar_aluguel_propriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
     int pl_len = players->size();
+    int cont = 0;
     consultar_propriedade(p);
     for (int i=0; i<pl_len; i++) {
         if (p->tem_dono && (strcmp(players->at(i).nome, p->nome_comprador) == 0)) {
             cout << "Essa e a propriedade dx player " << players->at(i).nome << endl;
-            players->at(i).carteira += p->valor_aluguel;
             Sleep(1000);
         }
     }
@@ -116,8 +116,9 @@ void pagar_aluguel_propriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
     players->at(2).posicao = " ";    // Posição Antônio
     p->posicao = " ";               //  Posição propriedade
     ///////////////////////////////
-    for (int j=0; j<players->size(); j++) {
+    for (int j=0; j<pl_len; j++) {
         if (strcmp(players->at(j).posicao, p->posicao) == 0) {
+            cont++;
             players->at(j).carteira -= p->valor_aluguel;
             cout << endl << "Player " << players->at(j).nome << " pagou R$ " << p->valor_aluguel << " por ter passado na propriedade.";
         }
@@ -127,6 +128,11 @@ void pagar_aluguel_propriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
         do aluguel. Esse valor já vai estar sendo adicionado à carteira do dono.
         */
     }
+    for (int k=0; k<pl_len; k++) {
+        if (p->tem_dono && (strcmp(players->at(k).nome, p->nome_comprador) == 0)) {
+            players->at(k).carteira += cont*(p->valor_aluguel);
+        }
+    }
     cout << endl;
     for (int k=0; k<players->size(); k++) {
         cout << endl << "Saldo de " << players->at(k).nome << ": " << players->at(k).carteira;
@@ -134,21 +140,21 @@ void pagar_aluguel_propriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
     cout << endl;
 }
 
-int main() {
-    PROPRIEDADE p;
-    PLAYER pl, pl2, pl3;
-    vector <PLAYER> players;
+// int main() {
+//     PROPRIEDADE p;
+//     PLAYER pl, pl2, pl3;
+//     vector <PLAYER> players;
 
-    pl = criar_player(1, "Felipe", 30000);
-    pl2 = criar_player(2, "Amanda", 70000);
-    pl3 = criar_player(3, "Antonio", 40000);
-    players.push_back(pl);
-    players.push_back(pl2);
-    players.push_back(pl3);
+//     pl = criar_player(1, "Felipe", 30000);
+//     pl2 = criar_player(2, "Amanda", 70000);
+//     pl3 = criar_player(3, "Antonio", 40000);
+//     players.push_back(pl);
+//     players.push_back(pl2);
+//     players.push_back(pl3);
 
-    p = criar_propriedade(1, "Avenida Teste", false, "", 20000, 0, 0);
-    comprar_propriedade(&players, &pl2, &p);
-    pagar_aluguel_propriedade(&players, &p);
+//     p = criar_propriedade(1, "Avenida Teste", false, "", 20000, 0, 0);
+//     comprar_propriedade(&players, &pl2, &p);
+//     pagar_aluguel_propriedade(&players, &p);
 
-    return 0;
-}
+//     return 0;
+// }
