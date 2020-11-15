@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string.h>
+#include <string>
+#include <cstring>
 #include <vector>
 #include "players.h"
 #include <windows.h>
@@ -108,8 +110,12 @@ void pagar_aluguel_propriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
             Sleep(1000);
         }
     }
-    for (int j=0; j<players->size(); j++) { // TESTE comparando ID com tipo (fazer depois com posição)
-        if (players->at(j).id == p->tipo) {
+    // ISSO É UM TESTE ////////////
+    players->at(0).posicao = " ";
+    p->posicao = " ";
+    ///////////////////////////////
+    for (int j=0; j<players->size(); j++) {
+        if (strcmp(players->at(j).posicao, p->posicao) == 0) {
             players->at(j).carteira -= p->valor_aluguel;
             cout << endl << "Player " << players->at(j).nome << " pagou R$ " << p->valor_aluguel << " por ter passado na propriedade.\n";
         }
