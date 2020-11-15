@@ -111,13 +111,15 @@ void pagar_aluguel_propriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
         }
     }
     // ISSO É UM TESTE ////////////
-    players->at(0).posicao = " ";
-    p->posicao = " ";
+    players->at(0).posicao = " ";      // Posição Felipe
+    players->at(1).posicao = "aa";    // Posição Amanda
+    players->at(2).posicao = " ";    // Posição Antônio
+    p->posicao = " ";               //  Posição propriedade
     ///////////////////////////////
     for (int j=0; j<players->size(); j++) {
         if (strcmp(players->at(j).posicao, p->posicao) == 0) {
             players->at(j).carteira -= p->valor_aluguel;
-            cout << endl << "Player " << players->at(j).nome << " pagou R$ " << p->valor_aluguel << " por ter passado na propriedade.\n";
+            cout << endl << "Player " << players->at(j).nome << " pagou R$ " << p->valor_aluguel << " por ter passado na propriedade.";
         }
         /*
         Refatorar depois para -> quando a posição do player for igual à posição da propriedade e,
@@ -125,20 +127,24 @@ void pagar_aluguel_propriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
         do aluguel. Esse valor já vai estar sendo adicionado à carteira do dono.
         */
     }
+    cout << endl;
     for (int k=0; k<players->size(); k++) {
-        cout << "Saldo de " << players->at(k).nome << ": " << players->at(k).carteira << endl;
+        cout << endl << "Saldo de " << players->at(k).nome << ": " << players->at(k).carteira;
     }
+    cout << endl;
 }
 
 int main() {
     PROPRIEDADE p;
-    PLAYER pl, pl2;
+    PLAYER pl, pl2, pl3;
     vector <PLAYER> players;
 
     pl = criar_player(1, "Felipe", 30000);
     pl2 = criar_player(2, "Amanda", 70000);
+    pl3 = criar_player(3, "Antonio", 40000);
     players.push_back(pl);
     players.push_back(pl2);
+    players.push_back(pl3);
 
     p = criar_propriedade(1, "Avenida Teste", false, "", 20000, 0, 0);
     comprar_propriedade(&players, &pl2, &p);
