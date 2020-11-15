@@ -128,7 +128,7 @@ int main() {
     PROPRIEDADE p;
     PLAYER pl, pl2;
     vector <PLAYER> players;
-    
+
     pl = criar_player(1, "Felipe", 30000);
     pl2 = criar_player(2, "Amanda", 70000);
     players.push_back(pl);

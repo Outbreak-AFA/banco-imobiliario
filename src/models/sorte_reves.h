@@ -25,9 +25,9 @@ typedef struct {
     
 } SORTE_REVES;
 
-SORTE_REVES criar_card_sr(char *tipo, char *mensagem) {
+SORTE_REVES criar_card_sr(int tipo, char *mensagem) {
     SORTE_REVES sr;
-    strcpy(sr.tipo, tipo);
+    sr.tipo = tipo;
     strcpy(sr.mensagem, mensagem);
     return sr;
 }
