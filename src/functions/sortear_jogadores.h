@@ -19,9 +19,10 @@ Cada valor tirado por jogador, será armazenado em uma list<>.
 */
 int sortearJogadores(vector<PLAYER> &players) {
 
-    vector<PLAYER> aux_vet;
+    vector<PLAYER> aux_vet, temp;
 
     int vet_len = players.size();
+    int temp_len = temp.size();
 
     if (vet_len >= 2 && vet_len <= 4) {    
         for (int i=0; i < vet_len; i++) {
@@ -31,21 +32,30 @@ int sortearJogadores(vector<PLAYER> &players) {
             int valor_dados = mostrarDados();
             cout << "Jogador(a) " << players.at(i).nome << " tirou " << valor_dados << "! :D" << endl;
             players.at(i).resultado_dados = valor_dados;
+            cout << endl << players.at(i).resultado_dados << endl;
             system("pause");
 
-            if (i==1 && (players.at(i).resultado_dados == players.at(i-1).resultado_dados)) {
-                cout << "\nResultados repetidos. Sorteando novamente..." << endl;
-                i = 0;
-            }
-            if (i==3 && (players.at(i).resultado_dados == players.at(i-1).resultado_dados || (players.at(i).resultado_dados == players.at(i-2).resultado_dados) || (players.at(i).resultado_dados == players.at(i-3).resultado_dados))) {
-                cout << "\nResultados repetidos. Sorteando novamente..." << endl;
-                i = 2;
-            }
-            if (i>1 && (players.at(i).resultado_dados == players.at(i-1).resultado_dados || (players.at(i).resultado_dados == players.at(i-2).resultado_dados))) {
-                cout << "\nResultados repetidos. Sorteando novamente..." << endl;
-                i = 1;
-            }
+            for (int j=0; j<vet_len; j++) {
+                if ((players.at(i).resultado_dados == players.at(j).resultado_dados) && (players.at(j).resultado_dados != 0 || players.at(j).resultado_dados != NULL)) {
+                    cout << "\nResultados repetidos. Jogando dados novamente..." << endl;
+                    temp.push_back(players.at(i));
+                    temp.push_back(players.at(j));
+                    players.erase(players.begin() + i);
+                    players.erase(players.begin() + j);
 
+                    for (int k=0; k<temp_len; k++) {
+                        cout << "Jogador(a) " << players.at(k).nome << " vai lancar os dados!" << endl;
+                        Sleep(1000); // esperar 1 segundo
+
+                        int valor_dados = mostrarDados();
+                        cout << "Jogador(a) " << players.at(k).nome << " tirou " << valor_dados << "! :D" << endl;
+                        players.at(k).resultado_dados = valor_dados;
+                        cout << endl << players.at(k).resultado_dados << endl;
+                        system("pause");
+                        players.push_back(players.at(k));
+                    }
+                }
+            }
         }
 
         ordenarResultados(players);
