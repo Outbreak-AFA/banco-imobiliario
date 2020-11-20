@@ -1,0 +1,3 @@
+void clear() {
+    system("cls");
+}
