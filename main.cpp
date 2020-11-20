@@ -1,14 +1,19 @@
-#include <iostream>
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
 #include <windows.h>
+#include <conio.h>
+#include <locale.h>
+#include <ctype.h>
+#include <iostream>
 #include <vector>
 #include <string>
- #include "./src/models/players.h"
+#include "./src/models/players.h"
 #include "./src/functions/dados.h"
 #include "./src/functions/sorts.h"
 #include "./src/functions/sortear_jogadores.h"
+#include "./src/functions/menu.h"
+#include "./src/functions/tabuleiro.h"
 // #include "./src/models/propriedade.h"
 // #include "./src/styles/colors.h"
 //#include "./src/functions/ranking.h"
@@ -17,6 +22,10 @@ using namespace std;
 
 int main () {
     srand(time(NULL));
+
+    instrucoes();
+
+    printarmapa();
 
     PLAYER p, p2, p3, p4;
     vector<PLAYER> vet;
@@ -29,10 +38,10 @@ int main () {
     vet.push_back(p3);
     vet.push_back(p4);
 
-    sortearJogadores(vet);
+    // sortearJogadores(vet);
 
-    cout << endl << "Ordem: ";
-    printVet(vet);
+    // cout << endl << "Ordem: ";
+    // printVet(vet);
 
     // PROPRIEDADE p, *ptr_p;
     // ptr_p = &p;
