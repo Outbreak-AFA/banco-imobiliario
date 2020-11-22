@@ -28,16 +28,17 @@ int main () {
     instrucoes();
 
     printarmapa();
+    Sleep(1000);
 
     PLAYER p, p2, p3, p4;
     vector<PLAYER> players;
-    // p = criar_player(1, "Antonio", 200000);
-    // p2 = criar_player(2, "Felipe", 400000);
-    // p3 = criar_player(3, "Amanda", 600000);
+    p = criar_player(1, "Antonio", 200000);
+    p2 = criar_player(2, "Felipe", 400000);
+    p3 = criar_player(3, "Amanda", 600000);
     p4 = criar_player(4, "Lapa", 800000);
-    // players.push_back(p);
-    // players.push_back(p2);
-    // players.push_back(p3);
+     players.push_back(p);
+     players.push_back(p2);
+     players.push_back(p3);
     players.push_back(p4);
 
     SORTE_REVES card;
@@ -46,6 +47,7 @@ int main () {
     cartas.push_back(card);
 
     acao_sorteReves(cartas, players);
+    pause();
 
     // sortearJogadores(players);
 

@@ -4,7 +4,7 @@
 // #include <conio.h>
 // #include <stdlib.h>
 // #include <ctype.h>
-int instrucoes(){
+int instrucoes() {
 	int OPC;
 
 // Menu do jogo 
@@ -46,24 +46,17 @@ int instrucoes(){
 // Momento da decisao(se ira jogar ou nao)
     printf("Digite 1 para continuar o jogo...\n");
 	printf("Digite 2 para sair...\n");
-	   scanf("%d", & OPC);
+	scanf("%d", &OPC);
 	
 // Essa opcao e para a pessoa sair do jogo
 	switch(OPC){
 	
-		case 2:{
+		case 2:
 			printf("O programa foi fechado!\n");
 			system("cls");	// Essa funcao e para limpar tela
+            system("pause");
 			return 0;
-		}
-		case 1:{			// chamando as funcoes que fazem o jogo acontecer 
-			
+		case 1:		// chamando as funcoes que fazem o jogo acontecer 
 			break; 
-		}
-	}
-return 0;
+    }
 }
-
-// int main() {
-//     instrucoes();
-// }

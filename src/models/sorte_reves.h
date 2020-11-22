@@ -32,7 +32,6 @@ SORTE_REVES criar_card_sr(int tipo) {
 }
 
 void mostrar_card_sorte_reves(vector<SORTE_REVES> &cartas) {
-    clear();
     char card_sr[5][9] = {
         {219, 219, 219, 219, 219, 219, 219, 219, 219},
         {219, 219, 'S', 'O', 'R', 'T', 'E', 219, 219},
