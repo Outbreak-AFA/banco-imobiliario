@@ -36,15 +36,21 @@ int main () {
     p2 = criar_player(2, "Felipe", 400000);
     p3 = criar_player(3, "Amanda", 600000);
     p4 = criar_player(4, "Lapa", 800000);
-     players.push_back(p);
-     players.push_back(p2);
-     players.push_back(p3);
+    players.push_back(p);
+    players.push_back(p2);
+    players.push_back(p3);
     players.push_back(p4);
 
-    SORTE_REVES card;
+    SORTE_REVES card, card_1, card_2, card_3;
     vector<SORTE_REVES> cartas;
-    card = criar_card_sr(randint(3));
+    card = criar_card_sr(randint(3)); // forma alternativa de fazer
+    card_1 = criar_card_sr(0);
+    card_2 = criar_card_sr(1);
+    card_3 = criar_card_sr(2);
     cartas.push_back(card);
+    cartas.push_back(card_1);
+    cartas.push_back(card_2);
+    cartas.push_back(card_3);
 
     acao_sorteReves(cartas, players);
     pause();
