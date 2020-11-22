@@ -1,9 +1,10 @@
-#include <iostream>
-#include <string.h>
-#include <windows.h>
-#include "./src/styles/colors.h"
-#include <stdio.h>
-#include <vector>
+// #include <iostream>
+// #include <string.h>
+// #include <windows.h>
+// #include "./src/models/players.h"
+// #include "./src/utils/utils.h"
+// #include <stdio.h>
+// #include <vector>
 
 
 using namespace std;
@@ -20,20 +21,18 @@ uma dupla nos dados ou pagar fiança.
 */
 
 typedef struct {
-    int tipo; // tipo sorte ou tipo revés 1-> Ganha $, 2 -> Perde $, 3 -> Habeas Corpus
-    char mensagem[100];
+    int tipo; // tipo sorte ou tipo revés 0 -> Perde $, 1 -> Ganha $, 2 -> Habeas Corpus
     
 } SORTE_REVES;
 
-SORTE_REVES criar_card_sr(int tipo, char *mensagem) {
+SORTE_REVES criar_card_sr(int tipo) {
     SORTE_REVES sr;
     sr.tipo = tipo;
-    strcpy(sr.mensagem, mensagem);
     return sr;
 }
 
-void mostrar_card_sorte_reves() {
-    system("clear");
+void mostrar_card_sorte_reves(vector<SORTE_REVES> &cartas) {
+    clear();
     char card_sr[5][9] = {
         {219, 219, 219, 219, 219, 219, 219, 219, 219},
         {219, 219, 'S', 'O', 'R', 'T', 'E', 219, 219},
@@ -48,7 +47,6 @@ void mostrar_card_sorte_reves() {
             cout << card_sr[i][j];
         }
     }
-
 }
 
 int randint(int max) {
@@ -72,6 +70,27 @@ int embaralhaCartas(vector<SORTE_REVES> &cartas) {
     }
     
     return 1; // Success
+}
+
+void acao_sorteReves(vector<SORTE_REVES> &cartas, vector<PLAYER> &players) {
+
+    mostrar_card_sorte_reves(cartas);
+    // teste
+    if (cartas.front().tipo == 0) {
+        int valor_perde = randint(100000);
+        players.front().carteira -= valor_perde;
+        cout << "\nPlayer " << players.front().nome << " perdeu R$ " << valor_perde << endl;
+        cout << "Saldo de " << players.front().nome << ": R$ " << players.front().carteira << endl;
+    } else if (cartas.front().tipo == 1) {
+        int valor_ganha = randint(100000);
+        players.front().carteira += valor_ganha;
+        cout << "\nPlayer " << players.front().nome << " recebeu R$ " << valor_ganha << endl;
+        cout << "Saldo de " << players.front().nome << ": R$ " << players.front().carteira << endl;
+    } else if (cartas.front().tipo == 2) {
+        players.front().habeas = true;
+        cout << "\nPlayer " << players.front().nome << " foi concedido com saida livre da prisao sem a necessidade de pagar dividas!" << endl;
+    }
+    embaralhaCartas(cartas);
 }
 
 /*

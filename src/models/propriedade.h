@@ -6,6 +6,7 @@
 #include <vector>
 #include "players.h"
 #include <windows.h>
+#include "./src/utils/utils.h"
 
 using namespace std;
 
@@ -49,6 +50,7 @@ char *nome_comprador, double valor_aluguel, int casas, int hoteis) {
 // Função que mostra o card de uma propriedade
 void consultar_propriedade(PROPRIEDADE *p) {
 
+   clear();
    // card genérico de propriedade
    cout << endl;
    cout << "==========================================================" << endl;
@@ -63,21 +65,17 @@ void consultar_propriedade(PROPRIEDADE *p) {
 
 }
 
-void comprar_propriedade(vector<PLAYER> *players, PLAYER *pl, PROPRIEDADE *p) {
+void comprar_propriedade(vector<PLAYER> &players, PROPRIEDADE *p) {
     if (p->tem_dono) {
         cout << "Essa propriedade ja tem dono(a). Voce nao pode comprar ela!" << endl;
     } else {
         p->tem_dono = true;
-        pl->carteira -= p->valor_aluguel;
-        cout << "\nPlayer " << pl->nome << " comprou a propriedade " << endl;
-        cout << "Saldo " << pl->nome << ": R$ " << pl->carteira << endl;
-        strcpy(p->nome_comprador, pl->nome);
+        players.front().carteira -= p->valor_aluguel;
+        cout << "\nPlayer " << players.front().nome << " comprou a propriedade " << endl;
+        cout << "Saldo " << players.front().nome << ": R$ " << players.front().carteira << endl;
+        strcpy(p->nome_comprador, players.front().nome);
+        pause();
         consultar_propriedade(p);
-    }
-    for (int i=0; i<players->size(); i++) {
-        if (strcmp(players->at(i).nome, pl->nome) == 0) {
-            players->at(i).carteira = pl->carteira;
-        }
     }
 } // refatorar
 
@@ -100,42 +98,37 @@ void comprar_propriedade(vector<PLAYER> *players, PLAYER *pl, PROPRIEDADE *p) {
 
 // Refazer o método acima só que adaptando ao vetor de players
 // O método acima não atualiza o resultado quando chamado num vetor com ...at(x)....
-void pagar_aluguel_propriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
-    int pl_len = players->size();
+void pagar_aluguel_propriedade(vector<PLAYER> &players, PROPRIEDADE *p) {
+    int pl_len = players.size();
     int cont = 0;
     consultar_propriedade(p);
     for (int i=0; i<pl_len; i++) {
-        if (p->tem_dono && (strcmp(players->at(i).nome, p->nome_comprador) == 0)) {
-            cout << "Essa e a propriedade dx player " << players->at(i).nome << endl;
+        if (p->tem_dono && (strcmp(players.at(i).nome, p->nome_comprador) == 0)) {
+            cout << "Essa e a propriedade dx player " << players.at(i).nome << endl;
             Sleep(1000);
         }
     }
     // ISSO É UM TESTE ////////////
-    players->at(0).posicao = " ";      // Posição Felipe
-    players->at(1).posicao = "aa";    // Posição Amanda
-    players->at(2).posicao = " ";    // Posição Antônio
+    players.front().posicao = " ";      // Posição Felipe
+    players.at(1).posicao = "aa";    // Posição Amanda
     p->posicao = " ";               //  Posição propriedade
     ///////////////////////////////
-    for (int j=0; j<pl_len; j++) {
-        if (strcmp(players->at(j).posicao, p->posicao) == 0) {
-            cont++;
-            players->at(j).carteira -= p->valor_aluguel;
-            cout << endl << "Player " << players->at(j).nome << " pagou R$ " << p->valor_aluguel << " por ter passado na propriedade.";
+    if (p->tem_dono && (strcmp(players.front().posicao, p->posicao) == 0)) {
+        for (int k=0; k<pl_len; k++) {
+            if (strcmp(players.at(k).nome, p->nome_comprador) == 0) {
+                players.at(k).carteira += (p->valor_aluguel);
+            }
         }
-        /*
-        Refatorar depois para -> quando a posição do player for igual à posição da propriedade e,
-        caso essa propriedade tenha um dono, esse player que parou na propriedade irá pagar o valor
-        do aluguel. Esse valor já vai estar sendo adicionado à carteira do dono.
-        */
+
+        players.front().carteira -= p->valor_aluguel;
+        cout << "Player " << players.front().nome << " pagou R$ " << p->valor_aluguel << " por ter passado na propriedade de " << p->nome_comprador << endl;
+        
+        cout << endl;
     }
-    for (int k=0; k<pl_len; k++) {
-        if (p->tem_dono && (strcmp(players->at(k).nome, p->nome_comprador) == 0)) {
-            players->at(k).carteira += cont*(p->valor_aluguel);
-        }
-    }
-    cout << endl;
-    for (int k=0; k<players->size(); k++) {
-        cout << endl << "Saldo de " << players->at(k).nome << ": " << players->at(k).carteira;
+  
+    // Saldo de todos os players
+    for (int k=0; k<players.size(); k++) {
+        cout << endl << "Saldo de " << players.at(k).nome << ": " << players.at(k).carteira;
     }
     cout << endl;
 }
