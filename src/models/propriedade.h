@@ -65,10 +65,11 @@ void consultar_propriedade(PROPRIEDADE *p) {
 
 }
 
+// Função que pode ser ativada por um player que queira comprar a propriedade em que caiu.
 void comprar_propriedade(vector<PLAYER> &players, PROPRIEDADE *p) {
     if (p->tem_dono) {
         cout << "Essa propriedade ja tem dono(a). Voce nao pode comprar ela!" << endl;
-    } else {
+    } else if (strcmp(players.front().posicao, p->posicao) == 0){
         p->tem_dono = true;
         players.front().carteira -= p->valor_aluguel;
         cout << "\nPlayer " << players.front().nome << " comprou a propriedade " << endl;
@@ -77,27 +78,10 @@ void comprar_propriedade(vector<PLAYER> &players, PROPRIEDADE *p) {
         pause();
         consultar_propriedade(p);
     }
-} // refatorar
+}
 
-// void comprarPropriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
-    
-// }
-
-// Função que é ativada quando um player cai em uma propriedade que já tem dono(a)
-// void receber_aluguel(PLAYER *pl_caiu, PLAYER *pl_dono, PROPRIEDADE *p) {
-//     consultar_propriedade(p);
-//     if (p->tem_dono && (strcmp(p->nome_comprador, pl_dono->nome) == 0)) {
-//             cout << "Player " << pl_caiu->nome << " caiu na propriedade do(a) player " << pl_dono->nome << endl;
-//             pl_caiu->carteira -= p->valor_aluguel;
-//             cout << endl;
-//             cout << pl_caiu->nome << " pagou R$ " << p->valor_aluguel << " a " << pl_dono->nome << endl;
-//             cout << "\nSaldo " << pl_caiu->nome << ": R$ " << pl_caiu->carteira << endl;
-//             cout << "Saldo " << pl_dono->nome << ": R$ " << pl_dono->carteira << endl;
-//     }
-// }
-
-// Refazer o método acima só que adaptando ao vetor de players
-// O método acima não atualiza o resultado quando chamado num vetor com ...at(x)....
+// Função para que um player que cair em uma propriedade que já tenha sido comprada, pague o valor
+// do aluguel dessa propriedade ao dono.
 void pagar_aluguel_propriedade(vector<PLAYER> &players, PROPRIEDADE *p) {
     int pl_len = players.size();
     int cont = 0;

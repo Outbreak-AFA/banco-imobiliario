@@ -91,12 +91,3 @@ void acao_sorteReves(vector<SORTE_REVES> &cartas, vector<PLAYER> &players) {
     }
     embaralhaCartas(cartas);
 }
-
-/*
-int main() {
-    mostrar_card_sorte_reves();
-    cout << ANSI_RESET_COLORS << "\nDeu certo" << endl;
-    cout << ANSI_COLOR_RED << "teste " << ANSI_COLOR_BLUE << "teste2" << ANSI_RESET_COLORS;
-    return 0;
-}
-*/
