@@ -8,18 +8,18 @@ int instrucoes() {
 	int OPC;
 
 // Menu do jogo 
-	printf("Objetivo do jogo:Tornar-se o mais rico jogador, atraves de compra, aluguel ou venda de propriedades\n");
-		printf("\n");
-		printf("\n");
+	printf("Objetivo do jogo:Tornar-se o mais rico jogador, atraves de compra, aluguel ou venda de propriedades.\n");
+	printf("\n");
+	printf("\n");
         printf("\n");
         printf("\n");
         printf("\n");
 	printf("Regras do Jogo Banco Imobiliario\n");
     printf("Podem jogar de 2 a 4 pessoas, as quais escolheram a cor de seus pinos. \n");
     printf("Todos os jogadores devem comecar o jogo com uma quantia de $200.000.\n");
-    printf("\n");//
-    printf("\n");//
-	printf("\n");//
+        printf("\n");
+        printf("\n");
+	printf("\n");
         printf("\n");
         printf("\n");
         printf("\n");
@@ -34,7 +34,7 @@ int instrucoes() {
     printf("6- Para sair da detencao, o jogador necessita tirar numeros iguais nos dados, esperar 3 rodadas ou caso possua o cartao 'Saida livre da detencao'.\n");
     printf("7-Ao alcancar o 'start', todas as vezes os jogadores deverao recero valor de $200.000.\n");
     printf("8-So conseguira construir uma casa, quando tiver o comjunto de cores completo.\n");
-	printf("9-Cada terreno pode-se construir ate 4 casas ou 1 hotel.\n");
+    printf("9-Cada terreno pode-se construir ate 4 casas ou 1 hotel.\n");
     printf("10-O jogador devera colocar uma casa em cada terreno do grupo de mesma cor antes do colocar a segunda.\n");
     printf("11-Se mesmo apos vender suas casa e hoteis, hipotecar suas propriedades o jogador nao conseguir pagar sua divida, o mesmo ira se retirar do jogo.\n");
     printf("12-Durante o jogo, nenhum jogador podera dar ou emprestar dinheiro para outro jogador.\n");
@@ -53,11 +53,11 @@ int instrucoes() {
         printf("\n");
         printf("\n");
     printf("Estudantes:\n");
-	printf("Amanda Rigaud\n");
+    printf("Amanda Rigaud\n");
     printf("Antonio Cesar\n");
     printf("Felipe Ribeiro\n");
     	printf("\n");
-		printf("\n");
+	printf("\n");
     printf("Docente: Marcos Lapa\n");
         printf("\n");
         printf("\n");
@@ -80,4 +80,9 @@ int instrucoes() {
 			break; 
     }
 }
+
+/*int main(){
+    instrucoes();
+    return 0;
+}*/
 
