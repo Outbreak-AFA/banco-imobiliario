@@ -75,14 +75,14 @@ for( i = 0; i <56; ++ i) {
 }
 }
 
-int main () {
+// int main () {
 
 
 	
-void printarmapa ();
-printarmapa ();	
+// void printarmapa ();
+// printarmapa ();	
 	
 	
 	
-return 0;
-}
+// return 0;
+// }
