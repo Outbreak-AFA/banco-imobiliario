@@ -33,6 +33,25 @@ A tecnologia utilizada para o desenvolvimento do jogo foi a Línguagem de Progra
 - Tabuleiro adaptado ao terminal
 - Ranking dos jogadores
 - Geração de um arquivo binário contendo o ranking
+
+## Como jogar em seu computador
+
+- Caso tenha o Git instalado em seu computador:
+
+1. No repositório, clique no botão verde 'Code'.
+2. Copie o link
+3. Reserve um diretório em seu computador para clonar o repositório
+4. Abra o terminal no diretório criado
+5. Digite 'git clone (cole o link aqui)'
+6. Dentro da pasta gerada, abra novamente o terminal
+7. Digite os seguintes comandos:
+
+```bash
+g++ main.cpp -o main
+.\main
+```
+8. Após rodar o jogo pela primeira vez, será gerado um 'main.exe', utilize-o para jogar outras vezes apenas clicando nele.
+
 #
 ## Sobre o projeto
 ### Matéria
