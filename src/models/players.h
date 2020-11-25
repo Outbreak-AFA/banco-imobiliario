@@ -20,5 +20,6 @@ PLAYER criar_player(int id, char *nome, long double carteira) {
     p.carteira = carteira;
     p.habeas = false;
     p.falencia = false;
+    p.habeas = false;
     return p;
 }
