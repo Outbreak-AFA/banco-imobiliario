@@ -81,8 +81,7 @@ int instrucoes() {
     }
 }
 
-int main(){
-    instrucoes();
-    return 0;
-}
-
+// int main(){
+//     instrucoes();
+//     return 0;
+// }
