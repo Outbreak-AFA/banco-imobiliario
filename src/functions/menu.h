@@ -8,7 +8,7 @@ int instrucoes() {
 	int OPC;
 
 // Menu do jogo 
-	printf("Objetivo do jogo:Tornar-se o mais rico jogador, atraves de compra, aluguel ou venda de propriedades\n");
+	printf("Objetivo do jogo:Tornar-se o mais rico jogador, atraves de compra, aluguel ou venda de propriedades.\n");
 		printf("\n");
 		printf("\n");
         printf("\n");
@@ -17,9 +17,9 @@ int instrucoes() {
 	printf("Regras do Jogo Banco Imobiliario\n");
     printf("Podem jogar de 2 a 4 pessoas, as quais escolheram a cor de seus pinos. \n");
     printf("Todos os jogadores devem comecar o jogo com uma quantia de $200.000.\n");
-    printf("\n");//
-    printf("\n");//
-	printf("\n");//
+        printf("\n");
+        printf("\n");
+	    printf("\n");
         printf("\n");
         printf("\n");
         printf("\n");
@@ -79,5 +79,10 @@ int instrucoes() {
 		case 1:		// chamando as funcoes que fazem o jogo acontecer 
 			break; 
     }
+}
+
+int main(){
+    instrucoes();
+    return 0;
 }
 
