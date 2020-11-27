@@ -1,13 +1,3 @@
-#include <stdlib.h>
-#include <iostream>
-#include <string.h>
-#include <string>
-#include <cstring>
-#include <vector>
-#include "players.h"
-#include <windows.h>
-#include "./src/utils/utils.h"
-
 using namespace std;
 
 // PROPRIEDADES
@@ -77,27 +67,8 @@ void comprar_propriedade(vector<PLAYER> &players, PROPRIEDADE *p) {
         pause();
         consultar_propriedade(p);
     }
-} // refatorar
+}
 
-// void comprarPropriedade(vector<PLAYER> *players, PROPRIEDADE *p) {
-    
-// }
-
-// Função que é ativada quando um player cai em uma propriedade que já tem dono(a)
-// void receber_aluguel(PLAYER *pl_caiu, PLAYER *pl_dono, PROPRIEDADE *p) {
-//     consultar_propriedade(p);
-//     if (p->tem_dono && (strcmp(p->nome_comprador, pl_dono->nome) == 0)) {
-//             cout << "Player " << pl_caiu->nome << " caiu na propriedade do(a) player " << pl_dono->nome << endl;
-//             pl_caiu->carteira -= p->valor_aluguel;
-//             cout << endl;
-//             cout << pl_caiu->nome << " pagou R$ " << p->valor_aluguel << " a " << pl_dono->nome << endl;
-//             cout << "\nSaldo " << pl_caiu->nome << ": R$ " << pl_caiu->carteira << endl;
-//             cout << "Saldo " << pl_dono->nome << ": R$ " << pl_dono->carteira << endl;
-//     }
-// }
-
-// Refazer o método acima só que adaptando ao vetor de players
-// O método acima não atualiza o resultado quando chamado num vetor com ...at(x)....
 void pagar_aluguel_propriedade(vector<PLAYER> &players, PROPRIEDADE *p) {
     int pl_len = players.size();
     int cont = 0;
@@ -108,11 +79,7 @@ void pagar_aluguel_propriedade(vector<PLAYER> &players, PROPRIEDADE *p) {
             Sleep(1000);
         }
     }
-    // ISSO É UM TESTE ////////////
-    players.front().posicao = " ";      // Posição Felipe
-    players.at(1).posicao = "aa";    // Posição Amanda
-    p->posicao = " ";               //  Posição propriedade
-    ///////////////////////////////
+
     if (p->tem_dono && (strcmp(players.front().posicao, p->posicao) == 0)) {
         for (int k=0; k<pl_len; k++) {
             if (strcmp(players.at(k).nome, p->nome_comprador) == 0) {
@@ -132,22 +99,3 @@ void pagar_aluguel_propriedade(vector<PLAYER> &players, PROPRIEDADE *p) {
     }
     cout << endl;
 }
-
-// int main() {
-//     PROPRIEDADE p;
-//     PLAYER pl, pl2, pl3;
-//     vector <PLAYER> players;
-
-//     pl = criar_player(1, "Felipe", 30000);
-//     pl2 = criar_player(2, "Amanda", 70000);
-//     pl3 = criar_player(3, "Antonio", 40000);
-//     players.push_back(pl);
-//     players.push_back(pl2);
-//     players.push_back(pl3);
-
-//     p = criar_propriedade(1, "Avenida Teste", false, "", 20000, 0, 0);
-//     comprar_propriedade(&players, &pl2, &p);
-//     pagar_aluguel_propriedade(&players, &p);
-
-//     return 0;
-// }

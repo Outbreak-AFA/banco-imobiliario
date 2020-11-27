@@ -1,12 +1,3 @@
-// #include <iostream>
-// #include <string.h>
-// #include <windows.h>
-// #include "./src/models/players.h"
-// #include "./src/utils/utils.h"
-// #include <stdio.h>
-// #include <vector>
-
-
 using namespace std;
 /*
 Caso seu peão pare na casa Sorte ou Revés, você deve pegar a primeira carta do monte, 
@@ -91,12 +82,3 @@ void acao_sorteReves(vector<SORTE_REVES> &cartas, vector<PLAYER> &players) {
     }
     embaralhaCartas(cartas);
 }
-
-/*
-int main() {
-    mostrar_card_sorte_reves();
-    cout << ANSI_RESET_COLORS << "\nDeu certo" << endl;
-    cout << ANSI_COLOR_RED << "teste " << ANSI_COLOR_BLUE << "teste2" << ANSI_RESET_COLORS;
-    return 0;
-}
-*/

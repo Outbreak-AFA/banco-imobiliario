@@ -14,8 +14,8 @@ int girarDado() {
 }
 
 
+// permite visualizar os dados jogados
 int mostrarDados() {
-    // permite visualizar os dados jogados
 
     cout << "> Girando dados..." << endl;
     Sleep(1000); // milisegundos
