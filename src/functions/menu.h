@@ -1,9 +1,3 @@
-
-//#include <stdio.h>
-//#include <time.h>      
-//#include <conio.h>
-//#include <stdlib.h>
-//#include <ctype.h>
 int instrucoes() {
 	int OPC;
 
@@ -77,9 +71,4 @@ int instrucoes() {
 		case 1:		// chamando as funcoes que fazem o jogo acontecer 
 			break; 
     }
-}
-
- //int main(){
-   // instrucoes();
-    //return 0;
 }
