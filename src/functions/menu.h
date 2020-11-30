@@ -1,9 +1,9 @@
 
-// #include <stdio.h>
-// #include <time.h>      
-// #include <conio.h>
-// #include <stdlib.h>
-// #include <ctype.h>
+//#include <stdio.h>
+//#include <time.h>      
+//#include <conio.h>
+//#include <stdlib.h>
+//#include <ctype.h>
 int instrucoes() {
 	int OPC;
 
@@ -33,10 +33,8 @@ int instrucoes() {
     printf("6-O jogador que cair na casa 'Va para detencao', precisara se dirigir a 'detencao'. \n");
     printf("6- Para sair da detencao, o jogador necessita tirar numeros iguais nos dados, esperar 3 rodadas ou caso possua o cartao 'Saida livre da detencao'.\n");
     printf("7-Ao alcancar o 'start', todas as vezes os jogadores deverao recero valor de $200.000.\n");
-    printf("8-So conseguira construir uma casa, quando tiver o comjunto de cores completo.\n");
-	printf("9-Cada terreno pode-se construir ate 4 casas ou 1 hotel.\n");
-    printf("10-O jogador devera colocar uma casa em cada terreno do grupo de mesma cor antes do colocar a segunda.\n");
-    printf("11-Se mesmo apos vender suas casa e hoteis, hipotecar suas propriedades o jogador nao conseguir pagar sua divida, o mesmo ira se retirar do jogo.\n");
+	printf("9-Cada terreno pode-se construir 1 casa .\n");
+    printf("11-Se mesmo apos vender sua casa, hipotecar suas propriedades o jogador nao conseguir pagar sua divida, o mesmo ira se retirar do jogo.\n");
     printf("12-Durante o jogo, nenhum jogador podera dar ou emprestar dinheiro para outro jogador.\n");
     printf("13-O jogo termina quando sobra somente um jogador que nao foi a falencia.  \n");
         printf("\n");
@@ -74,14 +72,14 @@ int instrucoes() {
 		case 2:
 			printf("O programa foi fechado!\n");
 			system("cls");	// Essa funcao e para limpar tela
-            system("pause");
+            exit(0);
 			return 0;
 		case 1:		// chamando as funcoes que fazem o jogo acontecer 
 			break; 
     }
 }
 
-// int main(){
-//     instrucoes();
-//     return 0;
-// }
+ //int main(){
+   // instrucoes();
+    //return 0;
+}
