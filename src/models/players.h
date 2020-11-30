@@ -3,7 +3,7 @@
 // struct genérica para teste
 #define MAX 4
 tabuleiro casas[32];
-typedef struct{         
+typedef struct players{         
     int id;
     char nome[4][20];      
     int resultado_dados;
@@ -192,7 +192,7 @@ int CARTEIRA (vector<PLAYER> &players){
 	int carteira; 
 	int i;
 	for(i>0;i<=4;i++){
-		nome[i].carteira=200.000;
+		nome[i][20].carteira=200.000;
 	}
 	if(carteira<=0){
 		printf("o player faliu\n");	  
