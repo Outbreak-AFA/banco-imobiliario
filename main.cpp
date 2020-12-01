@@ -9,8 +9,8 @@
 #include <iostream>
 #include <string>
 #include "./src/models/players.h"
-#include "./src/functions/ranking.h"
 #include "./src/functions/sorts.h"
+#include "./src/functions/ranking.h"
 #include "./src/functions/menu.h"
 #include "./src/functions/tabuleiro.h"
 #include "./src/functions/dados.h"

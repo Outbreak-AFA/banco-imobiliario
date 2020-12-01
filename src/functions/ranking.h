@@ -38,37 +38,36 @@ void resetRanking() {
     fclose(pArq);
 }
 
-// está dando erro na main.cpp
-// void addRanking(vector<PLAYER> &players, PLAYER *new_player) {
-//     FILE *pArq;
-//     int size = players.size(), i;
-//     PLAYER p;
-//     vector<PLAYER> aux;
+void addRanking(vector<PLAYER> &players, PLAYER *new_player) {
+    FILE *pArq;
+    int size = players.size(), i;
+    PLAYER p;
+    vector<PLAYER> aux;
 
-//     pArq = fopen("ranking.bin", "wb");
+    pArq = fopen("ranking.bin", "wb");
 
-//     players.push_back(*new_player);
-//     if (players.size() > 10) {
-//         quickSort(players, 0, size);
-//         for(i = size; i >= 0; i--) {
-//             aux.push_back(players.at(i));
-//         }
-//         players = aux;
-//     }
-//     while(players.size() > 10) players.pop_back();
+    players.push_back(*new_player);
+    if (players.size() > 10) {
+        quickSort(players, 0, size);
+        for(i = size; i >= 0; i--) {
+            aux.push_back(players.at(i));
+        }
+        players = aux;
+    }
+    while(players.size() > 10) players.pop_back();
 
-//     size = players.size();
+    size = players.size();
 
-//     fwrite(&size, sizeof(size), 1, pArq);
-//     fseek(pArq, sizeof(size), SEEK_SET);
+    fwrite(&size, sizeof(size), 1, pArq);
+    fseek(pArq, sizeof(size), SEEK_SET);
 
-//     for (i = 0; i < players.size(); i++) {
-//         fseek(pArq, i*sizeof(players.at(i)), SEEK_CUR);
-//         p = players.at(i);
-//         fwrite(&p,sizeof(p),1, pArq );
-//     }
-//     fclose(pArq);
-// }
+    for (i = 0; i < players.size(); i++) {
+        fseek(pArq, i*sizeof(players.at(i)), SEEK_CUR);
+        p = players.at(i);
+        fwrite(&p,sizeof(p),1, pArq );
+    }
+    fclose(pArq);
+}
 
 // TODO: Melhorar formatação
 void mostraRanking(vector<PLAYER> &players) {
