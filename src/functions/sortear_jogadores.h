@@ -1,10 +1,5 @@
 using namespace std;
 
-/*
-Essa função recebe a quantidade de jogadores como argumento.
-Por meio de um loop for, serão feitas a jogada de dados de cada jogador.
-Cada valor tirado por jogador, será armazenado em uma list<>.
-*/
 void sortearJogadores(vector<PLAYER> &players) {
 
     vector<PLAYER> aux_vet, temp;
@@ -26,17 +21,29 @@ void sortearJogadores(vector<PLAYER> &players) {
             cout << "\nResultados repetidos. Sorteando novamente..." << endl;
             i = 0;
         }
+        if (i==2 && (players.at(i).resultado_dados == players.at(i-1).resultado_dados || (players.at(i).resultado_dados == players.at(i-2).resultado_dados))) {
+            cout << "\nResultados repetidos. Sorteando novamente..." << endl;
+            i = 1;
+        }
         if (i==3 && (players.at(i).resultado_dados == players.at(i-1).resultado_dados || (players.at(i).resultado_dados == players.at(i-2).resultado_dados) || (players.at(i).resultado_dados == players.at(i-3).resultado_dados))) {
             cout << "\nResultados repetidos. Sorteando novamente..." << endl;
             i = 2;
         }
-        if (i>1 && (players.at(i).resultado_dados == players.at(i-1).resultado_dados || (players.at(i).resultado_dados == players.at(i-2).resultado_dados))) {
+        if (i==4 && (players.at(i).resultado_dados == players.at(i-1).resultado_dados || (players.at(i).resultado_dados == players.at(i-2).resultado_dados) || (players.at(i).resultado_dados == players.at(i-3).resultado_dados) || (players.at(i).resultado_dados == players.at(i-4).resultado_dados))) {
             cout << "\nResultados repetidos. Sorteando novamente..." << endl;
-            i = 1;
+            i = 3;
         }
 
     }
 
+    /*
+    Manipulando a pilha de Players.
+
+    1 - Os players são ordenados baseado nos seus resultados tirados nos dados lançados
+    2 - Os players são empilhados em uma pilha auxiliar
+    3 - A pilha anterior é limpa
+    4 - Os players são empilhados de forma contrária na pilha original
+    */
     ordenarResultados(players);
     aux_vet = players;
     players.clear();

@@ -17,11 +17,14 @@
 #include "./src/functions/sortear_jogadores.h"
 #include "./src/models/sorte_reves.h"
 #include "./src/utils/utils.h"
+#include "./src/models/propriedade.h"
 #include "./src/utils/colors.h"
-//#include "./src/models/propriedade.h"
 
 using namespace std;
 
+/*
+Verifica se todos os players do jogo atingiram a falência.
+*/
 int falenciaGeral(vector<PLAYER> &players) {
 	for (int i=0; i<players.size(); i++) {
 		if (players.front().falencia) {
@@ -60,14 +63,20 @@ int main () {
     instrucoes();
     Sleep(1000);
     
+    /*
+    Geração dos players e realização do sorteio para verificar a ordem de cada.
+    */
     loadPlayers(players);
     sortearJogadores(players);
     verificarOrdemPlayers(players);
 
     mostraRanking(players);
     
+    /*
+    Geração das cartas do baralho de Sorte & Revés e embaralhando-as logo em seguida.
+    */
     cout << "\x1b[31m[!] \033[0;34mGerando cartas do jogo e embaralhando...\033[0m\n\n";
-    loadSorteReves(cartas);
+    loadSorteReves(cartas, 50);
     embaralhaCartas(cartas);
     Sleep(1000);
 

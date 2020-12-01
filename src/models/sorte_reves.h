@@ -22,6 +22,9 @@ SORTE_REVES criar_card_sr(int tipo) {
     return sr;
 }
 
+/*
+LOGO das cartas de Sorte & Revés
+*/
 void mostrar_card_sorte_reves(vector<SORTE_REVES> &cartas) {
     char card_sr[5][9] = {
         {219, 219, 219, 219, 219, 219, 219, 219, 219},
@@ -39,11 +42,17 @@ void mostrar_card_sorte_reves(vector<SORTE_REVES> &cartas) {
     }
 }
 
+/*
+Gera um número inteiro randômico de 0 até (int max)
+*/
 int randint(int max) {
     int r = rand() % max;
     return r;
 }
 
+/*
+Embaralha as cartas do baralho de Sorte & Revés
+*/
 int embaralhaCartas(vector<SORTE_REVES> &cartas) {
     vector<SORTE_REVES> embaralhado;
     int pos;
@@ -62,10 +71,18 @@ int embaralhaCartas(vector<SORTE_REVES> &cartas) {
     return 1; // Success
 }
 
+/*
+É chamada para realizar a ação de uma carta Sorte & Revés baseada no seu tipo (0 a 2)
+Sendo:
+
+0 - O player vai perder uma quantia randômica de dinheiro
+1 - O player vai ganhar uma quantia randômica de dinheiro
+2 - O player vai receber um passe Habeas Corpus
+*/
 void acao_sorteReves(vector<SORTE_REVES> &cartas, vector<PLAYER> &players) {
 
     mostrar_card_sorte_reves(cartas);
-    // teste
+
     if (cartas.front().tipo == 0) {
         int valor_perde = randint(100000);
         players.front().carteira -= valor_perde;
@@ -81,13 +98,28 @@ void acao_sorteReves(vector<SORTE_REVES> &cartas, vector<PLAYER> &players) {
         cout << "\nPlayer " << players.front().nome << " foi concedido com saida livre da prisao sem a necessidade de pagar dividas!" << endl;
     }
     embaralhaCartas(cartas);
+    verificarFalenciaPlayer(players);
 }
 
-void loadSorteReves(vector<SORTE_REVES> &cartas)  {
-	for (int i=0; i<50; i++) {
+/*
+Gera uma pilha de cartas Sorte & Revés (não embaralhada)
+*/
+void loadSorteReves(vector<SORTE_REVES> &cartas, int quant)  {
+	for (int i=0; i<quant; i++) {
 		SORTE_REVES card;
         card.tipo = randint(3);
 		card = criar_card_sr(card.tipo);
 		cartas.push_back(card);
 	}
+}
+
+/*
+Essa função não será utilizada ao longo do jogo.
+Serve apenas para verificar se as cartas estão sendo geradas de forma aleatória com tipos entre 0 e 2
+*/
+void mostrarBaralho(vector<SORTE_REVES> &cartas) {
+    for (int i=0; i<cartas.size(); i++) {
+        cout << "Tipo carta " << (i+1) << ": " << cartas.at(i).tipo << endl;
+    }
+    cout << endl;
 }
