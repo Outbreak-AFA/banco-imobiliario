@@ -67,6 +67,7 @@ void comprar_propriedade(vector<PLAYER> &players, PROPRIEDADE *p) {
         pause();
         consultar_propriedade(p);
     }
+    verificarFalenciaPlayer(players);
 }
 
 void pagar_aluguel_propriedade(vector<PLAYER> &players, PROPRIEDADE *p) {
@@ -98,4 +99,5 @@ void pagar_aluguel_propriedade(vector<PLAYER> &players, PROPRIEDADE *p) {
         cout << endl << "Saldo de " << players.at(k).nome << ": " << players.at(k).carteira;
     }
     cout << endl;
+    verificarFalenciaPlayer(players);
 }

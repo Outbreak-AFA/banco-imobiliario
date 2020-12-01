@@ -2,23 +2,14 @@ int instrucoes() {
 	int OPC;
 
 // Menu do jogo 
-	printf("Objetivo do jogo:Tornar-se o mais rico jogador, atraves de compra, aluguel ou venda de propriedades.\n");
-		printf("\n");
-		printf("\n");
-        printf("\n");
-        printf("\n");
-        printf("\n");
-	printf("Regras do Jogo Banco Imobiliario\n");
-    printf("Podem jogar de 2 a 4 pessoas, as quais escolheram a cor de seus pinos. \n");
-    printf("Todos os jogadores devem comecar o jogo com uma quantia de $200.000.\n");
-        printf("\n");
-        printf("\n");
-	    printf("\n");
-        printf("\n");
-        printf("\n");
-        printf("\n");
-        printf("\n");
-    printf("COMO JOGAR?\n");  // Instrucoes
+    cout << endl;
+	printf("Objetivo do jogo: Tornar-se o mais rico jogador, atraves de compra, aluguel ou venda de propriedades.\n");
+		printf("\n\n");
+	printf("\x1b[32mRegras do Jogo Banco Imobiliario\n\033[0m");
+    printf(" - Podem jogar de 2 a 4 pessoas, as quais escolheram a cor de seus pinos. \n");
+    printf(" - Todos os jogadores devem comecar o jogo com uma quantia de R$ 200000.\n");
+        printf("\n\n\n");
+    printf("\x1b[32mCOMO JOGAR?\n\033[0m");  // Instrucoes
     printf("1-Todos os jogadores devem jogar os dados para saber a ordem de jogada, devera ser organizado em ordem decrescente.\n");
     printf("2-O jogador que cair nas companhias tera que pagar ao banco.");
     printf("3-Caso caia em um terreno sem proprietario, podera comprar pagando o valor indicado ao banco.\n");
@@ -31,30 +22,18 @@ int instrucoes() {
     printf("11-Se mesmo apos vender sua casa, hipotecar suas propriedades o jogador nao conseguir pagar sua divida, o mesmo ira se retirar do jogo.\n");
     printf("12-Durante o jogo, nenhum jogador podera dar ou emprestar dinheiro para outro jogador.\n");
     printf("13-O jogo termina quando sobra somente um jogador que nao foi a falencia.  \n");
+        printf("\n\n");
+    printf("\x1b[32mCREDITOS\n\033[0m");
         printf("\n");
-        printf("\n");
-        printf("\n");
-        printf("\n");
-        printf("\n");
-        printf("\n");
-    printf("CREDITOS\n");
-        printf("\n");
-        printf("\n");
-        printf("\n");
-    printf("Disciplina: Algoritmo e Estrutura de Dados\n");
-        printf("\n");
-        printf("\n");
-    printf("Estudantes:\n");
+    printf("Disciplina: Algoritmo e Estrutura de Dados\n\n");
+
+    printf("\033[35mEstudantes:\n\033[0m");
 	printf("Amanda Rigaud\n");
     printf("Antonio Cesar\n");
     printf("Felipe Ribeiro\n");
-    	printf("\n");
-		printf("\n");
-    printf("Docente: Marcos Lapa\n");
-        printf("\n");
-        printf("\n");
-        printf("\n");   
-        
+    	printf("\n\n");
+    printf("\x1b[35mDocente: \033[0mMarcos Lapa\n");
+        printf("\n\n\n");
 // Momento da decisao(se ira jogar ou nao)
     printf("Digite 1 para continuar o jogo...\n");
 	printf("Digite 2 para sair...\n");

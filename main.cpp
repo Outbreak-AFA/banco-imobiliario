@@ -1,3 +1,4 @@
+#include <vector>
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
@@ -6,119 +7,74 @@
 #include <locale.h>
 #include <ctype.h>
 #include <iostream>
-#include <vector>
 #include <string>
-#include "./src/utils/utils.h"
 #include "./src/models/players.h"
-//#include "./src/functions/dados.h"
-//#include "./src/functions/sorts.h"
-//#include "./src/functions/sortear_jogadores.h"
+#include "./src/functions/ranking.h"
+#include "./src/functions/sorts.h"
 #include "./src/functions/menu.h"
 #include "./src/functions/tabuleiro.h"
+#include "./src/functions/dados.h"
+#include "./src/functions/sortear_jogadores.h"
 #include "./src/models/sorte_reves.h"
-// #include "./src/models/propriedade.h"
-// #include "./src/styles/colors.h"
-//#include "./src/functions/ranking.h"
+#include "./src/utils/utils.h"
+#include "./src/utils/colors.h"
+//#include "./src/models/propriedade.h"
 
 using namespace std;
+
+int falenciaGeral(vector<PLAYER> &players) {
+	for (int i=0; i<players.size(); i++) {
+		if (players.front().falencia) {
+			players.pop_back();
+		}
+	}
+	if (players.empty()) return 1;
+	else return 0;
+}
+
+// void acaoJogador(vector<PLAYER> &players) {
+// 	cout << players.front().nome << ", o que deseja fazer?" << endl;
+//     int actions;
+//     cout << "1 - Jogar dados" << endl;
+//     cout << "2 - Checar status de jogador" << endl;
+//     cin >> actions;
+//     if (actions == 1) {
+//     	int resultadoDados = mostrarDados();
+//     	cout << "Player " << players.front().nome << " jogou os dados e tirou " << resultadoDados << endl;
+// 	} else if (actions == 2) {
+// 		cout << "========== STATUS " << players.front().nome << " ==========" << endl;
+// 		cout << "ID: " << players.front().id << endl;
+// 		cout << "Carteira: R$ " << players.front().carteira << endl;
+// 		cout << "Habeas? " players.front().habeas == true ? cout << "Possui" << endl : cout << "Nao possui" << endl; 
+// 	}
+// }
 
 int main () {
     srand(time(NULL));
 
+    resetRanking();
+
+	vector<SORTE_REVES> cartas;
+    vector<PLAYER> players;
+
     instrucoes();
+    Sleep(1000);
+    
+    loadPlayers(players);
+    sortearJogadores(players);
+    verificarOrdemPlayers(players);
+
+    mostraRanking(players);
+    
+    cout << "\x1b[31m[!] \033[0;34mGerando cartas do jogo e embaralhando...\033[0m\n\n";
+    loadSorteReves(cartas);
+    embaralhaCartas(cartas);
+    Sleep(1000);
 
     printarmapa();
     Sleep(1000);
-
-    PLAYER p, p2, p3, p4;
-    vector<PLAYER> players;
-    p = criar_player(1, "Antonio", 200000);
-    p2 = criar_player(2, "Felipe", 400000);
-    p3 = criar_player(3, "Amanda", 600000);
-    p4 = criar_player(4, "Lapa", 800000);
-    players.push_back(p);
-    players.push_back(p2);
-    players.push_back(p3);
-    players.push_back(p4);
-
-    SORTE_REVES card, card_1, card_2, card_3;
-    vector<SORTE_REVES> cartas;
-    card = criar_card_sr(randint(3)); // forma alternativa de fazer
-    card_1 = criar_card_sr(0);
-    card_2 = criar_card_sr(1);
-    card_3 = criar_card_sr(2);
-    cartas.push_back(card);
-    cartas.push_back(card_1);
-    cartas.push_back(card_2);
-    cartas.push_back(card_3);
-
-    acao_sorteReves(cartas, players);
     pause();
-
-    // sortearJogadores(players);
-
-    // cout << endl << "Ordem: ";
-    // printVet(players);
-
-////////////////////////////////////////////////////////////////////////////////
-
-    // PROPRIEDADE p, *ptr_p;
-    // ptr_p = &p;
-    // PLAYER pl, *ptr_pl, pl2, *ptr_pl2;
-    // ptr_pl = &pl;
-    // ptr_pl2 = &pl2;
-
-    // pl = criar_player(1, "Felipe", 2, 3000);
-    // pl2 = criar_player(1, "Amanda", 1, 7000);
-
-    // p = criar_propriedade(1, "Avenida Teste", true, ptr_pl2->nome, 2000, 0, 0);
-    // receber_aluguel(ptr_pl, ptr_pl2, ptr_p);
-
-//////////////////////////////////////////////////////////////////////////////
-
-    // PLAYER p;
-    // vector<PLAYER> players;
-
-    // resetRanking();
-    // getRanking(players);
-
-    // strcpy(p.nome, "Antonio");
-    // p.carteira = 1341.31;
-    // addRanking(players, &p);
-    // strcpy(p.nome, "Antonia");
-    // p.carteira = 1241.31;
-    // addRanking(players, &p);
-    // strcpy(p.nome, "Felipe");
-    // p.carteira = 1041.31;
-    // addRanking(players, &p);
-    // strcpy(p.nome, "Amanda");
-    // p.carteira = 9341.31;
-    // addRanking(players, &p);
-    // strcpy(p.nome, "Lapa");
-    // p.carteira = 13410.31;
-    // addRanking(players, &p);
-    // strcpy(p.nome, "Madoka");
-    // p.carteira = 1342.31;
-    // addRanking(players, &p);
-    // strcpy(p.nome, "Homura");
-    // p.carteira = 1361.31;
-    // addRanking(players, &p);
-    // strcpy(p.nome, "Mami");
-    // p.carteira = 131.31;
-    // addRanking(players, &p);
-    // strcpy(p.nome, "Sayaka");
-    // p.carteira = 1141.31;
-    // addRanking(players, &p);
-    // strcpy(p.nome, "Kyoko");
-    // p.carteira = 341.31;
-    // addRanking(players, &p);
-    // strcpy(p.nome, "Sakura");
-    // p.carteira = 112314.31;
-    // addRanking(players, &p);
-    
-    // mostraRanking(players);
-
-    // pause();
+    clear();
 
     return 0;
 }

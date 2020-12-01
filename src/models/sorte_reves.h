@@ -82,3 +82,12 @@ void acao_sorteReves(vector<SORTE_REVES> &cartas, vector<PLAYER> &players) {
     }
     embaralhaCartas(cartas);
 }
+
+void loadSorteReves(vector<SORTE_REVES> &cartas)  {
+	for (int i=0; i<50; i++) {
+		SORTE_REVES card;
+        card.tipo = randint(3);
+		card = criar_card_sr(card.tipo);
+		cartas.push_back(card);
+	}
+}
