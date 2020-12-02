@@ -30,30 +30,14 @@ int falenciaGeral(vector<PLAYER> &players) {
 	else return 0;
 }
 
-// void acaoJogador(vector<PLAYER> &players) {
-// 	cout << players.front().nome << ", o que deseja fazer?" << endl;
-//     int actions;
-//     cout << "1 - Jogar dados" << endl;
-//     cout << "2 - Checar status de jogador" << endl;
-//     cin >> actions;
-//     if (actions == 1) {
-//     	int resultadoDados = mostrarDados();
-//     	cout << "Player " << players.front().nome << " jogou os dados e tirou " << resultadoDados << endl;
-// 	} else if (actions == 2) {
-// 		cout << "========== STATUS " << players.front().nome << " ==========" << endl;
-// 		cout << "ID: " << players.front().id << endl;
-// 		cout << "Carteira: R$ " << players.front().carteira << endl;
-// 		cout << "Habeas? " players.front().habeas == true ? cout << "Possui" << endl : cout << "Nao possui" << endl; 
-// 	}
-// }
-
 int main () {
     srand(time(NULL));
 
 	vector<SORTE_REVES> cartas;
     vector<PLAYER> players;
 
-    instrucoes();
+    while(escolhas());
+
     Sleep(1000);
     
     /*

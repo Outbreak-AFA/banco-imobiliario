@@ -9,7 +9,7 @@ typedef struct players{
     char nome[20];      
     int resultado_dados;
     long double carteira;
-    char *posicao1, *posicao2, *posicao3, *posicao4;
+    char *posicao;
     bool habeas; //sorte ou reves
     bool falencia;
 } PLAYER;
