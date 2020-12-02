@@ -1,5 +1,4 @@
 int instrucoes() {
-	int OPC;
 
 // Menu do jogo 
     cout << endl;
@@ -23,6 +22,9 @@ int instrucoes() {
     printf("12-Durante o jogo, nenhum jogador podera dar ou emprestar dinheiro para outro jogador.\n");
     printf("13-O jogo termina quando sobra somente um jogador que nao foi a falencia.  \n");
         printf("\n\n");
+}
+
+void creditos() {
     printf("\x1b[32mCREDITOS\n\033[0m");
         printf("\n");
     printf("Disciplina: Algoritmo e Estrutura de Dados\n\n");
@@ -34,20 +36,41 @@ int instrucoes() {
     	printf("\n\n");
     printf("\x1b[35mDocente: \033[0mMarcos Lapa\n");
         printf("\n\n\n");
-// Momento da decisao(se ira jogar ou nao)
-    printf("Digite 1 para continuar o jogo...\n");
-	printf("Digite 2 para sair...\n");
-	scanf("%d", &OPC);
-	
-// Essa opcao e para a pessoa sair do jogo
+}
+
+
+
+int escolhas() {
+    int OPC;
+    printf("Escolha uma das opcoes abaixo!\n");
+    printf("[1] Iniciar Jogo\n");
+    printf("[2] Como Jogar\n");
+    printf("[3] Ranking de Vencedores\n");
+    printf("[4] Creditos\n");
+    printf("[5] Sair do Jogo\n");
+
+    scanf("%d", &OPC);
+
+    // Essa opcao e para a pessoa sair do jogo
 	switch(OPC){
 	
+		case 1:
+            printf("Certo! Tenham um bom jogo! :D\n");
+            break;
 		case 2:
-			printf("O programa foi fechado!\n");
+            instrucoes();
+            pause();
+			break; 
+		case 3:
+			break; 
+		case 4:
+			break; 
+		case 5:
+			printf("O programa foi fechado! Tchau!\n");
 			system("cls");	// Essa funcao e para limpar tela
             exit(0);
 			return 0;
-		case 1:		// chamando as funcoes que fazem o jogo acontecer 
-			break; 
     }
+    clear();
+    escolhas();
 }
