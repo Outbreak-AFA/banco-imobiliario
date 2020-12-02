@@ -17,7 +17,7 @@ using namespace std;
 typedef struct {
     int tipo;
     char nome_avenida[30];
-    char *posicao1, *posicao2, *posicao3, *posicao4;
+    char *posicao;
     int casas;
     bool tem_dono; // verificar se a propriedade tem dono
     char nome_comprador[10];
@@ -81,7 +81,7 @@ void pagar_aluguel_propriedade(vector<PLAYER> &players, PROPRIEDADE *p) {
     }
 
     if (p->tem_dono) {
-        if ((strcmp(players.front().posicao1, p->posicao1) == 0) || (strcmp(players.front().posicao2, p->posicao2) == 0) || (strcmp(players.front().posicao3, p->posicao3) == 0) || (strcmp(players.front().posicao4, p->posicao4) == 0))
+        // if ((strcmp(players.front()., p->posicao) == 0))
             for (int k=0; k<pl_len; k++) {
                 if (strcmp(players.at(k).nome, p->nome_comprador) == 0) {
                     players.at(k).carteira += (p->valor_aluguel);
