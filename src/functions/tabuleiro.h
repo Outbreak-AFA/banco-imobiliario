@@ -1,14 +1,4 @@
-
-// #include <stdio.h>
-// #include <iostream>
-// #include <time.h>
-// #include <windows.h>
-// #include <locale.h>
-// #include <conio.h>
-// #include <stdlib.h>
-// #include <ctype.h>
-
-struct typedef{
+typedef struct{
 	char *posicao;
 	
 }tabuleiro;
@@ -75,23 +65,11 @@ char TABULEIRO [56] [150] = {
 
 
 void printarmapa (void) {
-int i, j;
-for( i = 0; i <56; ++ i) {
-	for ( j = 0; j <150; j ++) {
-	   printf ("% c", TABULEIRO[i][j]);
-	} 
-	printf ("\n");
+   int i, j;
+   for( i = 0; i <56; ++ i) {
+      for ( j = 0; j <150; j ++) {
+         printf ("% c", TABULEIRO[i][j]);
+      } 
+      printf ("\n");
+   }
 }
-}
-
-//  int main () {
-
-
-	
-//  void printarmapa ();
-//  printarmapa ();	
-	
-	
-	
-//  return 0;
-//  }

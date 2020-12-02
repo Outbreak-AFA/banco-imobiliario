@@ -4,45 +4,22 @@
 using namespace std;
 typedef struct players{         
     int id;
-    string nome;       
+    string nome;
     int resultado_dados;
+	char *posicao;
     long double carteira;
     bool habeas; //sorte ou reves
     bool falencia;
 } PLAYER;
 
-PLAYER criar_player(int id, char *nome, long double carteira) {
+PLAYER criar_player(int id, string nome, long double carteira) {
     PLAYER p;
     p.id = id;
-    strcpy(p.nome, nome);
+    p.nome = nome;
     p.carteira = carteira;
     p.habeas = false;
     p.falencia = false;
     return p;
-}
-
-
-
-int nome_jogador(vector<PLAYER> &players){ //vector==fila
-	int x, i;
-	char jg[4];
-	cout << "Quantos pessoas?/n";
-	cin >> i;
-	
-		if(i>=2 && i<=4){
-			for(x=0;x<=i;x++){
-				PLAYER p;
-				cout<<"nome:";
-				cin>>p.nome;
-				jg[x]=p.nome;
-				p=criar_player(x+1, p.nome);
-				players.push_back(p);
-			}
-		}else{
-			cout<<"A quantidade permitida de players e de 2 a 4! "<<endl;
-		}
-
-
 }
 
 
@@ -59,7 +36,7 @@ void loadPlayers(vector<PLAYER> &players) {
 	for (int i=0; i<quant; i++) {
 		PLAYER p;
 		cout << "Nome player " << (i+1) << ": "; cin >> p.nome;
-		p.carteira = 200000.00;
+		p.carteira = 0.0;
 		p.id = i+1;
 		p = criar_player(p.id, p.nome, p.carteira);
 		players.push_back(p);
@@ -78,8 +55,6 @@ void verificarFalenciaPlayer(vector<PLAYER> &players) {
 		}
 	}
 }
-
-
 
 int MAPA(int tabuleiro){
 	
@@ -111,53 +86,26 @@ int MAPA(int tabuleiro){
 	casas[25].posicao = &TABULEIRO[34][112];
 	casas[26].posicao = &TABULEIRO[40][112];
 	casas[27].posicao = &TABULEIRO[46][112];
-	
-
-}
-	
-
-
-
-int start(){
-	int MAPA();
-	int carteira();
-	int nome_jogador();
-	nome->casas[0];
-	while(nome->casas[0]){
-		carteira=carteira+200000;
-	}
-	
 }
 
-int CARTEIRA (vector<PLAYER> &players){
-	int carteira();
-	int nome_jogador();
-	int i, x;
-	for(i>0;i<=4;i++){
-		jg[i].carteira=200000;
-	}
-	for(x>0;x<=4;x++){
-	if(carteira<=0){
-		printf("o player faliu\n");	
-		players.erase(players.begin()+(x-1));
-		 
+void start(vector<PLAYER> &players){
+	long double valor = 200000.00;
+	for (int i=0; i<players.size(); i++) {
+		if (strcmp(players.at(i).posicao, casas[0].posicao) == 0) {
+			cout << "Player " << players.at(i).nome << " recebeu R$ " << valor << "!" << endl;
+			players.at(i).carteira += valor;
+		}
 	}
 }
-}
 
-
-int MOVIMENTACAO(int start){
-	int mostrarDados();
-	int cont1, cont2=0;
-	cont1=mostrarDados;
-	cont2= cont2+cont1;
+// refatorar
+int MOVIMENTACAO(vector<PLAYER> &players, int start) {
+	int valorDados = mostrarDados();
+	int cont1, cont2 = 0;
+	cout << "Player " << players.front().nome << " tirou o valor " << valorDados << "! :D" << endl;
+	cont1 = valorDados;
+	cont2 += cont1;
 	for(cont2=0;cont2<=27;cont2++){
-		nome->casas[cont2];
-		
-		
+		players.front().nome->casas[cont2]; // modificar 
 	}
 }
-
-
-
-

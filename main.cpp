@@ -17,7 +17,7 @@
 #include "./src/functions/dados.h"
 #include "./src/models/sorte_reves.h"
 #include "./src/functions/sortear_jogadores.h"
-// #include "./src/models/propriedade.h"
+#include "./src/models/propriedade.h"
 #include "./src/utils/colors.h"
 
 using namespace std;
@@ -32,10 +32,11 @@ int falenciaGeral(vector<PLAYER> &players) {
 
 int main () {
     srand(time(NULL));
-    vector<PLAYER> players;
-    vector<SORTE_REVES> cartas;
+    vector<PLAYER> players; // fila de players
+    vector<SORTE_REVES> cartas; // pilha de cartas
+    vector<PROPRIEDADE> propriedades;
 
-    while(escolhas());
+   while(escolhas());
 
     Sleep(1000);
     
@@ -54,10 +55,24 @@ int main () {
     embaralhaCartas(cartas);
     Sleep(1000);
 
+    cout << "\033[31m[!] \033[0;34mGerando propriedades...\033[0m\n\n";
+    loadPropriedades(propriedades);
+    Sleep(1000);
+
     printarmapa();
     Sleep(1000);
     pause();
     clear();
 
+    while (falenciaGeral(players)) {
+
+    }
+
+    /*
+    ** Após o while **
+
+    -> Mostrar o ranking
+    -> Mensagens finais
+    */
     return 0;
 }

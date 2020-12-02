@@ -37,12 +37,12 @@ void sortearJogadores(vector<PLAYER> &players) {
     }
 
     /*
-    Manipulando a pilha de Players.
+    Manipulando a fila de Players.
 
     1 - Os players são ordenados baseado nos seus resultados tirados nos dados lançados
-    2 - Os players são empilhados em uma pilha auxiliar
-    3 - A pilha anterior é limpa
-    4 - Os players são empilhados de forma contrária na pilha original
+    2 - Os players são enfileirados em uma fila auxiliar
+    3 - A fila anterior é limpa
+    4 - Os players são enfileirados de forma contrária na fila original
     */
     ordenarResultados(players);
     aux_vet = players;
