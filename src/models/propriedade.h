@@ -1,6 +1,4 @@
 using namespace std;
-#include <iostream>
-#include <vector>
 
 // PROPRIEDADES
 
@@ -116,7 +114,7 @@ void comprar_propriedade(vector<PLAYER> &players, vector<PROPRIEDADE> &proprieda
         pause();
         consultar_propriedade(propriedades);
     }
-    verificarFalenciaPlayer(players, propriedades);
+    verificarFalenciaPlayer(players);
 }
 
 void pagar_aluguel_propriedade(vector<PLAYER> &players, vector<PROPRIEDADE> &propriedades) {
@@ -149,5 +147,5 @@ void pagar_aluguel_propriedade(vector<PLAYER> &players, vector<PROPRIEDADE> &pro
         cout << endl << "Saldo de " << players.at(k).nome << ": " << players.at(k).carteira;
     }
     cout << endl;
-    verificarFalenciaPlayer(players, propriedades);
+    verificarFalenciaPlayer(players);
 }
