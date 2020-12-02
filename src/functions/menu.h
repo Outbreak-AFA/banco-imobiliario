@@ -4,11 +4,11 @@ int instrucoes() {
     cout << endl;
 	printf("Objetivo do jogo: Tornar-se o mais rico jogador, atraves de compra, aluguel ou venda de propriedades.\n");
 		printf("\n\n");
-	printf("\x1b[32mRegras do Jogo Banco Imobiliario\n\033[0m");
+	printf("\033[32mRegras do Jogo Banco Imobiliario\n\033[0m");
     printf(" - Podem jogar de 2 a 4 pessoas, as quais escolheram a cor de seus pinos. \n");
     printf(" - Todos os jogadores devem comecar o jogo com uma quantia de R$ 200000.\n");
         printf("\n\n\n");
-    printf("\x1b[32mCOMO JOGAR?\n\033[0m");  // Instrucoes
+    printf("\033[32mCOMO JOGAR?\n\033[0m");  // Instrucoes
     printf("1-Todos os jogadores devem jogar os dados para saber a ordem de jogada, devera ser organizado em ordem decrescente.\n");
     printf("2-O jogador que cair nas companhias tera que pagar ao banco.");
     printf("3-Caso caia em um terreno sem proprietario, podera comprar pagando o valor indicado ao banco.\n");
@@ -25,7 +25,7 @@ int instrucoes() {
 }
 
 void creditos() {
-    printf("\x1b[32mCREDITOS\n\033[0m");
+    printf("\033[32mCREDITOS\n\033[0m");
         printf("\n");
     printf("Disciplina: Algoritmo e Estrutura de Dados\n\n");
 
@@ -34,7 +34,7 @@ void creditos() {
     printf("Antonio Cesar\n");
     printf("Felipe Ribeiro\n");
     	printf("\n\n");
-    printf("\x1b[35mDocente: \033[0mMarcos Lapa\n");
+    printf("\033[35mDocente: \033[0mMarcos Lapa\n");
         printf("\n\n\n");
 }
 
@@ -53,23 +53,28 @@ int escolhas() {
 
     // Essa opcao e para a pessoa sair do jogo
 	switch(OPC){
-	
 		case 1:
             printf("Certo! Tenham um bom jogo! :D\n");
-            break;
+            return 0;
 		case 2:
             instrucoes();
             pause();
 			break; 
 		case 3:
+            mostraRanking();
+            pause();
 			break; 
 		case 4:
+            creditos();
+            pause();
 			break; 
 		case 5:
 			printf("O programa foi fechado! Tchau!\n");
+            pause();
 			system("cls");	// Essa funcao e para limpar tela
-            exit(0);
-			return 0;
+            exit(0); // Finalizou com sucesso!
+        default:
+            escolhas();
     }
     clear();
     escolhas();

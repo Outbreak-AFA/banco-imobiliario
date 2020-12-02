@@ -18,14 +18,14 @@ typedef struct {
     int tipo;
     char nome_avenida[30];
     char *posicao1, *posicao2, *posicao3, *posicao4;
-    int casas, hoteis;
+    int casas;
     bool tem_dono; // verificar se a propriedade tem dono
     char nome_comprador[10];
     long double valor_aluguel; // valor do aluguel da propriedade
 } PROPRIEDADE;
 
 PROPRIEDADE criar_propriedade(int tipo, char *nome_avenida, bool tem_dono, 
-char *nome_comprador, double valor_aluguel, int casas, int hoteis) {
+char *nome_comprador, double valor_aluguel, int casas) {
     PROPRIEDADE p;
     p.tipo = tipo;
     strcpy(p.nome_avenida, nome_avenida);
@@ -33,7 +33,6 @@ char *nome_comprador, double valor_aluguel, int casas, int hoteis) {
     p.tem_dono = tem_dono;
     p.valor_aluguel = valor_aluguel;
     p.casas = casas;
-    p.hoteis = hoteis;
     return p;
 }
 
@@ -50,7 +49,7 @@ void consultar_propriedade(PROPRIEDADE *p) {
    if (p->tem_dono == true) {
        cout << "| " << "Proprietario(a): " << p->nome_comprador << endl;
    } 
-   cout << "| " << "Casas: " << p->casas << " Hoteis: " << p->hoteis << endl;
+   cout << "| " << "Casas: " << p->casas << endl;
    cout << "==========================================================" << endl;
 
 }
