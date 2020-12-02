@@ -6,42 +6,34 @@ using namespace std;
 void resetRanking();
 
 // Retorna uma lista de todos os players registrados
-vector<PLAYER> getRanking() {
+void getRanking(vector<PLAYER> &players) {
     FILE *pArq;
     PLAYER p;
-    vector<PLAYER> players;
-    int total;
+    players.clear();
     pArq = fopen("ranking.bin", "r+b");
     if (pArq == NULL) {
         printf("Erro ao acessar ranking.bin\nResetando...\n");
         resetRanking();
-        getRanking();
+        getRanking(players);
     }
 
-    fread(&total, sizeof(total), 1, pArq);
-
-    for (int i = 0; i < total; i++) {
-        printf("Peguei alguém??? %d\n", total);
-        fseek(pArq, sizeof(total), SEEK_SET);
-        fseek(pArq, i * sizeof(p), SEEK_CUR);
+    for (int i = 0; i < 10; i++) {
+        fseek(pArq, i * sizeof(p), SEEK_SET);
         fread(&p, sizeof(p), 1, pArq);
+        cout << p.nome <<endl;
         players.push_back(p);
     }
     fclose(pArq);
-    return players;
 }
 
 void resetRanking() {
     FILE *pArq;
-    int total = 0;
     pArq = fopen("ranking.bin", "wb");
-    fwrite(&total, sizeof(total), 1, pArq);
     fclose(pArq);
 }
 
-void addRanking(PLAYER *new_player) {
+void addRanking(vector<PLAYER> &players, PLAYER *new_player) {
     FILE *pArq;
-    vector<PLAYER> players = getRanking();
     int size = players.size(), i;
     PLAYER p;
     vector<PLAYER> aux;
@@ -60,21 +52,16 @@ void addRanking(PLAYER *new_player) {
     }
     while(players.size() > 10) players.pop_back(); // remove os últimos
 
-    size = players.size();
-
-    fwrite(&size, sizeof(size), 1, pArq);
-    fseek(pArq, sizeof(size), SEEK_SET);
-
-    for (i = 0; i < players.size(); i++) {
-        fseek(pArq, i*sizeof(players.at(i)), SEEK_CUR);
+    for (i = 0; i < 10; i++) {
+        fseek(pArq, i*sizeof(players.at(i)), SEEK_SET);
         p = players.at(i);
         fwrite(&p,sizeof(p),1, pArq );
     }
     fclose(pArq);
 }
 
-void mostraRanking() {
-    vector<PLAYER> players = getRanking();
+void mostraRanking(vector<PLAYER> &players) {
+
     cout << endl;
     cout << "========== \033[33mRanking Atual\033[0m ==========" << endl;
     cout << "Quantidade de players: " << players.size() << endl;

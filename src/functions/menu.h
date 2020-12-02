@@ -1,7 +1,7 @@
 int instrucoes() {
 
 // Menu do jogo 
-    cout << endl;
+    printf("\n");
 	printf("Objetivo do jogo: Tornar-se o mais rico jogador, atraves de compra, aluguel ou venda de propriedades.\n");
 		printf("\n\n");
 	printf("\033[32mRegras do Jogo Banco Imobiliario\n\033[0m");
@@ -41,6 +41,7 @@ void creditos() {
 
 
 int escolhas() {
+    vector<PLAYER> players_ranking;
     int OPC;
     printf("Escolha uma das opcoes abaixo!\n");
     printf("[1] Iniciar Jogo\n");
@@ -61,7 +62,8 @@ int escolhas() {
             pause();
 			break; 
 		case 3:
-            mostraRanking();
+            getRanking(players_ranking);
+            mostraRanking(players_ranking);
             pause();
 			break; 
 		case 4:

@@ -8,6 +8,7 @@
 #include <ctype.h>
 #include <iostream>
 #include <string>
+#include "./src/utils/utils.h"
 #include "./src/models/players.h"
 #include "./src/functions/sorts.h"
 #include "./src/functions/ranking.h"
@@ -16,8 +17,7 @@
 #include "./src/functions/dados.h"
 #include "./src/models/sorte_reves.h"
 #include "./src/functions/sortear_jogadores.h"
-#include "./src/utils/utils.h"
-#include "./src/models/propriedade.h"
+// #include "./src/models/propriedade.h"
 #include "./src/utils/colors.h"
 
 using namespace std;
@@ -32,9 +32,8 @@ int falenciaGeral(vector<PLAYER> &players) {
 
 int main () {
     srand(time(NULL));
-
-	vector<SORTE_REVES> cartas;
     vector<PLAYER> players;
+    vector<SORTE_REVES> cartas;
 
     while(escolhas());
 
@@ -50,7 +49,7 @@ int main () {
     /*
     Geração das cartas do baralho de Sorte & Revés e embaralhando-as logo em seguida.
     */
-    cout << "\x1b[31m[!] \033[0;34mGerando cartas do jogo e embaralhando...\033[0m\n\n";
+    cout << "\033[31m[!] \033[0;34mGerando cartas do jogo e embaralhando...\033[0m\n\n";
     loadSorteReves(cartas, 50);
     embaralhaCartas(cartas);
     Sleep(1000);

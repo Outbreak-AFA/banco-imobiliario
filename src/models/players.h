@@ -4,17 +4,17 @@
 using namespace std;
 typedef struct players{         
     int id;
-    char nome[20];      
+    string nome;      
     int resultado_dados;
     long double carteira;
     bool habeas; //sorte ou reves
     bool falencia;
 } PLAYER;
 
-PLAYER criar_player(int id, char *nome, long double carteira) {
+PLAYER criar_player(int id, string nome, long double carteira) {
     PLAYER p;
     p.id = id;
-    strcpy(p.nome, nome);
+    p.nome = nome;
     p.carteira = carteira;
     p.habeas = false;
     p.falencia = false;
@@ -22,7 +22,7 @@ PLAYER criar_player(int id, char *nome, long double carteira) {
 }
 
 void loadPlayers(vector<PLAYER> &players) {
-	int quant;
+	int quant = 0;
 	while ((quant < 2) || (quant > 4)) {
 		cout << "Quantos jogadores teremos na partida?" << endl;
 		cout << "\x1b[31m[!] \033[34mMinimo permitido: 2 jogadores. Maximo permitido: 4 jogadores.\033[0m" << endl;
