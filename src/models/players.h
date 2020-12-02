@@ -50,6 +50,9 @@ void verificarFalenciaPlayer(vector<PLAYER> &players) {
 			cout << "\x1b[31m[!] \033[34mPlayer \033[0m" << players.front().nome << " \033[34mfoi removidx do jogo :(\033[0m" << endl;
 			players.pop_back();
 
+		}
+	}
+}
 // int MAPA(int tabuleiro){
 	
 // //player1
