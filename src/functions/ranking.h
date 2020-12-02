@@ -6,16 +6,16 @@ using namespace std;
 void resetRanking();
 
 // Retorna uma lista de todos os players registrados
-void getRanking(vector<PLAYER> &players) {
+vector<PLAYER> getRanking() {
     FILE *pArq;
     PLAYER p;
+    vector<PLAYER> players;
     int total;
-    players.clear();
     pArq = fopen("ranking.bin", "r+b");
     if (pArq == NULL) {
         printf("Erro ao acessar ranking.bin\nResetando...\n");
         resetRanking();
-        getRanking(players);
+        getRanking();
     }
 
     fread(&total, sizeof(total), 1, pArq);
@@ -28,6 +28,7 @@ void getRanking(vector<PLAYER> &players) {
         players.push_back(p);
     }
     fclose(pArq);
+    return players;
 }
 
 void resetRanking() {
@@ -38,8 +39,9 @@ void resetRanking() {
     fclose(pArq);
 }
 
-void addRanking(vector<PLAYER> &players, PLAYER *new_player) {
+void addRanking(PLAYER *new_player) {
     FILE *pArq;
+    vector<PLAYER> players = getRanking();
     int size = players.size(), i;
     PLAYER p;
     vector<PLAYER> aux;
@@ -47,6 +49,8 @@ void addRanking(vector<PLAYER> &players, PLAYER *new_player) {
     pArq = fopen("ranking.bin", "wb");
 
     players.push_back(*new_player);
+
+    // Reorganiza LISTA para apenas 10 melhores vencedores.
     if (players.size() > 10) {
         quickSort(players, 0, size);
         for(i = size; i >= 0; i--) {
@@ -54,7 +58,7 @@ void addRanking(vector<PLAYER> &players, PLAYER *new_player) {
         }
         players = aux;
     }
-    while(players.size() > 10) players.pop_back();
+    while(players.size() > 10) players.pop_back(); // remove os últimos
 
     size = players.size();
 
@@ -69,8 +73,8 @@ void addRanking(vector<PLAYER> &players, PLAYER *new_player) {
     fclose(pArq);
 }
 
-// TODO: Melhorar formatação
-void mostraRanking(vector<PLAYER> &players) {
+void mostraRanking() {
+    vector<PLAYER> players = getRanking();
     cout << endl;
     cout << "========== \033[33mRanking Atual\033[0m ==========" << endl;
     cout << "Quantidade de players: " << players.size() << endl;
