@@ -25,7 +25,7 @@ SORTE_REVES criar_card_sr(int tipo) {
 /*
 LOGO das cartas de Sorte & Revés
 */
-void mostrar_card_sorte_reves(vector<SORTE_REVES> &cartas) {
+void mostrarCard_SR() {
     char card_sr[5][9] = {
         {219, 219, 219, 219, 219, 219, 219, 219, 219},
         {219, 219, 'S', 'O', 'R', 'T', 'E', 219, 219},
@@ -40,6 +40,7 @@ void mostrar_card_sorte_reves(vector<SORTE_REVES> &cartas) {
             cout << card_sr[i][j];
         }
     }
+    cout << endl;
 }
 
 /*
@@ -81,7 +82,7 @@ Sendo:
 */
 void acao_sorteReves(vector<SORTE_REVES> &cartas, vector<PLAYER> &players) {
 
-    mostrar_card_sorte_reves(cartas);
+    mostrarCard_SR();
 
     if (cartas.front().tipo == 0) {
         int valor_perde = randint(100000);

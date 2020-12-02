@@ -14,8 +14,8 @@
 #include "./src/functions/menu.h"
 #include "./src/functions/tabuleiro.h"
 #include "./src/functions/dados.h"
-#include "./src/functions/sortear_jogadores.h"
 #include "./src/models/sorte_reves.h"
+#include "./src/functions/sortear_jogadores.h"
 #include "./src/utils/utils.h"
 #include "./src/models/propriedade.h"
 #include "./src/utils/colors.h"
@@ -26,12 +26,7 @@ using namespace std;
 Verifica se todos os players do jogo atingiram a falência.
 */
 int falenciaGeral(vector<PLAYER> &players) {
-	for (int i=0; i<players.size(); i++) {
-		if (players.front().falencia) {
-			players.pop_back();
-		}
-	}
-	if (players.empty()) return 1;
+	if (players.size() == 1) return 1;
 	else return 0;
 }
 
@@ -55,8 +50,6 @@ int falenciaGeral(vector<PLAYER> &players) {
 int main () {
     srand(time(NULL));
 
-    resetRanking();
-
 	vector<SORTE_REVES> cartas;
     vector<PLAYER> players;
 
@@ -70,8 +63,6 @@ int main () {
     sortearJogadores(players);
     verificarOrdemPlayers(players);
 
-    mostraRanking(players);
-    
     /*
     Geração das cartas do baralho de Sorte & Revés e embaralhando-as logo em seguida.
     */
