@@ -10,6 +10,7 @@ typedef struct players{
 	int celula; // unidade do tabuleiro
     long double carteira;
     bool habeas; //sorte ou reves
+	int detencao; //quantidade de partidas sem jogas
     bool falencia;
 } PLAYER;
 
@@ -20,6 +21,7 @@ PLAYER criar_player(int id, string nome, long double carteira) {
     p.carteira = carteira;
     p.habeas = false;
     p.falencia = false;
+	p.celula = 0;
     return p;
 }
 
@@ -89,15 +91,13 @@ void verificarFalenciaPlayer(vector<PLAYER> &players) {
 // 	casas[27].posicao = &TABULEIRO[46][112];
 // }
 
-// void start(vector<PLAYER> &players){
-// 	long double valor = 200000.00;
-// 	for (int i=0; i<players.size(); i++) {
-// 		if (strcmp(players.at(i).posicao, casas[0].posicao) == 0) {
-// 			cout << "Player " << players.at(i).nome << " recebeu R$ " << valor << "!" << endl;
-// 			players.at(i).carteira += valor;
-// 		}
-// 	}
-// }
+void start(vector<PLAYER> &players){
+	long double valor = 200000.00;
+	if (players.front().celula == 0) {
+		cout << "Player " << players.front().nome << " recebeu R$ " << valor << "!" << endl;
+		players.front().carteira += valor;
+	}
+}
 
 // refatorar
 // int MOVIMENTACAO(vector<PLAYER> &players, int start) {
@@ -110,3 +110,22 @@ void verificarFalenciaPlayer(vector<PLAYER> &players) {
 // 		players.front().nome->casas[cont2]; // modificar 
 // 	}
 // }
+
+void movePlayer(vector<PLAYER> &players) {
+	cout << players.front().nome << " ira jogar os dados!";
+	int dados = mostrarDados();
+	players.front().celula += dados;
+	if (players.front().celula > 27) {
+		players.front().celula %= 28;
+		if (players.front().celula > 0) start(players); // passou pelo start
+	}
+}
+
+void nextPlayer(vector<PLAYER> &players) {
+	vector<PLAYER> aux;
+	for (int i = 1; i < players.size(); i++) {
+		aux.push_back(players.at(i));
+	}
+	aux.push_back(players.at(0));
+	players = aux;
+}

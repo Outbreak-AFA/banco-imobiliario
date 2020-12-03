@@ -7,6 +7,9 @@ int randint(int max) {
     return r;
 }
 
+void narrador(string nome, string texto) {
+    cout << nome << " " << texto << endl;
+}
 
 void clear() {
     system("cls");
