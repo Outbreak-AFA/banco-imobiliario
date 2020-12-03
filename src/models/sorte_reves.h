@@ -44,14 +44,6 @@ void mostrarCard_SR() {
 }
 
 /*
-Gera um número inteiro randômico de 0 até (int max)
-*/
-int randint(int max) {
-    int r = rand() % max;
-    return r;
-}
-
-/*
 Embaralha as cartas do baralho de Sorte & Revés
 */
 int embaralhaCartas(vector<SORTE_REVES> &cartas) {
@@ -76,25 +68,27 @@ int embaralhaCartas(vector<SORTE_REVES> &cartas) {
 É chamada para realizar a ação de uma carta Sorte & Revés baseada no seu tipo (0 a 2)
 Sendo:
 
-0 - O player vai perder uma quantia randômica de dinheiro
-1 - O player vai ganhar uma quantia randômica de dinheiro
-2 - O player vai receber um passe Habeas Corpus
+1 - O player vai perder uma quantia randômica de dinheiro
+2 - O player vai ganhar uma quantia randômica de dinheiro
+3 - O player vai receber um passe Habeas Corpus
 */
 void acao_sorteReves(vector<SORTE_REVES> &cartas, vector<PLAYER> &players) {
 
     mostrarCard_SR();
 
-    if (cartas.front().tipo == 0) {
-        int valor_perde = randint(100000);
+    if (cartas.front().tipo == 1) {
+        long int valor_perde = randint(25);
+        valor_perde *= 10000;
         players.front().carteira -= valor_perde;
         cout << "\nPlayer " << players.front().nome << " perdeu R$ " << valor_perde << endl;
         cout << "Saldo de " << players.front().nome << ": R$ " << players.front().carteira << endl;
-    } else if (cartas.front().tipo == 1) {
-        int valor_ganha = randint(100000);
+    } else if (cartas.front().tipo == 2) {
+        long int valor_ganha = randint(25);
+        valor_ganha *= 10000;
         players.front().carteira += valor_ganha;
         cout << "\nPlayer " << players.front().nome << " recebeu R$ " << valor_ganha << endl;
         cout << "Saldo de " << players.front().nome << ": R$ " << players.front().carteira << endl;
-    } else if (cartas.front().tipo == 2) {
+    } else if (cartas.front().tipo == 3) {
         players.front().habeas = true;
         cout << "\nPlayer " << players.front().nome << " foi concedido com saida livre da prisao sem a necessidade de pagar dividas!" << endl;
     }
@@ -108,7 +102,7 @@ Gera uma pilha de cartas Sorte & Revés (não embaralhada)
 void loadSorteReves(vector<SORTE_REVES> &cartas, int quant)  {
 	for (int i=0; i<quant; i++) {
 		SORTE_REVES card;
-        card.tipo = randint(3);
+        card.tipo = randint(4);
 		card = criar_card_sr(card.tipo);
 		cartas.push_back(card);
 	}

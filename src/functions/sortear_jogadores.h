@@ -24,7 +24,9 @@ void sortearJogadores(vector<PLAYER> &players) {
         sortResults(resultados);
 
         if (resultados.at(0) == resultados.at(1)) {
+            clear();
             cout << "\nOpa! Pessoas tiraram o mesmo valor!. Sorteando novamente..." << endl;
+            Sleep(1000);
         }
         else {
             ordenarResultados(players);
