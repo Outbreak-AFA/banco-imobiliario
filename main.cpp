@@ -1,3 +1,4 @@
+#include <iostream>
 #include <vector>
 #include <stdlib.h>
 #include <time.h>
@@ -6,15 +7,13 @@
 #include <conio.h>
 #include <locale.h>
 #include <ctype.h>
-#include <iostream>
-#include <string>
+#include "./src/functions/dados.h"
 #include "./src/utils/utils.h"
 #include "./src/models/players.h"
 #include "./src/functions/sorts.h"
 #include "./src/functions/ranking.h"
 #include "./src/functions/menu.h"
 #include "./src/functions/tabuleiro.h"
-#include "./src/functions/dados.h"
 #include "./src/models/sorte_reves.h"
 #include "./src/functions/sortear_jogadores.h"
 #include "./src/models/propriedade.h"
