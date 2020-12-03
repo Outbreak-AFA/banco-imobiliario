@@ -35,8 +35,11 @@ int main () {
     vector<PLAYER> players; // fila de players
     vector<SORTE_REVES> cartas; // pilha de cartas
     vector<PROPRIEDADE> propriedades;
-
-   while(escolhas());
+    cout << "\033[32mINICIANDO\033[0m\n";
+    clear();
+   while(1) {
+       if (escolhas() == 0) break;
+   }
 
     Sleep(1000);
     
