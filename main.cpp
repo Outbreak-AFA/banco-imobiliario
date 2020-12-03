@@ -59,7 +59,7 @@ int main () {
     Sleep(1000);
 
     cout << "\033[31m[!] \033[0;34mGerando propriedades...\033[0m\n\n";
-    loadPropriedades(propriedades);
+    buildPropriedades(propriedades);
     Sleep(1000);
 
     printarmapa();

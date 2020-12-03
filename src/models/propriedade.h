@@ -12,124 +12,112 @@ using namespace std;
 // Lembre-se que quanto mais propriedades tiver, maior a probabilidade de ganhar dinheiro, 
 // porque sempre que caírem na sua propriedade você receberá aluguel.
 
-
-
 typedef struct {
     string nome_avenida;
-    char *posicao;
+    int posicao;
+    int id_comprador;
     int casas;
     bool tem_dono; // verificar se a propriedade tem dono
     string nome_comprador;
     long double valor_aluguel; // valor do aluguel da propriedade
 } PROPRIEDADE;
 
-PROPRIEDADE criar_propriedade(string nome_avenida, double valor_aluguel, bool tem_dono) {
+PROPRIEDADE criar_propriedade(string nome_avenida, double valor_aluguel, bool tem_dono, int posicao) {
     PROPRIEDADE p;
     p.nome_avenida = nome_avenida;
     p.valor_aluguel = valor_aluguel;
     p.tem_dono = tem_dono;
+    p.posicao;
     return p;
 }
 
-void loadPropriedades(vector<PROPRIEDADE> &propriedades) {
+void buildPropriedades(vector<PROPRIEDADE> &propriedades) {
     PROPRIEDADE pr;
-    pr = criar_propriedade("Ondina", 290000, false);
+    pr = criar_propriedade("Ondina", 290000, false, 1);
     propriedades.push_back(pr);
-    pr = criar_propriedade("Vitoria", 320000, false);
+    pr = criar_propriedade("Vitoria", 320000, false, 3);
     propriedades.push_back(pr);
-    pr = criar_propriedade("Barra", 300000, false);
+    pr = criar_propriedade("Barra", 300000, false, 4);
     propriedades.push_back(pr);
-    pr = criar_propriedade("Companhia de Telefone", 200000, false);
+    pr = criar_propriedade("Av. Orlando Gomes", 140000, false, 8);
     propriedades.push_back(pr);
-    pr = criar_propriedade("Av. Orlando Gomes", 140000, false);
+    pr = criar_propriedade("Rua SENAI Cimatec", 60000, false, 9);
     propriedades.push_back(pr);
-    pr = criar_propriedade("Rua SENAI Cimatec", 60000, false);
+    pr = criar_propriedade("Jaguaripe", 130000, false, 12);
     propriedades.push_back(pr);
-    pr = criar_propriedade("Companhia de Agua", 200000, false);
+    pr = criar_propriedade("Farol da Barra", 100000, false, 13);
     propriedades.push_back(pr);
-    pr = criar_propriedade("Jaguaripe", 130000, false);
+    pr = criar_propriedade("Vilas do Atlantico", 150000, false, 16);
     propriedades.push_back(pr);
-    pr = criar_propriedade("Farol da Barra", 100000, false);
+    pr = criar_propriedade("Buraquinho", 70000, false, 17);
     propriedades.push_back(pr);
-    pr = criar_propriedade("Vilas do Atlantico", 150000, false);
+    pr = criar_propriedade("Abrantes", 100000, false, 18);
     propriedades.push_back(pr);
-    pr = criar_propriedade("Buraquinho", 70000, false);
+    pr = criar_propriedade("Pituba", 150000, false, 22);
     propriedades.push_back(pr);
-    pr = criar_propriedade("Abrantes", 100000, false);
+    pr = criar_propriedade("Rio Vermelho", 100000, false, 24);
     propriedades.push_back(pr);
-    pr = criar_propriedade("Companhia de Luz", 200000, false);
-    propriedades.push_back(pr);
-    pr = criar_propriedade("Pituba", 150000, false);
-    propriedades.push_back(pr);
-    pr = criar_propriedade("Rio Vermelho", 100000, false);
-    propriedades.push_back(pr);
-    pr = criar_propriedade("Av. ACM", 200000, false);
-    propriedades.push_back(pr);
-    pr = criar_propriedade("Companhia de Mineracao", 200000, false);
+    pr = criar_propriedade("Av. ACM", 200000, false, 26);
     propriedades.push_back(pr);
 }
 
 // Função que mostra o card de uma propriedade
-void consultar_propriedade(vector<PROPRIEDADE> &propriedades) {
+void consultar_propriedade(PROPRIEDADE propriedade) {
 
    clear();
    // card genérico de propriedade
    cout << endl;
    cout << "==========================================================" << endl;
-   cout << "| " << propriedades.front().nome_avenida << endl; 
-   cout << "| Aluguel: " << "R$ " << propriedades.front().valor_aluguel << endl;
-   if (propriedades.front().tem_dono == true) {
-       cout << "| " << "Proprietario(a): " << propriedades.front().nome_comprador << endl;
+   cout << "| " << propriedade.nome_avenida << endl; 
+   cout << "| Aluguel: " << "R$ " << propriedade.valor_aluguel << endl;
+   if (propriedade.tem_dono == true) {
+       cout << "| " << "Proprietario(a): " << propriedade.nome_comprador << endl;
    } 
-   cout << "| " << "Casas: " << propriedades.front().casas << endl;
+   cout << "| " << "Casas: " << propriedade.casas << endl;
    cout << "==========================================================" << endl;
+   pause();
 
 }
 
-void comprar_propriedade(vector<PLAYER> &players, vector<PROPRIEDADE> &propriedades) {
-    if (propriedades.front().tem_dono) {
+PROPRIEDADE getPropriedade(vector<PLAYER> &players, vector<PROPRIEDADE> &propriedades) {
+    for (int i = 0; i < propriedades.size(); i++) {
+        if (propriedades.at(i).posicao == players.front().celula){
+            return propriedades.at(i);
+        }
+    }
+}
+
+void comprar_propriedade(vector<PLAYER> &players, PROPRIEDADE propriedades) {
+
+    if (propriedades.tem_dono) {
         cout << "Essa propriedade ja tem dono(a). Voce nao pode comprar ela!" << endl;
     } else {
-        propriedades.front().tem_dono = true;
-        players.front().carteira -= propriedades.front().valor_aluguel;
+        propriedades.tem_dono = true;
+        players.front().carteira -= propriedades.valor_aluguel;
         cout << "\nPlayer " << players.front().nome << " comprou a propriedade " << endl;
         cout << "Saldo " << players.front().nome << ": R$ " << players.front().carteira << endl;
-        propriedades.front().nome_comprador = players.front().nome;
+        propriedades.nome_comprador = players.front().nome;
         pause();
         consultar_propriedade(propriedades);
     }
-    verificarFalenciaPlayer(players);
 }
 
-void pagar_aluguel_propriedade(vector<PLAYER> &players, vector<PROPRIEDADE> &propriedades) {
-    int pl_len = players.size();
-    int cont = 0;
-    consultar_propriedade(propriedades);
-    for (int i=0; i<pl_len; i++) {
-        if (propriedades.front().tem_dono && (players.at(i).nome == propriedades.front().nome_comprador)) {
-            cout << "Essa e a propriedade dx player " << players.at(i).nome << endl;
-            Sleep(1000);
-        }
-    }
+void pagar_aluguel_propriedade(vector<PLAYER> &players, PROPRIEDADE propriedade) {
 
-    if (propriedades.front().tem_dono) {
-        // if ((strcmp(players.front()., p->posicao) == 0))
-            for (int k=0; k<pl_len; k++) {
-                if (players.at(k).nome == propriedades.front().nome_comprador) {
-                    players.at(k).carteira += propriedades.front().valor_aluguel;
-                }
+    if (propriedade.tem_dono) {
+        cout << "Essa e' a propriedade de player " << propriedade.nome_comprador << endl;
+        Sleep(1000);
+
+        players.front().carteira -= propriedade.valor_aluguel;
+        cout << "Player " << players.front().nome << " pagou R$ " << propriedade.valor_aluguel << " por ter passado na propriedade de " << propriedade.nome_comprador << endl;
+
+        for(int i = 0; i < players.size(); i++) {
+            if (propriedade.id_comprador == players.at(i).id) {
+                players.at(i).carteira += propriedade.valor_aluguel;
+                cout << players.at(i).nome << " recebeu " << propriedade.valor_aluguel << "!\n";
             }
-
-        players.front().carteira -= propriedades.front().valor_aluguel;
-        cout << "Player " << players.front().nome << " pagou R$ " << propriedades.front().valor_aluguel << " por ter passado na propriedade de " << propriedades.front().nome_comprador << endl;
+        }
         
         cout << endl;
     }
-  
-    // Saldo de todos os players
-    for (int k=0; k<players.size(); k++) {
-        cout << endl << "Saldo de " << players.at(k).nome << ": " << players.at(k).carteira;
-    }
-    cout << endl;
-    verificarFalenciaPlayer(players);
 }
