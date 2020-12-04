@@ -80,19 +80,18 @@ void acao_sorteReves(vector<SORTE_REVES> &cartas, vector<PLAYER> &players) {
         long int valor_perde = randint(25);
         valor_perde *= 10000;
         players.front().carteira -= valor_perde;
-        cout << "\nPlayer " << players.front().nome << " perdeu R$ " << valor_perde << endl;
-        cout << "Saldo de " << players.front().nome << ": R$ " << players.front().carteira << endl;
+        cout << "\nPlayer " << players.front().nome << " perdeu $ " << valor_perde << endl;
+        cout << "Saldo de " << players.front().nome << ": $ " << players.front().carteira << endl;
     } else if (cartas.front().tipo == 2) {
         long int valor_ganha = randint(25);
         valor_ganha *= 10000;
         players.front().carteira += valor_ganha;
-        cout << "\nPlayer " << players.front().nome << " recebeu R$ " << valor_ganha << endl;
-        cout << "Saldo de " << players.front().nome << ": R$ " << players.front().carteira << endl;
+        cout << "\nPlayer " << players.front().nome << " recebeu $ " << valor_ganha << endl;
+        cout << "Saldo de " << players.front().nome << ": $ " << players.front().carteira << endl;
     } else if (cartas.front().tipo == 3) {
         players.front().habeas = true;
         cout << "\nPlayer " << players.front().nome << " foi concedido com saida livre da prisao sem a necessidade de pagar dividas!" << endl;
     }
-    verificarFalenciaPlayer(players);
 }
 
 /*

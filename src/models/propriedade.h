@@ -69,7 +69,7 @@ void consultar_propriedade(PROPRIEDADE propriedade) {
    cout << endl;
    cout << "==========================================================" << endl;
    cout << "| " << propriedade.nome_avenida << endl; 
-   cout << "| Aluguel: " << "R$ " << propriedade.valor_aluguel << endl;
+   cout << "| Aluguel: " << "$ " << propriedade.valor_aluguel << endl;
    if (propriedade.tem_dono == true) {
        cout << "| " << "Proprietario(a): " << propriedade.nome_comprador << endl;
    } 
@@ -95,7 +95,7 @@ void comprar_propriedade(vector<PLAYER> &players, PROPRIEDADE propriedades) {
         propriedades.tem_dono = true;
         players.front().carteira -= propriedades.valor_aluguel;
         cout << "\nPlayer " << players.front().nome << " comprou a propriedade " << endl;
-        cout << "Saldo " << players.front().nome << ": R$ " << players.front().carteira << endl;
+        cout << "Saldo " << players.front().nome << ": $ " << players.front().carteira << endl;
         propriedades.nome_comprador = players.front().nome;
         pause();
         consultar_propriedade(propriedades);
@@ -109,12 +109,12 @@ void pagar_aluguel_propriedade(vector<PLAYER> &players, PROPRIEDADE propriedade)
         Sleep(1000);
 
         players.front().carteira -= propriedade.valor_aluguel;
-        cout << "Player " << players.front().nome << " pagou R$ " << propriedade.valor_aluguel << " por ter passado na propriedade de " << propriedade.nome_comprador << endl;
+        cout << "Player " << players.front().nome << " pagou $ " << propriedade.valor_aluguel << " por ter passado na propriedade de " << propriedade.nome_comprador << endl;
 
         for(int i = 0; i < players.size(); i++) {
             if (propriedade.id_comprador == players.at(i).id) {
                 players.at(i).carteira += propriedade.valor_aluguel;
-                cout << players.at(i).nome << " recebeu " << propriedade.valor_aluguel << "!\n";
+                cout << players.at(i).nome << " recebeu $ " << propriedade.valor_aluguel << "!\n";
             }
         }
         
