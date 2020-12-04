@@ -8,6 +8,10 @@ void sairDaDetencao(vector<PLAYER> &players) {
 
 void vaParaDetencao(vector<PLAYER> &players) {
     players.front().celula = 7;
+    if(players.front().id == 1) atualizaMapa(players, players.front().posicao, casas_player1[7].posicao);
+    else if(players.front().id == 2) atualizaMapa(players, players.front().posicao, casas_player2[7].posicao);
+    else if(players.front().id == 3) atualizaMapa(players, players.front().posicao, casas_player3[7].posicao);
+    else if(players.front().id == 4) atualizaMapa(players, players.front().posicao, casas_player4[7].posicao);
 }
 
 void detencao(vector<PLAYER> &players) {

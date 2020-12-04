@@ -19,15 +19,16 @@ typedef struct {
     int casas;
     bool tem_dono; // verificar se a propriedade tem dono
     string nome_comprador;
-    long double valor_aluguel; // valor do aluguel da propriedade
+    long double custo_de_compra; // valor do aluguel da propriedade
 } PROPRIEDADE;
 
-PROPRIEDADE criar_propriedade(string nome_avenida, double valor_aluguel, bool tem_dono, int posicao) {
+PROPRIEDADE criar_propriedade(string nome_avenida,long double custo_de_compra, bool tem_dono, int posicao) {
     PROPRIEDADE p;
     p.nome_avenida = nome_avenida;
-    p.valor_aluguel = valor_aluguel;
+    p.custo_de_compra = custo_de_compra;
     p.tem_dono = tem_dono;
-    p.posicao;
+    p.posicao = posicao;
+    p.casas = 0;
     return p;
 }
 
@@ -69,11 +70,14 @@ void consultar_propriedade(PROPRIEDADE propriedade) {
    cout << endl;
    cout << "==========================================================" << endl;
    cout << "| " << propriedade.nome_avenida << endl; 
-   cout << "| Aluguel: " << "$ " << propriedade.valor_aluguel << endl;
+   cout << "| Custo de compra: " << "$ " << propriedade.custo_de_compra << endl;
+   cout << "| Aluguel: " << "$ " << (propriedade.custo_de_compra * 0.1) << endl;
    if (propriedade.tem_dono == true) {
        cout << "| " << "Proprietario(a): " << propriedade.nome_comprador << endl;
-   } 
-   cout << "| " << "Casas: " << propriedade.casas << endl;
+   } else {
+       cout << "| " << "Proprietario(a): Ninguem!" << endl;
+   }
+   cout << "| " << "Qnt. de Casas: " << propriedade.casas << endl;
    cout << "==========================================================" << endl;
    pause();
 
@@ -81,43 +85,109 @@ void consultar_propriedade(PROPRIEDADE propriedade) {
 
 PROPRIEDADE getPropriedade(vector<PLAYER> &players, vector<PROPRIEDADE> &propriedades) {
     for (int i = 0; i < propriedades.size(); i++) {
+        // cout << propriedades.at(i).nome_avenida << ": " << propriedades.at(i).posicao << endl;
         if (propriedades.at(i).posicao == players.front().celula){
             return propriedades.at(i);
         }
     }
 }
 
-void comprar_propriedade(vector<PLAYER> &players, PROPRIEDADE propriedades) {
-
-    if (propriedades.tem_dono) {
-        cout << "Essa propriedade ja tem dono(a). Voce nao pode comprar ela!" << endl;
-    } else {
-        propriedades.tem_dono = true;
-        players.front().carteira -= propriedades.valor_aluguel;
-        cout << "\nPlayer " << players.front().nome << " comprou a propriedade " << endl;
-        cout << "Saldo " << players.front().nome << ": $ " << players.front().carteira << endl;
-        propriedades.nome_comprador = players.front().nome;
-        pause();
-        consultar_propriedade(propriedades);
+void comprar_propriedade(vector<PLAYER> &players, vector<PROPRIEDADE> &propriedades, PROPRIEDADE propriedade) {
+    int local;
+    for (int i = 0; i < propriedades.size(); i++) {
+        if (propriedades.at(i).posicao == players.front().celula){
+            local = i;
+            break;
+        }
     }
+    propriedades.at(local).tem_dono = true;
+    propriedades.at(local).id_comprador = players.front().id; // relacionamento
+    players.front().carteira -= propriedades.at(local).custo_de_compra;
+    cout << "\nPlayer " << players.front().nome << " comprou a propriedade " << endl;
+    cout << "Saldo " << players.front().nome << ": $ " << players.front().carteira << endl;
+    propriedades.at(local).nome_comprador = players.front().nome;
+    pause();
+    consultar_propriedade(propriedades.at(local));
 }
 
 void pagar_aluguel_propriedade(vector<PLAYER> &players, PROPRIEDADE propriedade) {
 
-    if (propriedade.tem_dono) {
         cout << "Essa e' a propriedade de player " << propriedade.nome_comprador << endl;
         Sleep(1000);
 
-        players.front().carteira -= propriedade.valor_aluguel;
-        cout << "Player " << players.front().nome << " pagou $ " << propriedade.valor_aluguel << " por ter passado na propriedade de " << propriedade.nome_comprador << endl;
+        players.front().carteira -= (propriedade.custo_de_compra * 0.1) + ((propriedade.custo_de_compra * 0.1) * propriedade.casas);
+        cout << "Player " << players.front().nome << " pagou $ " << ((propriedade.custo_de_compra * 0.1) + ((propriedade.custo_de_compra * 0.1) * propriedade.casas)) << " por ter passado na propriedade de " << propriedade.nome_comprador << endl;
 
         for(int i = 0; i < players.size(); i++) {
             if (propriedade.id_comprador == players.at(i).id) {
-                players.at(i).carteira += propriedade.valor_aluguel;
-                cout << players.at(i).nome << " recebeu $ " << propriedade.valor_aluguel << "!\n";
+                players.at(i).carteira += ((propriedade.custo_de_compra * 0.1) + ((propriedade.custo_de_compra * 0.1) * propriedade.casas));
+                cout << players.at(i).nome << " recebeu $ " << ((propriedade.custo_de_compra * 0.1) + ((propriedade.custo_de_compra * 0.1) * propriedade.casas)) << "!\n";
             }
         }
         
         cout << endl;
+}
+
+void construirCasa(vector<PLAYER> &players, vector<PROPRIEDADE> &propriedades, PROPRIEDADE propriedade) {
+    int local;
+    for (int i = 0; i < propriedades.size(); i++) {
+        if (propriedades.at(i).posicao == players.front().celula){
+            local = i;
+            break;
+        }
     }
+    propriedades.at(local).casas += 1;
+    players.front().carteira -= propriedades.at(local).custo_de_compra/2.0;
+    cout << players.front().nome << "contruiu +1 casa!, agora a propriedade possui " << propriedades.at(local).casas << " casas e gastou $ " << (propriedades.at(local).custo_de_compra/2.0) << " para contrui-la!" << endl;
+
+}
+
+int menuPropriedade(vector<PLAYER> &players, vector<PROPRIEDADE> &propriedades, PROPRIEDADE propriedade) {
+    int res;
+    if (!propriedade.tem_dono) {
+        cout << "O que deseja fazer?" << endl;
+        cout << "[1] - Consultar " << propriedade.nome_avenida << endl;
+        cout << "[2] - Comprar " << propriedade.nome_avenida << endl;
+        cin >> res;
+        switch(res) {
+            case 1:
+                consultar_propriedade(propriedade);
+                return menuPropriedade(players, propriedades, propriedade);
+            case 2:
+                comprar_propriedade(players, propriedades, propriedade);
+                return 1;
+            default:
+                cout << "Opcao invalida!" << endl;
+                return menuPropriedade(players, propriedades, propriedade);
+        }
+    }
+    else {
+        // relacionamento de 1 pra 1
+        if (players.front().id == propriedade.id_comprador) {
+            cout << "Seja bem-vinde a sua propriedade! O que deseja fazer?" << endl;
+            cout << "[1] - Consultar " << propriedade.nome_avenida << endl;
+            cout << "[2] - Construir uma casa" << endl;
+            cout << "[3] - Fazer nada" << endl;
+            cin >> res;
+
+            switch(res) {
+            case 1:
+                consultar_propriedade(propriedade);
+                return menuPropriedade(players, propriedades, propriedade);
+            case 2:
+                construirCasa(players, propriedades, propriedade);
+                return 1;
+            case 3:
+                return 1;
+            default:
+                cout << "Opcao invalida!" << endl;
+                return menuPropriedade(players, propriedades, propriedade);
+            }
+
+        }
+        else {
+            pagar_aluguel_propriedade(players, propriedade);
+        }
+    }
+
 }

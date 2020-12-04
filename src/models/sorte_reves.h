@@ -116,3 +116,12 @@ void mostrarBaralho(vector<SORTE_REVES> &cartas) {
     }
     cout << endl;
 }
+
+void mainSorteReves(vector<PLAYER> &players, vector<SORTE_REVES> &cartas) {
+    cout << "Pegue uma carta do baralho de Sorte & Reves!" << endl;
+    cout << "Boa sorte......... (ou nao) hahaha!" << endl;
+    Sleep(1000);
+    acao_sorteReves(cartas, players);
+    cout << endl << "\033[31m[!] \033[0;34mEmbaralhando Sorte & Reves!\033[0m\n\n";
+    embaralhaCartas(cartas);
+}
