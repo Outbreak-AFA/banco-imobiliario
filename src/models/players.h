@@ -50,10 +50,10 @@ void verificarFalenciaPlayer(vector<PLAYER> &players) {
 		players.front().falencia = true;
 		cout << "\x1b[31mPlayer " << players.front().nome << " atingiu um valor menor ou igual a zero em sua carteira!" << endl;
 		cout << "\x1b[31mE declarada a falencia de player " << players.front().nome << "!" << endl;
-		if (players.front().falencia) {
-			cout << "\x1b[31m[!] \033[34mPlayer \033[0m" << players.front().nome << " \033[34mfoi removide do jogo :(\033[0m" << endl;
-			players.erase(players.begin());
-		}
+		cout << "\x1b[31m[!] \033[34mPlayer \033[0m" << players.front().nome << " \033[34mfoi removide do jogo :(\033[0m" << endl;
+		*players.front().posicao = ' ';
+		players.erase(players.begin());
+
 	}
 }
 
