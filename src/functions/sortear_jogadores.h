@@ -8,7 +8,8 @@ void sortearJogadores(vector<PLAYER> &players) {
     while(1) {
         tamanho = players.size();
         if (players.empty()) break;
-        for (int i=0; i < tamanho; i++) {
+
+        for (int i=0; i < tamanho && tamanho > 1; i++) {
             cout << "Jogador(a) " << players.at(i).nome << " vai lancar os dados!" << endl;
             Sleep(1000); // esperar 1 segundo
 
