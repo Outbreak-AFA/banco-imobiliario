@@ -41,6 +41,7 @@ void loadPlayers(vector<PLAYER> &players) {
 		else if (p.id == 2) p.posicao = &TABULEIRO[55][97];
 		else if (p.id == 3) p.posicao = &TABULEIRO[48][97];
 		else if (p.id == 4) p.posicao = &TABULEIRO[48][112];
+		*(p.posicao) = p.pino;
 		players.push_back(p);
 	}
 }
@@ -165,6 +166,7 @@ void movePlayer(vector<PLAYER> &players) {
 		players.front().celula %= 28;
 		if (players.front().celula > 0) start(players); // passou pelo start
 	}
+	mudaMapa(players);
 }
 
 void nextPlayer(vector<PLAYER> &players) {

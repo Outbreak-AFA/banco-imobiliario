@@ -71,9 +71,9 @@ int main () {
 
     while (!falenciaGeral(players)) {
         clear();
-        movePlayer(players);
-        printarmapa();
         if (players.front().detencao <= 0) {
+            movePlayer(players);
+            printarmapa();
             for(int lapa = 0; lapa < 28; lapa++) {
 
                 //Verifica posição do jogador atual e possíveis ações no jogo
@@ -81,15 +81,13 @@ int main () {
                     if (lapa == 0) {
                         narrador(players.front().nome, "passou pelo INICIO!");
                         start(players); // um unico jogador
-                        break;
                     }
                     else if (lapa == 7) {
                         cout << "Que pena! :( Voce caiu justamente na detencao..." << endl;
-                        vaParaDetencao(players);
+                        detencao(players);
                     }
                     else if (lapa == 14) {
-                        // TODO
-                        // chamar funções de férias
+                        ferias(players);
                     }
                     else if (lapa == 21) {
                         cout << "Poxa, quanto azar voce tem! Volte para a casa 'DETENCAO' e sofra as punicoes." << endl;
@@ -111,6 +109,8 @@ int main () {
                     }
                 }
             }
+                verificarFalenciaPlayer(players);
+                pause();
                 // Movimetar o player
                 nextPlayer(players);
         } else {
@@ -130,6 +130,7 @@ int main () {
             }
             verificaDetencao(players);
             nextPlayer(players);
+            pause();
         }
     }
     /*
