@@ -47,7 +47,7 @@ int main () {
     Geração dos players e realização do sorteio para verificar a ordem de cada.
     */
     setPlayersMapa();
-    loadPlayers(players);
+	loadPlayers(players);
     sortearJogadores(players);
     verificarOrdemPlayers(players);
 
@@ -71,8 +71,6 @@ int main () {
     while (!falenciaGeral(players)) {
 
         if (players.front().detencao <= 0) {
-
-            // JOGA OS DADOS
             for(int lapa = 0; lapa < 28; lapa++) {
 
                 //Verifica posição do jogador atual e possíveis ações no jogo
@@ -83,16 +81,15 @@ int main () {
                     }
                     else if (lapa == 7) {
                         cout << "Que pena! :( Voce caiu justamente na detencao..." << endl;
-                        detencao(players);
+                        vaParaDetencao(players);
                     }
                     else if (lapa == 14) {
                         // TODO
                         // chamar funções de férias
                     }
                     else if (lapa == 21) {
-                        cout << "Poxa, quanto azar voce tem! Volte para a casa 'DETENCAO' e sofra as punicoes." << endl;
+                        cout << "Poxa, quanto azar voce tem! Volte para a casa 'DETENCAO' e sofra as punicoes." endl;
                         vaParaDetencao(players);
-                        detencao(players);
                     }
                     else if (lapa == 2 || lapa == 5 || lapa == 10 || lapa == 15 || lapa == 19 || lapa == 23 || lapa == 25) {
                         cout << "Pegue uma carta do baralho de Sorte & Reves!" << endl;
@@ -109,8 +106,6 @@ int main () {
                         // chamar funções de propriedades
                     }
                 }
-
-                verificarFalenciaPlayer(players);
                 // Movimetar o player
                 nextPlayer(players);
             }
