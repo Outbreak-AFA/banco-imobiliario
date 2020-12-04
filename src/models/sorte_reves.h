@@ -16,6 +16,12 @@ typedef struct {
     
 } SORTE_REVES;
 
+SORTE_REVES criar_card_sr(int tipo) {
+    SORTE_REVES sr;
+    sr.tipo = tipo;
+    return sr;
+}
+
 /*
 LOGO das cartas de Sorte & Revés
 */
@@ -43,14 +49,15 @@ Embaralha as cartas do baralho de Sorte & Revés
 int embaralhaCartas(vector<SORTE_REVES> &cartas) {
     vector<SORTE_REVES> embaralhado;
     int pos;
-
+    cout << cartas.size() <<endl;
+    cout << "entrou no embaralhamento" <<endl;
     while (!cartas.empty()) {
-        pos = randint(cartas.size());
+        pos = randomSortReves(cartas.size());
         embaralhado.push_back(cartas.at(pos));
         cartas.erase(cartas.begin() + pos);
     }
     while (!embaralhado.empty()) {
-        pos = randint(embaralhado.size());
+        pos = randomSortReves(embaralhado.size());
         cartas.push_back(embaralhado.at(pos));
         embaralhado.erase(embaralhado.begin() + pos);
     }
@@ -92,9 +99,10 @@ void acao_sorteReves(vector<SORTE_REVES> &cartas, vector<PLAYER> &players) {
 Gera uma pilha de cartas Sorte & Revés (não embaralhada)
 */
 void loadSorteReves(vector<SORTE_REVES> &cartas, int quant)  {
-    SORTE_REVES card;
 	for (int i=0; i<quant; i++) {
+        SORTE_REVES card;
         card.tipo = randint(4);
+        card = criar_card_sr(card.tipo);
 		cartas.push_back(card);
 	}
 }

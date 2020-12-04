@@ -38,3 +38,45 @@ void creditos() {
     printf("\033[35mDocente: \033[0mMarcos Lapa\n");
         printf("\n\n\n");
 }
+
+int escolhas() {
+    vector<PLAYER> players_ranking;
+    int OPC;
+    printf("Escolha uma das opcoes abaixo!\n");
+    printf("[1] Iniciar Jogo\n");
+    printf("[2] Como Jogar\n");
+    printf("[3] Ranking de Vencedores\n");
+    printf("[4] Creditos\n");
+    printf("[5] Sair do Jogo\n");
+
+    scanf("%d", &OPC);
+
+    // Essa opcao e para a pessoa sair do jogo
+	switch(OPC){
+		case 1:
+            printf("Certo! Tenham um bom jogo! :D\n");
+            return 0;
+		case 2:
+            instrucoes();
+            pause();
+			break; 
+		case 3:
+            getRanking(players_ranking);
+            mostraRanking(players_ranking);
+            pause();
+			break; 
+		case 4:
+            creditos();
+            pause();
+			break; 
+		case 5:
+			printf("O programa foi fechado! Tchau!\n");
+            pause();
+			clear();	// Essa funcao e para limpar tela
+            exit(0); // Finalizou com sucesso!
+        default:
+            return escolhas();
+    }
+    clear();
+    return escolhas();
+}

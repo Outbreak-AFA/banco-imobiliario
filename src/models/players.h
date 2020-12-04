@@ -31,8 +31,16 @@ void loadPlayers(vector<PLAYER> &players) {
 		PLAYER p;
 		cout << "Nome player " << (i+1) << ": "; cin >> p.nome;
 		cout << "Character do player " << (i+1) << ": "; cin >> p.pino;
-		p.carteira = 0.0;
+		p.carteira = 200000.0;
 		p.id = i+1;
+		p.celula = 0;
+		p.detencao = 0;
+		p.habeas = false;
+		p.falencia = false;
+		if (p.id == 1) p.posicao = &TABULEIRO[55][112];
+		else if (p.id == 2) p.posicao = &TABULEIRO[55][97];
+		else if (p.id == 3) p.posicao = &TABULEIRO[48][97];
+		else if (p.id == 4) p.posicao = &TABULEIRO[48][112];
 		players.push_back(p);
 	}
 }
@@ -85,7 +93,7 @@ void verificarFalenciaPlayer(vector<PLAYER> &players) {
 void start(vector<PLAYER> &players){
 	long double valor = 200000.00;
 	if (players.front().celula == 0) {
-		cout << "Player " << players.front().nome << " recebeu R$ " << valor << "!" << endl;
+		cout << "Player " << players.front().nome << " recebeu $ " << valor << "!" << endl;
 		players.front().carteira += valor;
 	}
 }

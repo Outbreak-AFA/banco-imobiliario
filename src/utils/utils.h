@@ -7,6 +7,11 @@ int randint(int max) {
     return r;
 }
 
+int randomSortReves(int max) {
+    int r = rand() % max;
+    return r;
+}
+
 void narrador(string nome, string texto) {
     cout << nome << " " << texto << endl;
 }

@@ -9,12 +9,12 @@
 #include <ctype.h>
 #include "./src/functions/dados.h"
 #include "./src/utils/utils.h"
-#include "./src/functions/detencao.h"
+#include "./src/functions/tabuleiro.h"
 #include "./src/models/players.h"
+#include "./src/functions/detencao.h"
 #include "./src/functions/sorts.h"
 #include "./src/functions/ranking.h"
 #include "./src/functions/menu.h"
-#include "./src/functions/tabuleiro.h"
 #include "./src/models/sorte_reves.h"
 #include "./src/functions/sortear_jogadores.h"
 #include "./src/models/propriedade.h"
@@ -56,6 +56,7 @@ int main () {
     */
     cout << "\033[31m[!] \033[0;34mGerando cartas do jogo e embaralhando...\033[0m\n\n";
     loadSorteReves(cartas, 50);
+    cout << "criou cartas" <<endl;
     embaralhaCartas(cartas);
     Sleep(1000);
 
@@ -69,7 +70,9 @@ int main () {
     clear();
 
     while (!falenciaGeral(players)) {
-
+        clear();
+        movePlayer(players);
+        printarmapa();
         if (players.front().detencao <= 0) {
             for(int lapa = 0; lapa < 28; lapa++) {
 
@@ -78,6 +81,7 @@ int main () {
                     if (lapa == 0) {
                         narrador(players.front().nome, "passou pelo INICIO!");
                         start(players); // um unico jogador
+                        break;
                     }
                     else if (lapa == 7) {
                         cout << "Que pena! :( Voce caiu justamente na detencao..." << endl;
@@ -88,7 +92,7 @@ int main () {
                         // chamar funções de férias
                     }
                     else if (lapa == 21) {
-                        cout << "Poxa, quanto azar voce tem! Volte para a casa 'DETENCAO' e sofra as punicoes." endl;
+                        cout << "Poxa, quanto azar voce tem! Volte para a casa 'DETENCAO' e sofra as punicoes." << endl;
                         vaParaDetencao(players);
                     }
                     else if (lapa == 2 || lapa == 5 || lapa == 10 || lapa == 15 || lapa == 19 || lapa == 23 || lapa == 25) {
@@ -106,9 +110,9 @@ int main () {
                         // chamar funções de propriedades
                     }
                 }
+            }
                 // Movimetar o player
                 nextPlayer(players);
-            }
         } else {
             cout << "Esta na detencao!" << endl;
             players.front().detencao--;
