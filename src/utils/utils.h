@@ -3,7 +3,7 @@ Gera um número inteiro randômico de 1 até (int max)
 */
 int randint(int max) {
     int r = rand() % max;
-        if (r == 0) randint(max);
+        if (r == 0) return randint(max);
     return r;
 }
 

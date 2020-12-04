@@ -49,8 +49,6 @@ Embaralha as cartas do baralho de Sorte & Revés
 int embaralhaCartas(vector<SORTE_REVES> &cartas) {
     vector<SORTE_REVES> embaralhado;
     int pos;
-    cout << cartas.size() <<endl;
-    cout << "entrou no embaralhamento" <<endl;
     while (!cartas.empty()) {
         pos = randomSortReves(cartas.size());
         embaralhado.push_back(cartas.at(pos));
@@ -76,6 +74,7 @@ Sendo:
 void acao_sorteReves(vector<SORTE_REVES> &cartas, vector<PLAYER> &players) {
 
     mostrarCard_SR();
+    cout << cartas.front().tipo << endl;
 
     if (cartas.front().tipo == 1) {
         long int valor_perde = randint(25);

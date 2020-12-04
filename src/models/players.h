@@ -31,16 +31,16 @@ void loadPlayers(vector<PLAYER> &players) {
 		PLAYER p;
 		cout << "Nome player " << (i+1) << ": "; cin >> p.nome;
 		cout << "Character do player " << (i+1) << ": "; cin >> p.pino;
-		p.carteira = 200000.0;
+		p.carteira = 400000.0;
 		p.id = i+1;
 		p.celula = 0;
 		p.detencao = 0;
 		p.habeas = false;
 		p.falencia = false;
-		if (p.id == 1) p.posicao = &TABULEIRO[55][112];
-		else if (p.id == 2) p.posicao = &TABULEIRO[55][97];
-		else if (p.id == 3) p.posicao = &TABULEIRO[48][97];
-		else if (p.id == 4) p.posicao = &TABULEIRO[48][112];
+		if (p.id == 1) p.posicao = casas_player1[0].posicao;
+		else if (p.id == 2) p.posicao = casas_player2[0].posicao;
+		else if (p.id == 3) p.posicao = casas_player3[0].posicao;
+		else if (p.id == 4) p.posicao = casas_player4[0].posicao;
 		*(p.posicao) = p.pino;
 		players.push_back(p);
 	}

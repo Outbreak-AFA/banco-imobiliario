@@ -56,7 +56,6 @@ int main () {
     */
     cout << "\033[31m[!] \033[0;34mGerando cartas do jogo e embaralhando...\033[0m\n\n";
     loadSorteReves(cartas, 50);
-    cout << "criou cartas" <<endl;
     embaralhaCartas(cartas);
     Sleep(1000);
 
