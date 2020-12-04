@@ -74,7 +74,7 @@ void printarmapa (char pino) {
 		  if (TABULEIRO[i][j] != pino )
         	printf ("% c", TABULEIRO[i][j]);
 		  else
-		  	printf("\x1b[47m%c\033[0m", TABULEIRO[i][j]);
+		  	printf("\x1b[32m%c\033[0m", TABULEIRO[i][j]);
       } 
       printf ("\n");
    }

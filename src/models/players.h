@@ -1,6 +1,5 @@
-// Aqui haverá a strcuct e funções voltadas para players
 
-// struct genérica para teste 
+// struct com todos os atributos de um player 
 using namespace std;
 typedef struct players{         
     int id;
@@ -53,8 +52,7 @@ void verificarFalenciaPlayer(vector<PLAYER> &players) {
 		cout << "\x1b[31mE declarada a falencia de player " << players.front().nome << "!" << endl;
 		if (players.front().falencia) {
 			cout << "\x1b[31m[!] \033[34mPlayer \033[0m" << players.front().nome << " \033[34mfoi removide do jogo :(\033[0m" << endl;
-			players.pop_back();
-
+			players.erase(players.begin());
 		}
 	}
 }
