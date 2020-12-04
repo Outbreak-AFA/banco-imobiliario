@@ -92,7 +92,6 @@ void acao_sorteReves(vector<SORTE_REVES> &cartas, vector<PLAYER> &players) {
         players.front().habeas = true;
         cout << "\nPlayer " << players.front().nome << " foi concedido com saida livre da prisao sem a necessidade de pagar dividas!" << endl;
     }
-    embaralhaCartas(cartas);
     verificarFalenciaPlayer(players);
 }
 

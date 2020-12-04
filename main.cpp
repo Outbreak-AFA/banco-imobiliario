@@ -9,6 +9,7 @@
 #include <ctype.h>
 #include "./src/functions/dados.h"
 #include "./src/utils/utils.h"
+#include "./src/functions/detencao.h"
 #include "./src/models/players.h"
 #include "./src/functions/sorts.h"
 #include "./src/functions/ranking.h"
@@ -33,7 +34,7 @@ int main () {
     srand(time(NULL));
     vector<PLAYER> players; // fila de players
     vector<SORTE_REVES> cartas; // pilha de cartas
-    vector<PROPRIEDADE> propriedades;
+    vector<PROPRIEDADE> propriedades; // lista de propriedades
     cout << "\033[32mINICIANDO\033[0m\n";
     clear();
    while(1) {
@@ -78,19 +79,24 @@ int main () {
                         start(players); // um unico jogador
                     }
                     else if (lapa == 7) {
-                        // TODO
-                        // chamar funções de detenção
+                        cout << "Que pena! :( Voce caiu justamente na detencao..." << endl;
+                        vaParaDetencao(players);
                     }
                     else if (lapa == 14) {
                         // TODO
                         // chamar funções de férias
                     }
                     else if (lapa == 21) {
-                        // TODO
-                        // chamar funções de IR PARA PRISAO
+                        cout << "Poxa, quanto azar voce tem! Volte para a casa 'DETENCAO' e sofra as punicoes." endl;
+                        vaParaDetencao(players);
                     }
                     else if (lapa == 2 || lapa == 5 || lapa == 10 || lapa == 15 || lapa == 19 || lapa == 23 || lapa == 25) {
-                        //chamar função de sorte ou reves
+                        cout << "Pegue uma carta do baralho de Sorte & Reves!" << endl;
+                        cout << "Boa sorte......... (ou nao) hahaha!" << endl;
+                        Sleep(1000);
+                        acao_sorteReves(cartas, players);
+                        cout << endl << "\033[31m[!] \033[0;34mEmbaralhando Sorte & Reves!\033[0m\n\n";
+                        embaralhaCartas(cartas);
                     }
                     else if(lapa == 6 || lapa == 11 || lapa == 20 || lapa == 27) {
                         //chamar funções de Companhia
@@ -105,6 +111,19 @@ int main () {
         } else {
             cout << "Esta na detencao!" << endl;
             players.front().detencao--;
+            if (players.front().habeas == true) {
+                int choicePrison;
+                cout << "Voce possui uma carta de Habeas Corpus! Deseja utiliza-la?\n";
+                cout << "[1] SIM" << endl;
+                cout << "[2] NAO" << endl;
+                cin >> choicePrison;
+                if (choicePrison == 1) {
+                    sairDaDetencao(players);
+                } else if (choicePrison == 2) {
+                    cout << "Tudo bem :( Passando para proximo player!" << endl;
+                }
+            }
+            verificaDetencao(players);
             nextPlayer(players);
         }
     }
