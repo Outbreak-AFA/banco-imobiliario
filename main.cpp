@@ -68,37 +68,43 @@ int main () {
 
     while (!falenciaGeral(players)) {
 
-        for(int lapa = 0; lapa < 28; lapa++) {
+        if (players.front().detencao <= 0) {
+            for(int lapa = 0; lapa < 28; lapa++) {
 
-            //Verifica posição do jogador atual e possíveis ações no jogo
-            if (players.front().celula == lapa) {
-                if (lapa == 0) {
-                    narrador(players.front().nome, "passou pelo INICIO!");
-                    start(players); // um unico jogador
+                //Verifica posição do jogador atual e possíveis ações no jogo
+                if (players.front().celula == lapa) {
+                    if (lapa == 0) {
+                        narrador(players.front().nome, "passou pelo INICIO!");
+                        start(players); // um unico jogador
+                    }
+                    else if (lapa == 7) {
+                        // TODO
+                        // chamar funções de detenção
+                    }
+                    else if (lapa == 14) {
+                        // TODO
+                        // chamar funções de férias
+                    }
+                    else if (lapa == 21) {
+                        // TODO
+                        // chamar funções de IR PARA PRISAO
+                    }
+                    else if (lapa == 2 || lapa == 5 || lapa == 10 || lapa == 15 || lapa == 19 || lapa == 23 || lapa == 25) {
+                        //chamar função de sorte ou reves
+                    }
+                    else if(lapa == 6 || lapa == 11 || lapa == 20 || lapa == 27) {
+                        //chamar funções de Companhia
+                    }
+                    else {
+                        // chamar funções de propriedades
+                    }
                 }
-                else if (lapa == 7) {
-                    // TODO
-                    // chamar funções de detenção
-                }
-                else if (lapa == 14) {
-                    // TODO
-                    // chamar funções de férias
-                }
-                else if (lapa == 21) {
-                    // TODO
-                    // chamar funções de IR PARA PRISAO
-                }
-                else if (lapa == 2 || lapa == 5 || lapa == 10 || lapa == 15 || lapa == 19 || lapa == 23 || lapa == 25) {
-                    //chamar função de sorte ou reves
-                }
-                else if(lapa == 6 || lapa == 11 || lapa == 20 || lapa == 27) {
-                    //chamar funções de Companhia
-                }
-                else {
-                    // chamar funções de propriedades
-                }
+                // Movimetar o player
+                nextPlayer(players);
             }
-            // Movimetar o player
+        } else {
+            cout << "Esta na detencao!" << endl;
+            players.front().detencao--;
             nextPlayer(players);
         }
     }

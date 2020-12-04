@@ -1,3 +1,5 @@
+
+// Ordena com base na carteira, é usanda no Ranking
 void quickSort(vector<PLAYER> &vetor, int inicio, int fim)
 {
     int i, j, meio;

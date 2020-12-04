@@ -17,10 +17,10 @@ int instrucoes() {
     printf("6-O jogador que cair na casa 'Va para detencao', precisara se dirigir a 'detencao'. \n");
     printf("6- Para sair da detencao, o jogador necessita tirar numeros iguais nos dados, esperar 3 rodadas ou caso possua o cartao 'Saida livre da detencao'.\n");
     printf("7-Ao alcancar o 'start', todas as vezes os jogadores deverao receber o valor de R$ 200000.\n");
-	printf("9-Cada terreno pode-se construir 1 casa .\n");
-    printf("11-Se mesmo apos vender sua casa, hipotecar suas propriedades o jogador nao conseguir pagar sua divida, o mesmo ira se retirar do jogo.\n");
-    printf("12-Durante o jogo, nenhum jogador podera dar ou emprestar dinheiro para outro jogador.\n");
-    printf("13-O jogo termina quando sobra somente um jogador que nao foi a falencia.  \n");
+	printf("8-Cada terreno pode-se construir mais de uma casa .\n");
+    printf("9-Apos declarar falencia, o jogador sera retirado do jogo.\n");
+    printf("10-Durante o jogo, nenhum jogador podera dar ou emprestar dinheiro para outro jogador.\n");
+    printf("11-O jogo termina quando sobra somente um jogador que nao foi a falencia.  \n");
         printf("\n\n");
 }
 
