@@ -46,6 +46,7 @@ int main () {
     /*
     Geração dos players e realização do sorteio para verificar a ordem de cada.
     */
+    setPlayersMapa();
     loadPlayers(players);
     sortearJogadores(players);
     verificarOrdemPlayers(players);
@@ -108,7 +109,7 @@ int main () {
                         // chamar funções de propriedades
                     }
                 }
-                
+
                 verificarFalenciaPlayer(players);
                 // Movimetar o player
                 nextPlayer(players);

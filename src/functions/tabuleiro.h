@@ -1,7 +1,7 @@
 typedef struct{
-	char *posicao;
-	
-}tabuleiro;
+      char *posicao;
+      
+   }tabuleiro;
 
 tabuleiro casas_player1[27];
 tabuleiro casas_player2[27];
@@ -78,8 +78,8 @@ void printarmapa (void) {
 }
 
 void setPlayersMapa(){
-int tebuleiro();
-char TABULEIRO;
+   // Cada player tem uma posição própria dentro do mapa.
+   // Nessa função se encontram ponteiros apontando para um endereço de char do tabuleiro.
 
 	casas_player1[0].posicao = &TABULEIRO[55][112]; //start        
 	casas_player1[1].posicao = &TABULEIRO[55][95];
@@ -110,9 +110,8 @@ char TABULEIRO;
 	casas_player1[26].posicao = &TABULEIRO[40][112];
 	casas_player1[27].posicao = &TABULEIRO[46][112];
 	
+	
 
-	
-	
 	casas_player2[0].posicao = &TABULEIRO[55][97]; //start       
 	casas_player2[1].posicao = &TABULEIRO[55][84];
 	casas_player2[2].posicao = &TABULEIRO[55][71];

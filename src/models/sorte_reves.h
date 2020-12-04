@@ -16,12 +16,6 @@ typedef struct {
     
 } SORTE_REVES;
 
-SORTE_REVES criar_card_sr(int tipo) {
-    SORTE_REVES sr;
-    sr.tipo = tipo;
-    return sr;
-}
-
 /*
 LOGO das cartas de Sorte & Revés
 */
@@ -98,10 +92,9 @@ void acao_sorteReves(vector<SORTE_REVES> &cartas, vector<PLAYER> &players) {
 Gera uma pilha de cartas Sorte & Revés (não embaralhada)
 */
 void loadSorteReves(vector<SORTE_REVES> &cartas, int quant)  {
+    SORTE_REVES card;
 	for (int i=0; i<quant; i++) {
-		SORTE_REVES card;
         card.tipo = randint(4);
-		card = criar_card_sr(card.tipo);
 		cartas.push_back(card);
 	}
 }
