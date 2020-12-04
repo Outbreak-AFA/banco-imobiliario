@@ -3,7 +3,10 @@ typedef struct{
 	
 }tabuleiro;
 
-tabuleiro casas[27];
+tabuleiro casas_player1[27];
+tabuleiro casas_player2[27];
+tabuleiro casas_player3[27];
+tabuleiro casas_player4[27];
 
 char TABULEIRO [56] [150] = {
                     {219, 219, 219, 219, 219, 219, 219, 219, 219, 219 ,219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219 ,219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219},
@@ -73,3 +76,31 @@ void printarmapa (void) {
       printf ("\n");
    }
 }
+
+
+// Adicionando possiveis casas do player 1
+   casas_player1[3].posicao = &TABULEIRO[55][69];
+	casas[4].posicao = &TABULEIRO[55][56];
+	casas[5].posicao = &TABULEIRO[55][43];
+	casas[6].posicao = &TABULEIRO[55][30];
+	casas[7].posicao = &TABULEIRO[55][17];//detencao
+	casas[8].posicao = &TABULEIRO[46][17];
+	casas[9].posicao = &TABULEIRO[40][17];
+	casas[10].posicao = &TABULEIRO[34][17];
+	casas[11].posicao = &TABULEIRO[27][17];
+	casas[12].posicao = &TABULEIRO[21][17];
+	casas[13].posicao = &TABULEIRO[15][17];
+	casas[14].posicao = &TABULEIRO[9][17];//ferias
+	casas[15].posicao = &TABULEIRO[9][30];
+	casas[16].posicao = &TABULEIRO[9][43]; 
+	casas[17].posicao = &TABULEIRO[9][56];
+	casas[18].posicao = &TABULEIRO[9][69];
+	casas[19].posicao = &TABULEIRO[9][82];
+	casas[20].posicao = &TABULEIRO[9][95];
+	casas[21].posicao = &TABULEIRO[9][112];  //va para cadeia
+	casas[22].posicao = &TABULEIRO[15][112];
+	casas[23].posicao = &TABULEIRO[21][112];
+	casas[24].posicao = &TABULEIRO[27][112];
+	casas[25].posicao = &TABULEIRO[34][112];
+	casas[26].posicao = &TABULEIRO[40][112];
+	casas[27].posicao = &TABULEIRO[46][112];

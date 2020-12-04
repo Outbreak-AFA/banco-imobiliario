@@ -6,7 +6,7 @@ typedef struct players{
     int id;
     string nome;
     int resultado_dados;
-	// char *posicao;
+	char *posicao;
 	int celula; // unidade do tabuleiro
     long double carteira;
     bool habeas; //sorte ou reves
@@ -61,34 +61,34 @@ void verificarFalenciaPlayer(vector<PLAYER> &players) {
 
 // int MAPA(int tabuleiro){
 	
-// 	casas[0].posicao = &TABULEIRO[55][112]; //start        
-// 	casas[1].posicao = &TABULEIRO[55][95];
-// 	casas[2].posicao = &TABULEIRO[55][82];      
-// 	casas[3].posicao = &TABULEIRO[55][69];
-// 	casas[4].posicao = &TABULEIRO[55][56];
-// 	casas[5].posicao = &TABULEIRO[55][43];
-// 	casas[6].posicao = &TABULEIRO[55][30];
-// 	casas[7].posicao = &TABULEIRO[55][17];//detencao
-// 	casas[8].posicao = &TABULEIRO[46][17];
-// 	casas[9].posicao = &TABULEIRO[40][17];
-// 	casas[10].posicao = &TABULEIRO[34][17];
-// 	casas[11].posicao = &TABULEIRO[27][17];
-// 	casas[12].posicao = &TABULEIRO[21][17];
-// 	casas[13].posicao = &TABULEIRO[15][17];
-// 	casas[14].posicao = &TABULEIRO[9][17];//ferias
-// 	casas[15].posicao = &TABULEIRO[9][30];
-// 	casas[16].posicao = &TABULEIRO[9][43]; 
-// 	casas[17].posicao = &TABULEIRO[9][56];
-// 	casas[18].posicao = &TABULEIRO[9][69];
-// 	casas[19].posicao = &TABULEIRO[9][82];
-// 	casas[20].posicao = &TABULEIRO[9][95];
-// 	casas[21].posicao = &TABULEIRO[9][112];  //va para cadeia
-// 	casas[22].posicao = &TABULEIRO[15][112];
-// 	casas[23].posicao = &TABULEIRO[21][112];
-// 	casas[24].posicao = &TABULEIRO[27][112];
-// 	casas[25].posicao = &TABULEIRO[34][112];
-// 	casas[26].posicao = &TABULEIRO[40][112];
-// 	casas[27].posicao = &TABULEIRO[46][112];
+	// casas[0].posicao = &TABULEIRO[55][112]; //start        
+	// casas[1].posicao = &TABULEIRO[55][95];
+	// casas[2].posicao = &TABULEIRO[55][82];      
+	// casas[3].posicao = &TABULEIRO[55][69];
+	// casas[4].posicao = &TABULEIRO[55][56];
+	// casas[5].posicao = &TABULEIRO[55][43];
+	// casas[6].posicao = &TABULEIRO[55][30];
+	// casas[7].posicao = &TABULEIRO[55][17];//detencao
+	// casas[8].posicao = &TABULEIRO[46][17];
+	// casas[9].posicao = &TABULEIRO[40][17];
+	// casas[10].posicao = &TABULEIRO[34][17];
+	// casas[11].posicao = &TABULEIRO[27][17];
+	// casas[12].posicao = &TABULEIRO[21][17];
+	// casas[13].posicao = &TABULEIRO[15][17];
+	// casas[14].posicao = &TABULEIRO[9][17];//ferias
+	// casas[15].posicao = &TABULEIRO[9][30];
+	// casas[16].posicao = &TABULEIRO[9][43]; 
+	// casas[17].posicao = &TABULEIRO[9][56];
+	// casas[18].posicao = &TABULEIRO[9][69];
+	// casas[19].posicao = &TABULEIRO[9][82];
+	// casas[20].posicao = &TABULEIRO[9][95];
+	// casas[21].posicao = &TABULEIRO[9][112];  //va para cadeia
+	// casas[22].posicao = &TABULEIRO[15][112];
+	// casas[23].posicao = &TABULEIRO[21][112];
+	// casas[24].posicao = &TABULEIRO[27][112];
+	// casas[25].posicao = &TABULEIRO[34][112];
+	// casas[26].posicao = &TABULEIRO[40][112];
+	// casas[27].posicao = &TABULEIRO[46][112];
 // }
 
 void start(vector<PLAYER> &players){
@@ -111,8 +111,89 @@ void start(vector<PLAYER> &players){
 // 	}
 // }
 
+void atualizaMapa(vector<PLAYER> &players, char *antigo, char *atual) {
+	*antigo = ' ';
+	*atual = '@';
+	players.front().posicao = atual;
+}
+
+void mudaMapa(vector<PLAYER> &players) {
+	if (players.front().id == 1) {
+		// muda o mapa de acordo com as posições do jogador 1
+		if (players.front().celula == 0)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 1)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][95]);
+		else if (players.front().celula == 2)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][82]);
+		else if (players.front().celula == 3)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 4)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 5)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 6)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 7)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 8)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 9)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 10)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 11)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 12)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 13)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 14)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 15)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 16)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 17)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 18)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 19)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 20)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 21)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 22)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 23)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 24)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 25)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 26)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+		else if (players.front().celula == 27)
+			atualizaMapa(players, players.front().posicao, &TABULEIRO[55][112]);
+ 
+	
+	}
+	else if (player.id == 2) {
+		// muda o mapa de acordo com as posições do jogador 2
+	}
+	else if (player.id == 3) {
+		// muda o mapa de acordo com as posições do jogador 3
+	}
+	else if (player.id == 4) {
+		// muda o mapa de acordo com as posições do jogador 4
+	}
+}
+
+
+
 void movePlayer(vector<PLAYER> &players) {
-	cout << players.front().nome << " ira jogar os dados!";
+	cout << players.front().nome << " ira jogar os dados!" << endl;
 	int dados = mostrarDados();
 	players.front().celula += dados;
 	if (players.front().celula > 27) {
