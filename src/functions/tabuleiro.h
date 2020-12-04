@@ -40,7 +40,7 @@ char TABULEIRO [56] [150] = {
                     {219, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 219, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 219, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 219},
 					     {219, ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'O', 'R', 'T', 'E', ' ', ' ', ' ', ' ', ' ', 219, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 219, ' ', ' ', ' ', ' ', ' ', ' ', 'S', 'O', 'R', 'T', 'E', ' ', ' ', ' ', ' ', ' ', 219},
 					     {219, ' ', ' ', ' ', ' ', ' ', ' ', 196, 196, 196, 196, 196, ' ', ' ', ' ', ' ', ' ', 219, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 219, ' ', ' ', ' ', ' ', ' ', ' ', 196, 196, 196, 196, 196, ' ', ' ', ' ', ' ', ' ', 219},
-					     {219, ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'E', 'V', 'E', 'S', ' ', ' ', ' ', ' ', ' ', 219, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 169, ' ', ' ', 219, ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'E', 'V', 'E', 'S', ' ', ' ', ' ', ' ', ' ', 219},
+					     {219, ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'E', 'V', 'E', 'S', ' ', ' ', ' ', ' ', ' ', 219, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 219, ' ', ' ', ' ', ' ', ' ', ' ', 'R', 'E', 'V', 'E', 'S', ' ', ' ', ' ', ' ', ' ', 219},
 					     {219, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 219, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 219, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 219},
 					     {219, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 219, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 219, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 219},
 					     {219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219},
@@ -77,30 +77,130 @@ void printarmapa (void) {
    }
 }
 
+void setPlayersMapa(){
+int tebuleiro();
+char TABULEIRO;
 
-// Adicionando possiveis casas do player 1
-   casas_player1[3].posicao = &TABULEIRO[55][69];
-	casas[4].posicao = &TABULEIRO[55][56];
-	casas[5].posicao = &TABULEIRO[55][43];
-	casas[6].posicao = &TABULEIRO[55][30];
-	casas[7].posicao = &TABULEIRO[55][17];//detencao
-	casas[8].posicao = &TABULEIRO[46][17];
-	casas[9].posicao = &TABULEIRO[40][17];
-	casas[10].posicao = &TABULEIRO[34][17];
-	casas[11].posicao = &TABULEIRO[27][17];
-	casas[12].posicao = &TABULEIRO[21][17];
-	casas[13].posicao = &TABULEIRO[15][17];
-	casas[14].posicao = &TABULEIRO[9][17];//ferias
-	casas[15].posicao = &TABULEIRO[9][30];
-	casas[16].posicao = &TABULEIRO[9][43]; 
-	casas[17].posicao = &TABULEIRO[9][56];
-	casas[18].posicao = &TABULEIRO[9][69];
-	casas[19].posicao = &TABULEIRO[9][82];
-	casas[20].posicao = &TABULEIRO[9][95];
-	casas[21].posicao = &TABULEIRO[9][112];  //va para cadeia
-	casas[22].posicao = &TABULEIRO[15][112];
-	casas[23].posicao = &TABULEIRO[21][112];
-	casas[24].posicao = &TABULEIRO[27][112];
-	casas[25].posicao = &TABULEIRO[34][112];
-	casas[26].posicao = &TABULEIRO[40][112];
-	casas[27].posicao = &TABULEIRO[46][112];
+	casas_player1[0].posicao = &TABULEIRO[55][112]; //start        
+	casas_player1[1].posicao = &TABULEIRO[55][95];
+	casas_player1[2].posicao = &TABULEIRO[55][82];      
+	casas_player1[3].posicao = &TABULEIRO[55][69];
+	casas_player1[4].posicao = &TABULEIRO[55][56];
+	casas_player1[5].posicao = &TABULEIRO[55][43];
+	casas_player1[6].posicao = &TABULEIRO[55][30];
+	casas_player1[7].posicao = &TABULEIRO[55][17];//detencao
+	casas_player1[8].posicao = &TABULEIRO[46][17];
+	casas_player1[9].posicao = &TABULEIRO[40][17];
+	casas_player1[10].posicao = &TABULEIRO[34][17];
+	casas_player1[11].posicao = &TABULEIRO[27][17];
+	casas_player1[12].posicao = &TABULEIRO[21][17];
+	casas_player1[13].posicao = &TABULEIRO[15][17];
+	casas_player1[14].posicao = &TABULEIRO[9][17];//ferias
+	casas_player1[15].posicao = &TABULEIRO[9][30];	
+	casas_player1[16].posicao = &TABULEIRO[9][43]; 
+	casas_player1[17].posicao = &TABULEIRO[9][56];
+	casas_player1[18].posicao = &TABULEIRO[9][69];
+	casas_player1[19].posicao = &TABULEIRO[9][82];
+	casas_player1[20].posicao = &TABULEIRO[9][95];
+	casas_player1[21].posicao = &TABULEIRO[9][112];  //va para cadeia
+	casas_player1[22].posicao = &TABULEIRO[15][112];
+	casas_player1[23].posicao = &TABULEIRO[21][112];
+	casas_player1[24].posicao = &TABULEIRO[27][112];
+	casas_player1[25].posicao = &TABULEIRO[34][112];
+	casas_player1[26].posicao = &TABULEIRO[40][112];
+	casas_player1[27].posicao = &TABULEIRO[46][112];
+	
+
+	
+	
+	casas_player2[0].posicao = &TABULEIRO[55][97]; //start       
+	casas_player2[1].posicao = &TABULEIRO[55][84];
+	casas_player2[2].posicao = &TABULEIRO[55][71];
+	casas_player2[3].posicao = &TABULEIRO[55][58];
+	casas_player2[4].posicao = &TABULEIRO[55][45];
+	casas_player2[5].posicao = &TABULEIRO[55][32];
+	casas_player2[6].posicao = &TABULEIRO[55][19];
+	casas_player2[7].posicao = &TABULEIRO[55][2];//detencao
+	casas_player2[8].posicao = &TABULEIRO[46][2];
+	casas_player2[9].posicao = &TABULEIRO[40][2];
+	casas_player2[10].posicao = &TABULEIRO[34][2];
+	casas_player2[11].posicao = &TABULEIRO[27][2];
+	casas_player2[12].posicao = &TABULEIRO[21][2];
+	casas_player2[13].posicao = &TABULEIRO[15][2];
+	casas_player2[14].posicao = &TABULEIRO[9][2];//ferias
+	casas_player2[15].posicao = &TABULEIRO[9][19];	
+	casas_player2[16].posicao = &TABULEIRO[9][32];
+	casas_player2[17].posicao = &TABULEIRO[9][45];
+	casas_player2[18].posicao = &TABULEIRO[9][58];
+	casas_player2[19].posicao = &TABULEIRO[9][71];
+	casas_player2[20].posicao = &TABULEIRO[9][84];
+	casas_player2[21].posicao = &TABULEIRO[9][97];// va para cadeia
+	casas_player2[22].posicao = &TABULEIRO[15][97];
+	casas_player2[23].posicao = &TABULEIRO[21][97];
+	casas_player2[24].posicao = &TABULEIRO[27][97];
+	casas_player2[25].posicao = &TABULEIRO[34][97];
+	casas_player2[26].posicao = &TABULEIRO[40][97];
+	casas_player2[27].posicao = &TABULEIRO[46][97];	
+	
+	
+	
+	casas_player3[0].posicao = &TABULEIRO[48][97]; //start        [48][97]
+	casas_player3[1].posicao = &TABULEIRO[48][84];
+	casas_player3[2].posicao = &TABULEIRO[48][71];
+	casas_player3[3].posicao = &TABULEIRO[48][58];
+	casas_player3[4].posicao = &TABULEIRO[48][45];
+	casas_player3[5].posicao = &TABULEIRO[48][32];
+	casas_player3[6].posicao = &TABULEIRO[48][19];
+	casas_player3[7].posicao = &TABULEIRO[48][2];//detencao
+	casas_player3[8].posicao = &TABULEIRO[42][2];
+	casas_player3[9].posicao = &TABULEIRO[36][2];
+	casas_player3[10].posicao = &TABULEIRO[29][2];
+	casas_player3[11].posicao = &TABULEIRO[23][2];
+	casas_player3[12].posicao = &TABULEIRO[17][2];
+	casas_player3[13].posicao = &TABULEIRO[11][2];
+	casas_player3[14].posicao = &TABULEIRO[2][2];//ferias
+	casas_player3[15].posicao = &TABULEIRO[2][19];
+	casas_player3[16].posicao = &TABULEIRO[2][32];  
+	casas_player3[17].posicao = &TABULEIRO[2][45];
+	casas_player3[18].posicao = &TABULEIRO[2][58];
+	casas_player3[19].posicao = &TABULEIRO[2][71];
+	casas_player3[20].posicao = &TABULEIRO[2][84];
+	casas_player3[21].posicao = &TABULEIRO[2][97];// va para cadeia
+	casas_player3[22].posicao = &TABULEIRO[11][97];
+	casas_player3[23].posicao = &TABULEIRO[17][97];
+	casas_player3[24].posicao = &TABULEIRO[23][97];
+	casas_player3[25].posicao = &TABULEIRO[29][97];
+	casas_player3[26].posicao = &TABULEIRO[36][97];
+	casas_player3[27].posicao = &TABULEIRO[42][97];	
+	
+	
+	
+	casas_player4[0].posicao = &TABULEIRO[48][112]; //start        
+	casas_player4[1].posicao = &TABULEIRO[48][95];
+	casas_player4[2].posicao = &TABULEIRO[48][82];
+	casas_player4[3].posicao = &TABULEIRO[48][69];
+	casas_player4[4].posicao = &TABULEIRO[48][56];   
+	casas_player4[5].posicao = &TABULEIRO[48][43];
+	casas_player4[6].posicao = &TABULEIRO[48][30];
+	casas_player4[7].posicao = &TABULEIRO[48][17];//detencao
+	casas_player4[8].posicao = &TABULEIRO[42][17];
+	casas_player4[9].posicao = &TABULEIRO[36][17];
+	casas_player4[10].posicao = &TABULEIRO[29][17];
+	casas_player4[11].posicao = &TABULEIRO[23][17];
+	casas_player4[12].posicao = &TABULEIRO[17][17];
+	casas_player4[13].posicao = &TABULEIRO[11][17];
+	casas_player4[14].posicao = &TABULEIRO[2][17]; //ferias
+	casas_player4[15].posicao = &TABULEIRO[2][30];
+	casas_player4[16].posicao = &TABULEIRO[2][43];  
+	casas_player4[17].posicao = &TABULEIRO[2][56];
+	casas_player4[18].posicao = &TABULEIRO[2][59];
+	casas_player4[19].posicao = &TABULEIRO[2][82];
+	casas_player4[20].posicao = &TABULEIRO[2][95];
+	casas_player4[21].posicao = &TABULEIRO[2][112];// va para cadeia
+	casas_player4[22].posicao = &TABULEIRO[11][112];
+	casas_player4[23].posicao = &TABULEIRO[17][112];
+	casas_player4[24].posicao = &TABULEIRO[23][112];
+	casas_player4[25].posicao = &TABULEIRO[29][112];
+	casas_player4[26].posicao = &TABULEIRO[36][112];
+	casas_player4[27].posicao = &TABULEIRO[42][112];	
+}
